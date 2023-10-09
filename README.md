@@ -38,4 +38,4 @@ ggplot(data = diamonds, aes(x = price, y = carat)) +
     theme_covalence()
 ```
 
-<img src="man/figures/README-example-1.png" width="100%" />
+<img src="man/figures/README-example-1.png" width="90%" />
