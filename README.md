@@ -25,7 +25,7 @@ pak::pkg_install("CovalenceResearch/covalencer")
 
 ### ggplot theme
 
-Apply `theme_covalence()`to an existing `ggplot` object, like any other
+Apply `theme_covalence()` to an existing `ggplot` object, like any other
 theme.
 
 ``` r
@@ -33,7 +33,7 @@ library(ggplot2)
 library(covalencer)
 
 ggplot(data = diamonds, aes(x = price, y = carat)) +
-    geom_point() +
+    geom_point(alpha = 0.5) +
     facet_wrap(vars(cut)) +
     theme_covalence()
 ```
