@@ -1,11 +1,16 @@
 Package: covalencer
-Title: What the Package Does (One Line, Title Case)
+Title: Miscellaneous Functions and Themes in Use at Covalence Research
 Version: 0.0.0.9000
-Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: Apache License (>= 2)
+Authors@R: c(
+    person("Johannes", "Pöhlmann", , "poehlmann@covalence-research.com",
+           role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-8065-755X")),
+    person("Covalence Research Ltd", role = c("cph", "fnd"))
+    )
+Description: Useful functions for various health economic, literature synthesis,
+    communication, and other projects. Also contains a Covalence theme for
+    'ggplot2' and the Covalence branding colors as palettes for plotting.
+License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
