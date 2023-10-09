@@ -34,6 +34,7 @@ library(covalencer)
 
 ggplot(data = diamonds, aes(x = price, y = carat)) +
     geom_point() +
+    facet_wrap(vars(cut)) +
     theme_covalence()
 ```
 
