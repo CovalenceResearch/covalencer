@@ -4,12 +4,12 @@
 \alias{generate_pal}
 \title{Function factory to generate palette}
 \usage{
-generate_pal(..., palette = "main", type = "discrete", reverse = FALSE)
+generate_pal(palette, n, type = "discrete", reverse = FALSE)
 }
 \arguments{
-\item{...}{Arguments passed on to \code{\link[grDevices:colorRamp]{grDevices::colorRampPalette()}}.}
-
 \item{palette}{Palette to use. One of 'complete', 'main', or 'accent'.}
+
+\item{n}{Number of colors wanted from palette.}
 
 \item{type}{Type of palette. Either 'discrete' or 'continuous'.}
 
@@ -22,5 +22,5 @@ A palette-generating function.
 This function generates a second function, for use in the 'ggplot' scales.
 }
 \details{
-This function is slightly modified from a 2022 \href{https://meghan.rbind.io/blog/2022-10-11-creating-custom-color-palettes-with-ggplot2/#defining-custom-colors-and-palettes}{blog post} by Meghan Hall.
+This function is slightly modified from a 2022 \href{https://www.jumpingrivers.com/blog/custom-colour-palettes-for-ggplot2/}{blog post} by Nicola Rennie.
 }

@@ -5,22 +5,26 @@
 \alias{scale_color_covalence_d}
 \alias{scale_fill_covalence_d}
 \alias{scale_colour_covalence_c}
+\alias{scale_color_covalence_c}
+\alias{scale_fill_covalence_c}
 \title{Covalence color and fill scale for ggplot2}
 \usage{
-scale_colour_covalence_d(palette = "main", reverse = FALSE, ...)
+scale_colour_covalence_d(palette = "complete", reverse = FALSE)
 
-scale_color_covalence_d(palette = "main", reverse = FALSE, ...)
+scale_color_covalence_d(palette = "complete", reverse = FALSE)
 
-scale_fill_covalence_d(palette = "main", reverse = FALSE, ...)
+scale_fill_covalence_d(palette = "complete", reverse = FALSE)
 
-scale_colour_covalence_c(palette = "main", reverse = FALSE, ...)
+scale_colour_covalence_c(palette = "complete", reverse = FALSE)
+
+scale_color_covalence_c(palette = "complete", reverse = FALSE)
+
+scale_fill_covalence_c(palette = "complete", reverse = FALSE)
 }
 \arguments{
 \item{palette}{Palette to use. One of 'complete', 'main', or 'accent'.}
 
 \item{reverse}{Should the palette be reversed? Either 'TRUE' or 'FALSE'.}
-
-\item{...}{Arguments passed on to \code{\link[ggplot2:discrete_scale]{ggplot2::discrete_scale()}}.}
 }
 \value{
 Discrete/continuous color/fill scales for ggplot2.
