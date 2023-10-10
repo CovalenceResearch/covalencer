@@ -18,4 +18,5 @@ Imports:
     cli,
     ggplot2,
     ggtext,
-    grDevices
+    grDevices,
+    rlang
