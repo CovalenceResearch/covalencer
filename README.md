@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# covalencer
+# covalencer <a href="https://covalenceresearch.github.io/covalencer/"><img src="man/figures/logo.png" align="right" height="139" alt="covalencer website" /></a>
 
 <!-- badges: start -->
 <!-- badges: end -->
