@@ -93,23 +93,25 @@ generate_pal <- function(...,
                          type = "discrete",
                          reverse = FALSE) {
     # Check arguments
-    rlang::arg_match(palette, values = c("complete", "main", "accent"))
-    rlang::arg_match(type, values = c("discrete", "continuous"))
+    arg_pal <- rlang::arg_match(palette,
+                                values = c("complete", "main", "accent"))
+    arg_type  <- rlang::arg_match(type,
+                                  values = c("discrete", "continuous"))
     if (!is.logical(reverse)) {
         cli::cli_abort("{.var reverse} must be TRUE or FALSE.")
     }
 
     # Generate palette
     function(n) {
-        if (n > length(covalence_palette(palette = palette))) {
+        if (n > length(covalence_palette(palette = arg_pal))) {
             cli::cli_alert_warning("Not enough colors in the chosen palette.")
         }
 
-        pal <- covalence_palette(palette)
+        pal <- covalence_palette(palette = arg_pal)
         if (reverse)
             pal <- rev(pal)
 
-        if (type == "discrete") {
+        if (arg_type == "discrete") {
             list_colors <- unname(unlist(pal))[1:n]
         } else {
             grDevices::colorRampPalette(pal, ...)

@@ -3,11 +3,14 @@
 \name{scale_colour_covalence_d}
 \alias{scale_colour_covalence_d}
 \alias{scale_color_covalence_d}
+\alias{scale_fill_covalence_d}
 \title{Covalence color and fill scale for ggplot2}
 \usage{
 scale_colour_covalence_d(palette = "main", reverse = FALSE, ...)
 
 scale_color_covalence_d(palette = "main", reverse = FALSE, ...)
+
+scale_fill_covalence_d(palette = "main", reverse = FALSE, ...)
 }
 \arguments{
 \item{palette}{Palette to use. One of 'complete', 'main', or 'accent'.}
