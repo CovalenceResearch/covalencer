@@ -49,19 +49,20 @@ covalence_colors <- function(...) {
 #' @details
 #' This function is slightly modified from a 2022 [blog post](https://meghan.rbind.io/blog/2022-10-11-creating-custom-color-palettes-with-ggplot2/#defining-custom-colors-and-palettes) by Meghan Hall.
 #'
+#' @param ... Arguments to be passed on.
 #' @param palette Palette to use. One of 'complete', 'main', or 'accent'.
-#' @param ... Dots.
 #'
 #' @return A named vector of brand colors.
 #' @export
 #'
 #' @examples
-#' scales::show_col(covalence_palette("main"))
+#' scales::show_col(covalence_palette(palette = "main"))
 covalence_palette <-
-    function(palette = c("complete", "main", "accent"),
-             ...) {
+    function(...,
+             palette = c("complete", "main", "accent")) {
         # Check arguments
-        rlang::arg_match(palette, values = c("complete", "main", "accent"))
+        pal <-
+            rlang::arg_match(palette, values = c("complete", "main", "accent"))
 
         # Palette
         covalence_pals <- list(
@@ -70,7 +71,7 @@ covalence_palette <-
             `accent` = covalence_colors("red", "green", "orange", "purple")
         )
 
-        covalence_pals[[palette]]
+        covalence_pals[[pal]]
     }
 
 #' Function factory to generate palette
@@ -80,16 +81,17 @@ covalence_palette <-
 #'
 #' @details
 #' This function is slightly modified from a 2022 [blog post](https://meghan.rbind.io/blog/2022-10-11-creating-custom-color-palettes-with-ggplot2/#defining-custom-colors-and-palettes) by Meghan Hall.
-#' @inheritParams covalence_palette
+#'
+#' @param ... Arguments passed on to [grDevices::colorRampPalette()].
 #' @param type Type of palette. Either 'discrete' or 'continuous'.
 #' @param reverse Should the palette be reversed? Either 'TRUE' or 'FALSE'.
-#' @param ... Dots.
+#' @inheritParams covalence_palette
 #'
 #' @return A palette-generating function.
-generate_pal <- function(palette = "main",
+generate_pal <- function(...,
+                         palette = "main",
                          type = "discrete",
-                         reverse = FALSE,
-                         ...) {
+                         reverse = FALSE) {
     # Check arguments
     rlang::arg_match(palette, values = c("complete", "main", "accent"))
     rlang::arg_match(type, values = c("discrete", "continuous"))
@@ -99,7 +101,7 @@ generate_pal <- function(palette = "main",
 
     # Generate palette
     function(n) {
-        if (n > length(covalence_palette(palette))) {
+        if (n > length(covalence_palette(palette = palette))) {
             cli::cli_alert_warning("Not enough colors in the chosen palette.")
         }
 
@@ -124,6 +126,7 @@ generate_pal <- function(palette = "main",
 #' @details
 #' This function is modified from a 2022 [blog post](https://meghan.rbind.io/blog/2022-10-11-creating-custom-color-palettes-with-ggplot2/#defining-custom-colors-and-palettes) by Meghan Hall.
 #'
+#' @param ... Arguments passed on to [ggplot2::discrete_scale()].
 #' @inheritParams generate_pal
 #'
 #' @return Discrete/continuous color/fill scales for ggplot2.
@@ -134,16 +137,37 @@ generate_pal <- function(palette = "main",
 #'
 #' ggplot(data = msleep, aes(x = brainwt, y = bodywt)) +
 #'   geom_point(aes(color = vore)) +
-#'   scale_colour_covalence_d()
+#'   scale_colour_covalence_d(palette = "main")
 scale_colour_covalence_d <- function(palette = "main",
                                      reverse = FALSE,
                                      ...) {
     ggplot2::discrete_scale(
-        "color", "covalence_d",
-        generate_pal(palette = palette, type = "discrete", reverse = reverse),
+        "color",
+        "covalence_d",
+        generate_pal(
+            palette = palette,
+            type = "discrete",
+            reverse = reverse
+        ),
         ...
     )
 }
 
 #' @rdname scale_colour_covalence_d
 scale_color_covalence_d <- scale_colour_covalence_d
+
+#' @rdname scale_colour_covalence_d
+scale_fill_covalence_d <- function(palette = "main",
+                                   reverse = FALSE,
+                                   ...) {
+    ggplot2::discrete_scale(
+        "fill",
+        "covalence_d",
+        generate_pal(
+            palette = palette,
+            type = "discrete",
+            reverse = reverse
+        ),
+        ...
+    )
+}

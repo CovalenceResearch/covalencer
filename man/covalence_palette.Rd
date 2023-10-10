@@ -4,12 +4,12 @@
 \alias{covalence_palette}
 \title{Covalence palette}
 \usage{
-covalence_palette(palette = c("complete", "main", "accent"), ...)
+covalence_palette(..., palette = c("complete", "main", "accent"))
 }
 \arguments{
-\item{palette}{Palette to use. One of 'complete', 'main', or 'accent'.}
+\item{...}{Arguments to be passed on.}
 
-\item{...}{Dots.}
+\item{palette}{Palette to use. One of 'complete', 'main', or 'accent'.}
 }
 \value{
 A named vector of brand colors.
@@ -26,5 +26,5 @@ The various Covalence palettes:
 This function is slightly modified from a 2022 \href{https://meghan.rbind.io/blog/2022-10-11-creating-custom-color-palettes-with-ggplot2/#defining-custom-colors-and-palettes}{blog post} by Meghan Hall.
 }
 \examples{
-scales::show_col(covalence_palette("main"))
+scales::show_col(covalence_palette(palette = "main"))
 }

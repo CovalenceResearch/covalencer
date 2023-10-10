@@ -14,7 +14,7 @@ scale_color_covalence_d(palette = "main", reverse = FALSE, ...)
 
 \item{reverse}{Should the palette be reversed? Either 'TRUE' or 'FALSE'.}
 
-\item{...}{Dots.}
+\item{...}{Arguments passed on to \code{\link[ggplot2:discrete_scale]{ggplot2::discrete_scale()}}.}
 }
 \value{
 Discrete/continuous color/fill scales for ggplot2.
@@ -31,5 +31,5 @@ library(ggplot2)
 
 ggplot(data = msleep, aes(x = brainwt, y = bodywt)) +
   geom_point(aes(color = vore)) +
-  scale_colour_covalence_d()
+  scale_colour_covalence_d(palette = "main")
 }

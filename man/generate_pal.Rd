@@ -4,16 +4,16 @@
 \alias{generate_pal}
 \title{Function factory to generate palette}
 \usage{
-generate_pal(palette = "main", type = "discrete", reverse = FALSE, ...)
+generate_pal(..., palette = "main", type = "discrete", reverse = FALSE)
 }
 \arguments{
+\item{...}{Arguments passed on to \code{\link[grDevices:colorRamp]{grDevices::colorRampPalette()}}.}
+
 \item{palette}{Palette to use. One of 'complete', 'main', or 'accent'.}
 
 \item{type}{Type of palette. Either 'discrete' or 'continuous'.}
 
 \item{reverse}{Should the palette be reversed? Either 'TRUE' or 'FALSE'.}
-
-\item{...}{Dots.}
 }
 \value{
 A palette-generating function.
