@@ -1,6 +1,8 @@
 url: https://covalenceresearch.github.io/covalencer/
 template:
   bootstrap: 5
+  theme: nord
   bslib:
     primary: "#326aa0"
+    base_font: {google: "Lato"}
 
