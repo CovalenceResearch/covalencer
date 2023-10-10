@@ -4,6 +4,7 @@
 \alias{scale_colour_covalence_d}
 \alias{scale_color_covalence_d}
 \alias{scale_fill_covalence_d}
+\alias{scale_colour_covalence_c}
 \title{Covalence color and fill scale for ggplot2}
 \usage{
 scale_colour_covalence_d(palette = "main", reverse = FALSE, ...)
@@ -11,6 +12,8 @@ scale_colour_covalence_d(palette = "main", reverse = FALSE, ...)
 scale_color_covalence_d(palette = "main", reverse = FALSE, ...)
 
 scale_fill_covalence_d(palette = "main", reverse = FALSE, ...)
+
+scale_colour_covalence_c(palette = "main", reverse = FALSE, ...)
 }
 \arguments{
 \item{palette}{Palette to use. One of 'complete', 'main', or 'accent'.}
@@ -35,6 +38,11 @@ library(ggplot2)
 ggplot(data = diamonds, aes(x = carat, y = price)) +
   geom_point(aes(color = cut), alpha = 0.4) +
   scale_color_covalence_d(palette = "complete") +
+  theme_covalence()
+
+ggplot(data = diamonds, aes(x = carat, y = price)) +
+  geom_point(aes(color = x), alpha = 0.4) +
+  scale_colour_covalence_c(palette = "complete") +
   theme_covalence()
 
 ggplot(data = diamonds, aes(x = price)) +
