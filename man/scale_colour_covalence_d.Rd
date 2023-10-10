@@ -32,12 +32,14 @@ This function is modified from a 2022 \href{https://meghan.rbind.io/blog/2022-10
 \examples{
 library(ggplot2)
 
-ggplot(data = msleep, aes(x = brainwt, y = bodywt)) +
-  geom_point(aes(color = vore)) +
-  scale_color_covalence_d(palette = "main")
+ggplot(data = diamonds, aes(x = carat, y = price)) +
+  geom_point(aes(color = cut), alpha = 0.4) +
+  scale_color_covalence_d(palette = "complete") +
+  theme_covalence()
 
-ggplot(data = msleep, aes(x = brainwt, y = name)) +
-  geom_col(aes(fill = vore)) +
-  scale_fill_covalence_d(palette = "accent")
+ggplot(data = diamonds, aes(x = price)) +
+  geom_histogram(aes(fill = cut)) +
+  scale_fill_covalence_d(palette = "complete", reverse = TRUE) +
+  theme_covalence()
 
 }
