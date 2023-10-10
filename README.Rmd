@@ -18,11 +18,11 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-covalencer contains various R functions in use at Covalence Research for health economic modeling, literature synthesis, medical communication, or just plain old data wrangling. Perhaps most notably, it provides access to the Covalence ggplot theme and associated color palettes.
+`covalencer` contains various R functions in use at Covalence Research for health economic modeling, literature synthesis, medical communication, or just plain old data wrangling. Perhaps most notably, it provides access to the Covalence ggplot theme and associated color palettes.
 
 ## How to install
 
-You can install the development version of covalencer from [GitHub](https://github.com/) with:
+You can install the development version of `covalencer` from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("pak")
