@@ -139,13 +139,18 @@ generate_pal <- function(...,
 #'
 #' ggplot(data = msleep, aes(x = brainwt, y = bodywt)) +
 #'   geom_point(aes(color = vore)) +
-#'   scale_colour_covalence_d(palette = "main")
+#'   scale_color_covalence_d(palette = "main")
+#'
+#' ggplot(data = msleep, aes(x = brainwt, y = name)) +
+#'   geom_col(aes(fill = vore)) +
+#'   scale_fill_covalence_d(palette = "accent")
+#'
 scale_colour_covalence_d <- function(palette = "main",
                                      reverse = FALSE,
                                      ...) {
     ggplot2::discrete_scale(
-        "color",
-        "covalence_d",
+        "colour",
+        "covalence_colour_d",
         generate_pal(
             palette = palette,
             type = "discrete",
@@ -156,15 +161,17 @@ scale_colour_covalence_d <- function(palette = "main",
 }
 
 #' @rdname scale_colour_covalence_d
+#' @export
 scale_color_covalence_d <- scale_colour_covalence_d
 
 #' @rdname scale_colour_covalence_d
+#' @export
 scale_fill_covalence_d <- function(palette = "main",
                                    reverse = FALSE,
                                    ...) {
     ggplot2::discrete_scale(
         "fill",
-        "covalence_d",
+        "covalence_fill_d",
         generate_pal(
             palette = palette,
             type = "discrete",

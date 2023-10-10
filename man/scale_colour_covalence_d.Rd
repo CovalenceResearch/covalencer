@@ -34,5 +34,10 @@ library(ggplot2)
 
 ggplot(data = msleep, aes(x = brainwt, y = bodywt)) +
   geom_point(aes(color = vore)) +
-  scale_colour_covalence_d(palette = "main")
+  scale_color_covalence_d(palette = "main")
+
+ggplot(data = msleep, aes(x = brainwt, y = name)) +
+  geom_col(aes(fill = vore)) +
+  scale_fill_covalence_d(palette = "accent")
+
 }
