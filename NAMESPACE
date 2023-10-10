@@ -2,4 +2,5 @@
 
 export(covalence_colors)
 export(covalence_palette)
+export(scale_colour_covalence_d)
 export(theme_covalence)

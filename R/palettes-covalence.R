@@ -72,3 +72,78 @@ covalence_palette <-
 
         covalence_pals[[palette]]
     }
+
+#' Function factory to generate palette
+#'
+#' @description
+#' This function generates a second function, for use in the 'ggplot' scales.
+#'
+#' @details
+#' This function is slightly modified from a 2022 [blog post](https://meghan.rbind.io/blog/2022-10-11-creating-custom-color-palettes-with-ggplot2/#defining-custom-colors-and-palettes) by Meghan Hall.
+#' @inheritParams covalence_palette
+#' @param type Type of palette. Either 'discrete' or 'continuous'.
+#' @param reverse Should the palette be reversed? Either 'TRUE' or 'FALSE'.
+#' @param ... Dots.
+#'
+#' @return A palette-generating function.
+generate_pal <- function(palette = "main",
+                         type = "discrete",
+                         reverse = FALSE,
+                         ...) {
+    # Check arguments
+    rlang::arg_match(palette, values = c("complete", "main", "accent"))
+    rlang::arg_match(type, values = c("discrete", "continuous"))
+    if (!is.logical(reverse)) {
+        cli::cli_abort("{.var reverse} must be TRUE or FALSE.")
+    }
+
+    # Generate palette
+    function(n) {
+        if (n > length(covalence_palette(palette))) {
+            cli::cli_alert_warning("Not enough colors in the chosen palette.")
+        }
+
+        pal <- covalence_palette(palette)
+        if (reverse)
+            pal <- rev(pal)
+
+        if (type == "discrete") {
+            list_colors <- unname(unlist(pal))[1:n]
+        } else {
+            grDevices::colorRampPalette(pal, ...)
+        }
+    }
+}
+
+#' Covalence color and fill scale for ggplot2
+#'
+#' @description
+#' The `scale_*_covalence_*` functions provide discrete (`_d`) and continuous
+#' (`_c`) scales of Covalence colors for use in [ggplot2] plots.
+#'
+#' @details
+#' This function is modified from a 2022 [blog post](https://meghan.rbind.io/blog/2022-10-11-creating-custom-color-palettes-with-ggplot2/#defining-custom-colors-and-palettes) by Meghan Hall.
+#'
+#' @inheritParams generate_pal
+#'
+#' @return Discrete/continuous color/fill scales for ggplot2.
+#' @export
+#'
+#' @examples
+#' library(ggplot2)
+#'
+#' ggplot(data = msleep, aes(x = brainwt, y = bodywt)) +
+#'   geom_point(aes(color = vore)) +
+#'   scale_colour_covalence_d()
+scale_colour_covalence_d <- function(palette = "main",
+                                     reverse = FALSE,
+                                     ...) {
+    ggplot2::discrete_scale(
+        "color", "covalence_d",
+        generate_pal(palette = palette, type = "discrete", reverse = reverse),
+        ...
+    )
+}
+
+#' @rdname scale_colour_covalence_d
+scale_color_covalence_d <- scale_colour_covalence_d
