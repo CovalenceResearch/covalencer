@@ -1,4 +1,6 @@
 url: https://covalenceresearch.github.io/covalencer/
 template:
   bootstrap: 5
+  bslib:
+    primary: "#326aa0"
 
