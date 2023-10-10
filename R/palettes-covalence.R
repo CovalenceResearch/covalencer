@@ -56,7 +56,8 @@ covalence_colors <- function(...) {
 #' @export
 #'
 #' @examples
-#' scales::show_col(covalence_palette(palette = "main"))
+#' require(scales)
+#' show_col(covalence_palette(palette = "main"))
 covalence_palette <-
     function(...,
              palette = c("complete", "main", "accent")) {
