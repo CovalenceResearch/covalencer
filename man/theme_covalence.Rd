@@ -9,7 +9,7 @@ theme_covalence(base_size = 12, base_family = "sans")
 \arguments{
 \item{base_size}{Base font size, in points. Default is 12.}
 
-\item{base_family}{Base font family. Default is Lato.}
+\item{base_family}{Base font family. Default is "sans".}
 }
 \value{
 A ggplot2 \link[ggplot2:theme]{theme} object.
