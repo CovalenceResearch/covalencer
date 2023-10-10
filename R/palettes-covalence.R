@@ -5,6 +5,10 @@
 #' ('lightblue', 'darkblue', 'teal', and 'grey') and the accent colors
 #' ('red', 'green', 'purple', and 'orange').
 #'
+#' @details
+#' This function is taken from a 2022 [blog post](https://meghan.rbind.io/blog/2022-10-11-creating-custom-color-palettes-with-ggplot2/#defining-custom-colors-and-palettes) by Meghan Hall.
+#'
+#'
 #' @param ... Access specific colors
 #'
 #' @return A named vector of brand colors
