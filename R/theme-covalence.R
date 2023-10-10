@@ -6,8 +6,10 @@
 #' modified further by using `theme()`. Also consider using the various color
 #' palettes to ensure the house style is met.
 #'
-#' @param base_size    Base font size, in points. Default is 12.
-#' @param base_family  Base font family. Default is "sans".
+#' @param base_size        Base font size, in points. Default is 12.
+#' @param base_family      Base font family. Default is "sans".
+#' @param strip_bg_color   Color to fill strip backgrounds. Default is #326aa0.
+#' @param strip_text_color Color for strip labels. Default is #FFFFFF (white).
 #'
 #' @return A ggplot2 [theme][ggplot2::theme] object.
 #' @export
@@ -24,7 +26,9 @@
 #'    facet_wrap(vars(vore)) +
 #'    theme_covalence()
 theme_covalence <- function(base_size = 12,
-                            base_family = "sans") {
+                            base_family = "sans",
+                            strip_bg_color = "#326aa0",
+                            strip_text_color = "#FFFFFF") {
     ggplot2::theme_light(base_size = base_size,
                          base_family = base_family) +
         ggplot2::theme(
@@ -61,9 +65,10 @@ theme_covalence <- function(base_size = 12,
             plot.title = ggtext::element_markdown(face = "bold",
                                                   size = ggplot2::rel(1.5)),
             plot.title.position = "plot",
-            strip.background = ggplot2::element_rect(fill = "#326aa0"),
+            strip.background =
+                ggplot2::element_rect(fill = strip_bg_color),
             strip.text = ggtext::element_markdown(
-                color = "#FFFFFF",
+                color = strip_text_color,
                 face = "bold",
                 hjust = 0,
                 size = ggplot2::rel(1.0)

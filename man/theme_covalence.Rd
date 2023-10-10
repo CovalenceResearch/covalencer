@@ -4,12 +4,21 @@
 \alias{theme_covalence}
 \title{The default Covalence \link{ggplot2} theme}
 \usage{
-theme_covalence(base_size = 12, base_family = "sans")
+theme_covalence(
+  base_size = 12,
+  base_family = "sans",
+  strip_bg_color = "#326aa0",
+  strip_text_color = "#FFFFFF"
+)
 }
 \arguments{
 \item{base_size}{Base font size, in points. Default is 12.}
 
 \item{base_family}{Base font family. Default is "sans".}
+
+\item{strip_bg_color}{Color to fill strip backgrounds. Default is #326aa0.}
+
+\item{strip_text_color}{Color for strip labels. Default is #FFFFFF (white).}
 }
 \value{
 A ggplot2 \link[ggplot2:theme]{theme} object.
