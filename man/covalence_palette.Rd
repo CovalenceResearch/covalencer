@@ -26,5 +26,5 @@ The various Covalence palettes:
 This function is slightly modified from a 2022 \href{https://meghan.rbind.io/blog/2022-10-11-creating-custom-color-palettes-with-ggplot2/#defining-custom-colors-and-palettes}{blog post} by Meghan Hall.
 }
 \examples{
-covalence_palette("main")
+scales::show_col(covalence_palette("main"))
 }
