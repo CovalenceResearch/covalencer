@@ -29,6 +29,22 @@ theme_covalence <- function(base_size = 12,
                             base_family = "sans",
                             strip_bg_color = "#326aa0",
                             strip_text_color = "#FFFFFF") {
+    # Check arguments
+    if (!is.numeric(base_size)) {
+        cli::cli_abort("{.var base_size} must be numeric.")
+    }
+
+    if (!(is_hex(strip_bg_color) |
+          strip_bg_color %in% grDevices::colors())) {
+        cli::cli_abort("{.var strip_bg_color} must be a hex color or in the R colors.")
+    }
+
+    if (!(is_hex(strip_text_color) |
+          strip_text_color %in% grDevices::colors())) {
+        cli::cli_abort("{.var strip_text_color} must be a hex color or in the R colors.")
+    }
+
+    # ggplot2 theme
     ggplot2::theme_light(base_size = base_size,
                          base_family = base_family) +
         ggplot2::theme(
