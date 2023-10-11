@@ -114,7 +114,7 @@ generate_pal <- function(palette,
     structure(out, name = arg_pal, class = "palette")
 }
 
-#' Covalence color and fill scale for ggplot2
+#' Covalence color and fill scales for ggplot2
 #'
 #' @description
 #' The `scale_*_covalence_*` functions provide discrete (`_d`) and continuous

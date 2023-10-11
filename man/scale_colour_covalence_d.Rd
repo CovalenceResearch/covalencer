@@ -7,7 +7,7 @@
 \alias{scale_colour_covalence_c}
 \alias{scale_color_covalence_c}
 \alias{scale_fill_covalence_c}
-\title{Covalence color and fill scale for ggplot2}
+\title{Covalence color and fill scales for ggplot2}
 \usage{
 scale_colour_covalence_d(palette = "complete", reverse = FALSE)
 
