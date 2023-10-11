@@ -34,7 +34,7 @@ The \verb{scale_*_covalence_*} functions provide discrete (\verb{_d}) and contin
 (\verb{_c}) scales of Covalence colors for use in \link{ggplot2} plots.
 }
 \details{
-This function is modified from a 2022 \href{https://meghan.rbind.io/blog/2022-10-11-creating-custom-color-palettes-with-ggplot2/#defining-custom-colors-and-palettes}{blog post} by Meghan Hall.
+These functions are inspired by a 2022 \href{https://www.jumpingrivers.com/blog/custom-colour-palettes-for-ggplot2/}{blog post} by Nicola Rennie.
 }
 \examples{
 library(ggplot2)

@@ -121,7 +121,7 @@ generate_pal <- function(palette,
 #' (`_c`) scales of Covalence colors for use in [ggplot2] plots.
 #'
 #' @details
-#' This function is modified from a 2022 [blog post](https://meghan.rbind.io/blog/2022-10-11-creating-custom-color-palettes-with-ggplot2/#defining-custom-colors-and-palettes) by Meghan Hall.
+#' These functions are inspired by a 2022 [blog post](https://www.jumpingrivers.com/blog/custom-colour-palettes-for-ggplot2/) by Nicola Rennie.
 #'
 #' @inheritParams generate_pal
 #'
