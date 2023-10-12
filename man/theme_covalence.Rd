@@ -36,8 +36,8 @@ ggplot(data = msleep, aes(x = brainwt, y = bodywt)) +
    geom_point() +
    theme_covalence()
 
-ggplot(data = msleep, aes(x = awake, y = name)) +
-   geom_col() +
-   facet_wrap(vars(vore)) +
+ggplot(data = diamonds, aes(x = price, y = carat)) +
+   geom_point(color = covalence_colors("lightblue"), alpha = 0.4) +
+   facet_wrap(vars(cut)) +
    theme_covalence()
 }
