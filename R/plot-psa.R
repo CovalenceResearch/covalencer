@@ -1,9 +1,14 @@
 plot_psa_scatter <- function(data,
                              delta_qalys = NULL,
                              delta_costs = NULL,
+                             point_alpha = 0.2,
+                             point_color = "#249bc9",
+                             point_shape = 16,
+                             point_size = 2,
+                             currency = "$",
                              ...) {
     p <- ggplot2::ggplot(data = data,
-                         ggplot2::aes(x = {
+                         mapping = ggplot2::aes(x = {
                              {
                                  delta_qalys
                              }
@@ -13,11 +18,21 @@ plot_psa_scatter <- function(data,
                                  delta_costs
                              }
                          })) +
-        ggplot2::geom_point() +
+        ggplot2::geom_jitter(
+            alpha = point_alpha,
+            color = point_color,
+            shape = point_shape,
+            size = point_size
+        ) +
+        ggplot2::scale_x_continuous(
+            "Incremental quality-adjusted life-years",
+            labels = scales::number_format(big.mark = ",")) +
+        ggplot2::scale_y_continuous(
+            "Incremenctal costs",
+            labels = scales::label_dollar(prefix = currency, big.mark = ",")
+        ) +
         theme_covalence() %+replace%
-        theme(
-            panel.grid = ggplot2::element_blank()
-        )
+        theme(panel.grid.major = ggplot2::element_blank())
 
     p
 }
