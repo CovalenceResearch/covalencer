@@ -53,37 +53,37 @@ theme_covalence <- function(base_size = 12,
                 linewidth = ggplot2::rel(0.5)
             ),
             axis.ticks.length = ggplot2::unit(2, "pt"),
-            axis.title = ggtext::element_markdown(face = "bold",
+            axis.title = ggplot2::element_text(face = "bold",
                                                   size = ggplot2::rel(1.0)),
-            axis.text = ggtext::element_markdown(color = "#000000",
+            axis.text = ggplot2::element_text(color = "#000000",
                                                  size = ggplot2::rel(0.80)),
             legend.background = ggplot2::element_blank(),
             legend.direction = "horizontal",
             legend.justification = "right",
             legend.margin = ggplot2::margin(0, 0, 0, 0, "pt"),
             legend.position = "top",
-            legend.text = ggtext::element_markdown(size = ggplot2::rel(1.0)),
-            legend.title = ggtext::element_markdown(face = "bold",
+            legend.text = ggplot2::element_text(size = ggplot2::rel(1.0)),
+            legend.title = ggplot2::element_text(face = "bold",
                                                     size = ggplot2::rel(1.1)),
             panel.background = ggplot2::element_rect(fill = "#FFFFFF"),
             panel.grid.minor = ggplot2::element_blank(),
             panel.spacing = ggplot2::unit(1, "lines"),
-            plot.caption = ggtext::element_markdown(
+            plot.caption = ggplot2::element_text(
                 margin = ggplot2::margin(4, 0, 0, 0, "pt"),
                 size = ggplot2::rel(0.80)
             ),
             plot.caption.position = "plot",
             plot.margin = ggplot2::margin(6, 6, 6, 6, "pt"),
-            plot.subtitle = ggtext::element_markdown(
+            plot.subtitle = ggplot2::element_text(
                 margin = ggplot2::margin(4, 0, 0, 0, "pt"),
                 size = ggplot2::rel(1.1)
             ),
-            plot.title = ggtext::element_markdown(face = "bold",
+            plot.title = ggplot2::element_text(face = "bold",
                                                   size = ggplot2::rel(1.5)),
             plot.title.position = "plot",
             strip.background =
                 ggplot2::element_rect(fill = strip_bg_color),
-            strip.text = ggtext::element_markdown(
+            strip.text = ggplot2::element_text(
                 color = strip_text_color,
                 face = "bold",
                 hjust = 0,

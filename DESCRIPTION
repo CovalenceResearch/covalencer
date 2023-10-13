@@ -17,7 +17,6 @@ RoxygenNote: 7.2.3
 Imports: 
     cli,
     ggplot2,
-    ggtext,
     grDevices,
     rlang
 Suggests: 
