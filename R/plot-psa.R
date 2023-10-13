@@ -1,11 +1,11 @@
 plot_psa_scatter <- function(data,
                              delta_qalys = NULL,
                              delta_costs = NULL,
+                             currency = "$",
                              point_alpha = 0.2,
                              point_color = "#249bc9",
                              point_shape = 16,
                              point_size = 2,
-                             currency = "$",
                              ...) {
     p <- ggplot2::ggplot(data = data,
                          mapping = ggplot2::aes(x = {
