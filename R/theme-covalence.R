@@ -48,11 +48,7 @@ theme_covalence <- function(base_size = 12,
     ggplot2::theme_light(base_size = base_size,
                          base_family = base_family) +
         ggplot2::theme(
-            axis.ticks = ggplot2::element_line(
-                color = "#FAFAFA",
-                linewidth = ggplot2::rel(0.5)
-            ),
-            axis.ticks.length = ggplot2::unit(2, "pt"),
+            axis.ticks = ggplot2::element_blank(),
             axis.title = ggplot2::element_text(face = "bold",
                                                   size = ggplot2::rel(1.0)),
             axis.text = ggplot2::element_text(color = "#000000",
