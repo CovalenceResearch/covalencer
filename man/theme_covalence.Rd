@@ -7,8 +7,8 @@
 theme_covalence(
   base_size = 12,
   base_family = "sans",
-  strip_bg_color = "#326aa0",
-  strip_text_color = "#FFFFFF"
+  strip_bg_color = "#FFFFFF",
+  strip_text_color = "#326aa0"
 )
 }
 \arguments{

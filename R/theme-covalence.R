@@ -27,8 +27,8 @@
 #'    theme_covalence()
 theme_covalence <- function(base_size = 12,
                             base_family = "sans",
-                            strip_bg_color = "#326aa0",
-                            strip_text_color = "#FFFFFF") {
+                            strip_bg_color = "#FFFFFF",
+                            strip_text_color = "#326aa0") {
     # Check arguments
     if (!is.numeric(base_size)) {
         cli::cli_abort("{.var base_size} must be numeric.")
@@ -54,8 +54,8 @@ theme_covalence <- function(base_size = 12,
                                                size = ggplot2::rel(1.0)),
             axis.text = ggplot2::element_text(color = "#000000",
                                               size = ggplot2::rel(0.80)),
-            axis.text.x = ggplot2::element_text(margin = margin(t = -1)),
-            axis.text.y = ggplot2::element_text(margin = margin(r = -1)),
+            axis.text.x = ggplot2::element_text(margin = ggplot2::margin(t = -1)),
+            axis.text.y = ggplot2::element_text(margin = ggplot2::margin(r = -1)),
             legend.background = ggplot2::element_blank(),
             legend.direction = "horizontal",
             legend.justification = "right",
@@ -89,6 +89,7 @@ theme_covalence <- function(base_size = 12,
                 color = strip_text_color,
                 face = "bold",
                 hjust = 0,
+                vjust = 0,
                 size = ggplot2::rel(1.0)
             )
         )
