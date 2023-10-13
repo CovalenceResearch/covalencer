@@ -24,6 +24,10 @@ pak::pkg_install("CovalenceResearch/covalencer")
 
 ## How to use
 
+Please note that the package is very much a work in progress, with
+things likely to break (deliberately and not so deliberately). Use the
+package at your own risk.
+
 ### ggplot theme
 
 Apply `theme_covalence()` to an existing `ggplot` object, like any other
