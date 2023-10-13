@@ -27,7 +27,7 @@ pak::pkg_install("CovalenceResearch/covalencer")
 ### ggplot theme
 
 Apply `theme_covalence()` to an existing `ggplot` object, like any other
-theme.
+theme:
 
 ``` r
 library(ggplot2)

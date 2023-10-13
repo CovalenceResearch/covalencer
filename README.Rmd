@@ -24,7 +24,7 @@ knitr::opts_chunk$set(
 
 You can install the development version of `covalencer` from [GitHub](https://github.com/) with:
 
-``` r
+```{r eval = FALSE}
 # install.packages("pak")
 pak::pkg_install("CovalenceResearch/covalencer")
 ```
@@ -33,7 +33,7 @@ pak::pkg_install("CovalenceResearch/covalencer")
 
 ### ggplot theme
 
-Apply `theme_covalence()` to an existing `ggplot` object, like any other theme.
+Apply `theme_covalence()` to an existing `ggplot` object, like any other theme:
 
 ```{r example}
 library(ggplot2)
