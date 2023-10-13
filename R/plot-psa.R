@@ -7,7 +7,6 @@ plot_psa_scatter <- function(data,
                              point_shape = 16,
                              point_size = 2,
                              ...) {
-
     # Calculate symmetrical plot limits
     col_qalys <- rlang::as_string(rlang::ensym(delta_qalys))
     col_costs <- rlang::as_string(rlang::ensym(delta_costs))
@@ -20,8 +19,16 @@ plot_psa_scatter <- function(data,
 
     # Create scatter plot
     p <- ggplot2::ggplot(data = data,
-                         mapping = ggplot2::aes(x = {{ delta_qalys }},
-                                                y = {{ delta_costs }})) +
+                         mapping = ggplot2::aes(x = {
+                             {
+                                 delta_qalys
+                             }
+                         },
+                         y = {
+                             {
+                                 delta_costs
+                             }
+                         })) +
         ggplot2::geom_hline(
             yintercept = 0,
             color = "#000000",
@@ -46,7 +53,8 @@ plot_psa_scatter <- function(data,
         ggplot2::scale_y_continuous(
             "Incremenctal costs",
             labels = scales::label_dollar(prefix = currency, big.mark = ","),
-            limits = limits_costs) +
+            limits = limits_costs
+        ) +
         theme_covalence() %+replace%
         theme(panel.grid.major = ggplot2::element_blank())
 
