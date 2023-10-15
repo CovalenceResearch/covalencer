@@ -29,7 +29,7 @@
 #'
 #' @examples
 #' library(ggplot2)
-#' df <- data.frame(d_qalys = runif(1000, -2, 2),
+#' df <- data.frame(d_qalys = runif(1000, -1, 2),
 #'                  d_costs = runif(1000, -1000, 10000))
 #'
 #' plot_psa_scatter(df, d_qalys, d_costs, wtp_value = 20000)
