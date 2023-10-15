@@ -12,7 +12,7 @@
 #' @param strip_text_color Color for strip labels. Default is #FFFFFF (white).
 #'
 #' @return A ggplot2 [theme][ggplot2::theme] object.
-#' @import ggplot2 %+replace%
+#' @importFrom ggplot2 %+replace%
 #' @export
 #'
 #' @examples
