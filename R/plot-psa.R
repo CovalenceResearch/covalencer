@@ -6,6 +6,8 @@ plot_psa_scatter <- function(data,
                              point_color = "#249bc9",
                              point_shape = 16,
                              point_size = 2,
+                             point_jitter_height = 0.4,
+                             point_jitter_width = 0.4,
                              ...) {
     # Calculate symmetrical plot limits
     col_qalys <- rlang::as_string(rlang::ensym(delta_qalys))
@@ -43,7 +45,9 @@ plot_psa_scatter <- function(data,
             alpha = point_alpha,
             color = point_color,
             shape = point_shape,
-            size = point_size
+            size = point_size,
+            width = point_jitter_width,
+            height = point_jitter_height
         ) +
         ggplot2::scale_x_continuous(
             "Incremental quality-adjusted life-years",
