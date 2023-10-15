@@ -2,13 +2,13 @@ plot_psa_scatter <- function(data,
                              delta_qalys = NULL,
                              delta_costs = NULL,
                              currency = "$",
+                             ...,
                              point_alpha = 0.4,
                              point_color = "#249bc9",
                              point_shape = 16,
                              point_size = 2,
                              point_jitter_height = 0.4,
-                             point_jitter_width = 0.4,
-                             ...) {
+                             point_jitter_width = 0.4) {
     # Calculate symmetrical plot limits
     col_qalys <- rlang::as_string(rlang::ensym(delta_qalys))
     col_costs <- rlang::as_string(rlang::ensym(delta_costs))
