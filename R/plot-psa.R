@@ -7,8 +7,8 @@
 #' Fore more information on the display of incremental outcomes on the cost-effectiveness plane, see, for example, [Fenwick *et al.*, 2006](https://pubmed.ncbi.nlm.nih.gov/16623946/).
 #'
 #' @param data A data.frame.
-#' @param delta_qalys Name of the column that holds incremental QALYs.
-#' @param delta_costs Name of the column that holds incremental costs.
+#' @param delta_qalys Unquoted column name for incremental QALYs.
+#' @param delta_costs Unquoted column name for incremental costs.
 #' @param currency String for the currency symbol. Default is `$`.
 #' @param point_alpha Numeric value for point opacity. Default is `0.4`.
 #' @param point_color Hex value for point color. Default is `#249bc9`.

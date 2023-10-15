@@ -31,9 +31,9 @@ plot_psa_scatter(
 \arguments{
 \item{data}{A data.frame.}
 
-\item{delta_qalys}{Name of the column that holds incremental QALYs.}
+\item{delta_qalys}{Unquoted column name for incremental QALYs.}
 
-\item{delta_costs}{Name of the column that holds incremental costs.}
+\item{delta_costs}{Unquoted column name for incremental costs.}
 
 \item{currency}{String for the currency symbol. Default is \code{$}.}
 
