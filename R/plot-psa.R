@@ -144,6 +144,10 @@ stat_doublemean <- function(
     )
 }
 
+#' @rdname stat_doublemean
+#' @format NULL
+#' @usage NULL
+#' @export
 StatDoubleMean <- ggplot2::ggproto(
     "StatDoubleMean",
     ggplot2::Stat,
