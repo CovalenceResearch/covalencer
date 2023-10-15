@@ -160,16 +160,14 @@ plot_psa_scatter <- function(data,
 #' ggplot(diamonds, aes(x = carat, y = price)) +
 #'   geom_point() +
 #'   stat_doublemean(color = "#249bc9", shape = 18, size = 3)
-stat_doublemean <- function(
-        mapping = NULL,
-        data = NULL,
-        geom = "point",
-        position = "identity",
-        na.rm = FALSE,
-        show.legend = NA,
-        inherit.aes = TRUE,
-        ...
-) {
+stat_doublemean <- function(mapping = NULL,
+                            data = NULL,
+                            geom = "point",
+                            position = "identity",
+                            na.rm = FALSE,
+                            show.legend = NA,
+                            inherit.aes = TRUE,
+                            ...) {
     ggplot2::layer(
         stat = StatDoubleMean,
         data = data,
@@ -178,8 +176,7 @@ stat_doublemean <- function(
         position = position,
         show.legend = show.legend,
         inherit.aes = inherit.aes,
-        params = rlang::list2(na.rm = na.rm, ...
-        )
+        params = rlang::list2(na.rm = na.rm, ...)
     )
 }
 
