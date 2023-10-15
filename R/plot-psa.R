@@ -1,3 +1,38 @@
+#' Plot incremental outcomes on the cost-effectiveness plane
+#'
+#' @description
+#' `plot_psa_scatter` takes a data.frame of incremental quality-adjusted life-years (QALYs) and incremental costs, as might be obtained from a probabilistic sensitivity analysis, and plots these data on the incremental cost-effectiveness plane.
+#'
+#' @details
+#' Fore more information on the display of incremental outcomes on the cost-effectiveness plane, see, for example, [Fenwick *et al.*, 2006](https://pubmed.ncbi.nlm.nih.gov/16623946/).
+#'
+#' @param data A data.frame.
+#' @param delta_qalys Name of the column that holds incremental QALYs.
+#' @param delta_costs Name of the column that holds incremental costs.
+#' @param currency String for the currency symbol. Default is `$`.
+#' @param point_alpha Numeric value for point opacity. Default is `0.4`.
+#' @param point_color Hex value for point color. Default is `#249bc9`.
+#' @param point_shape Integer value for point shape. Default is `16`. See `?pch` for available shapes.
+#' @param point_size Numeric value for point size. Default is `2`.
+#' @param point_jitter_height Numeric value for vertical jittering. Default is 0.4 (the [`geom_jitter()`](https://ggplot2.tidyverse.org/reference/geom_jitter.html) default). Set to `0` if you don't want vertical jittering.
+#' @param point_jitter_width Numeric value for horizontal jittering. Default is 0.4 (the [`geom_jitter()`](https://ggplot2.tidyverse.org/reference/geom_jitter.html) default). Set to `0` if you don't want horizontal jittering.
+#' @param show_wtp Boolean indicating if the willingness-to-pay (WTP) threshold should be displayed (as a line). Default is `TRUE`.
+#' @param wtp_value Numeric value for WTP threshold. Default is `1`, a deliberately unrealistic value to remind you to set the value to your specific example.
+#' @param wtp_alpha Numeric value for WTP threshold line opacity. Default is `1`.
+#' @param wtp_color Hex value for WTP threshold line color. Default is `#154754`.
+#' @param wtp_linetype A valid specification of the WTP threshold line type. Default is `dashed` (`2`). See the [ggplot2](https://ggplot2.tidyverse.org/reference/aes_linetype_size_shape.html) documentation for valid options.
+#' @param wtp_linewidth Numeric value for the WTP threshold line width. Default is `0.5`.
+#'
+#' @return A ggplot object
+#' @importFrom ggplot2 %+replace%
+#' @export
+#'
+#' @examples
+#' library(ggplot2)
+#' df <- data.frame(d_qalys = runif(1000, -2, 2),
+#'                  d_costs = runif(1000, -1000, 10000))
+#'
+#' plot_psa_scatter(df, d_qalys, d_costs, wtp_value = 20000)
 plot_psa_scatter <- function(data,
                              delta_qalys = NULL,
                              delta_costs = NULL,
