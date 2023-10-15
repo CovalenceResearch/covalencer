@@ -55,7 +55,7 @@ plot_psa_scatter <- function(data,
             limits = limits_qalys
         ) +
         ggplot2::scale_y_continuous(
-            "Incremenctal costs",
+            "Incremental costs",
             labels = scales::label_dollar(prefix = currency, big.mark = ","),
             limits = limits_costs
         ) +
