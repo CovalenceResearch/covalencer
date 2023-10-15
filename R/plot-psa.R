@@ -14,8 +14,8 @@
 #' @param point_color Hex value for point color. Default is `#249bc9`.
 #' @param point_shape Integer value for point shape. Default is `16`. See `?pch` for available shapes.
 #' @param point_size Numeric value for point size. Default is `2`.
-#' @param point_jitter_height Numeric value for vertical jittering. Default is 0.4 (the [`geom_jitter()`](https://ggplot2.tidyverse.org/reference/geom_jitter.html) default). Set to `0` if you don't want vertical jittering.
-#' @param point_jitter_width Numeric value for horizontal jittering. Default is 0.4 (the [`geom_jitter()`](https://ggplot2.tidyverse.org/reference/geom_jitter.html) default). Set to `0` if you don't want horizontal jittering.
+#' @param point_jitter_height,point_jitter_width Numeric value for vertical and horizontal jittering. Default is `0` (no jittering). Be careful that some key-outcome pairs may not be plotted if jitter too much.
+#' @param point_jitter_width Numeric value for horizontal jittering. Default is `0` (no horizontal jittering).
 #' @param show_wtp Boolean indicating if the willingness-to-pay (WTP) threshold should be displayed (as a line). Default is `TRUE`.
 #' @param wtp_value Numeric value for WTP threshold. Default is `1`, a deliberately unrealistic value to remind you to set the value to your specific example.
 #' @param wtp_alpha Numeric value for WTP threshold line opacity. Default is `1`.
@@ -41,8 +41,8 @@ plot_psa_scatter <- function(data,
                              point_color = "#249bc9",
                              point_shape = 16,
                              point_size = 2,
-                             point_jitter_height = 0.4,
-                             point_jitter_width = 0.4,
+                             point_jitter_height = 0,
+                             point_jitter_width = 0,
                              show_wtp = TRUE,
                              wtp_value = 1,
                              wtp_alpha = 1,
