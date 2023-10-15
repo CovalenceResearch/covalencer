@@ -120,6 +120,30 @@ plot_psa_scatter <- function(data,
 }
 
 
+stat_doublemean <- function(
+        mapping = NULL,
+        data = NULL,
+        geom = "point",
+        position = "identity",
+        ...,
+        width = NULL,
+        na.rm = FALSE,
+        show.legend = NA,
+        inherit.aes = TRUE
+) {
+    ggplot2::layer(
+        stat = StatDoubleMean,
+        data = data,
+        mapping = mapping,
+        geom = geom,
+        position = position,
+        show.legend = show.legend,
+        inherit.aes = inherit.aes,
+        params = rlang::list2(na.rm = na.rm, ...
+        )
+    )
+}
+
 StatDoubleMean <- ggplot2::ggproto(
     "StatDoubleMean",
     ggplot2::Stat,
