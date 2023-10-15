@@ -122,7 +122,7 @@ plot_psa_scatter <- function(data,
 
 StatDoubleMean <- ggplot2::ggproto(
     "StatDoubleMean",
-    Stat,
+    ggplot2::Stat,
     compute_group = function(data, scales) {
         data.frame(x = mean(data$x, na.rm = TRUE),
                    y = mean(data$y, na.rm = TRUE))
