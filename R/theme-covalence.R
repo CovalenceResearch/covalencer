@@ -10,6 +10,7 @@
 #' @param base_family      Base font family. Default is "sans".
 #' @param strip_bg_color   Color to fill strip backgrounds. Default is #326aa0.
 #' @param strip_text_color Color for strip labels. Default is #FFFFFF (white).
+#' @param ...              Additional arguments to be passed to the theme
 #'
 #' @return A ggplot2 [theme][ggplot2::theme] object.
 #' @importFrom ggplot2 %+replace%
