@@ -118,3 +118,14 @@ plot_psa_scatter <- function(data,
 
     p
 }
+
+
+StatDoubleMean <- ggplot2::ggproto(
+    "StatDoubleMean",
+    Stat,
+    compute_group = function(data, scales) {
+        data.frame(x = mean(data$x, na.rm = TRUE),
+                   y = mean(data$y, na.rm = TRUE))
+    },
+    required_aes = c("x", "y")
+)
