@@ -120,16 +120,32 @@ plot_psa_scatter <- function(data,
 }
 
 
+#' Calculate the mean of two variables
+#'
+#' @description
+#' Calculate the arithmetic mean of two variables, for subsequent use in a call to [`geom_point()`](https://ggplot2.tidyverse.org/reference/geom_point.html).
+#'
+#' @inheritParams ggplot2::layer
+#' @inheritParams ggplot2::geom_point
+#'
+#' @return A 'ggplot2' stat.
+#' @export
+#'
+#' @examples
+#' library(ggplot2)
+#'
+#' ggplot(diamonds, aes(x = carat, y = price)) +
+#'   geom_point() +
+#'   stat_doublemean(color = "#249bc9", shape = 18, size = 3)
 stat_doublemean <- function(
         mapping = NULL,
         data = NULL,
         geom = "point",
         position = "identity",
-        ...,
-        width = NULL,
         na.rm = FALSE,
         show.legend = NA,
-        inherit.aes = TRUE
+        inherit.aes = TRUE,
+        ...
 ) {
     ggplot2::layer(
         stat = StatDoubleMean,
