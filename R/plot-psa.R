@@ -100,7 +100,7 @@ plot_psa_scatter <- function(data,
             limits = limits_costs
         ) +
         theme_covalence() %+replace%
-        theme(panel.grid.major = ggplot2::element_blank())
+        ggplot2::theme(panel.grid.major = ggplot2::element_blank())
 
     # Add willingness-to-pay (WTP) threshold as line
     if (show_wtp) {
