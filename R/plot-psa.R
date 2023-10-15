@@ -11,19 +11,19 @@
 #' @param delta_costs Unquoted column name for incremental costs.
 #' @param currency String for the currency symbol. Default is `$`.
 #' @param point_alpha Numeric value for point opacity. Default is `0.4`.
-#' @param point_color Hex value for point color. Default is `#249bc9`.
+#' @param point_color Point color. Default is `#249bc9`.
 #' @param point_shape Integer value for point shape. Default is `16`. See `?pch` for available shapes.
 #' @param point_size Numeric value for point size. Default is `2`.
 #' @param point_jitter_height,point_jitter_width Numeric value for vertical and horizontal jittering. Default is `0` (no jittering). Be careful that some key-outcome pairs may not be plotted if there is too much jitter.
 #' @param show_wtp Boolean indicating if the willingness-to-pay (WTP) threshold should be displayed (as a line). Default is `TRUE`.
 #' @param wtp_value Numeric value for WTP threshold. Default is `1`, a deliberately unrealistic value to remind you to set the value to your specific example.
 #' @param wtp_alpha Numeric value for WTP threshold line opacity. Default is `1`.
-#' @param wtp_color Hex value for WTP threshold line color. Default is `#154754`.
+#' @param wtp_color Color for WTP threshold line. Default is `#154754`.
 #' @param wtp_linetype A valid specification of the WTP threshold line type. Default is `dashed` (`2`). See the [ggplot2](https://ggplot2.tidyverse.org/reference/aes_linetype_size_shape.html) documentation for valid options.
 #' @param wtp_linewidth Numeric value for the WTP threshold line width. Default is `0.5`.
 #' @param show_mean Boolean indicating if the mean of incremental QALYs and costs should be displayed (as a point). Default is `TRUE`.
 #' @param mean_alpha Numeric value for mean point opacity. Default is `1`.
-#' @param mean_color Hex value for mean point color. Default is `#7a0d66`.
+#' @param mean_color Color for the mean point. Default is `#7a0d66`.
 #' @param mean_shape Integer value for mean point shape. Default is `18`. See `?pch` for available shapes.
 #' @param mean_size Numeric value for point size. Default is `3`.
 #'
@@ -38,8 +38,8 @@
 #'
 #' plot_psa_scatter(df, d_qalys, d_costs, wtp_value = 20000)
 plot_psa_scatter <- function(data,
-                             delta_qalys = NULL,
-                             delta_costs = NULL,
+                             delta_qalys ,
+                             delta_costs,
                              currency = "$",
                              point_alpha = 0.4,
                              point_color = "#249bc9",
@@ -58,10 +58,69 @@ plot_psa_scatter <- function(data,
                              mean_color = "#7a0d66",
                              mean_shape = 18,
                              mean_size = 3) {
-    # Calculate symmetrical plot limits
     col_qalys <- rlang::as_string(rlang::ensym(delta_qalys))
     col_costs <- rlang::as_string(rlang::ensym(delta_costs))
 
+    # Argument checks
+
+    ## Data
+    rlang::check_required(delta_qalys)
+    rlang::check_required(delta_costs)
+
+    if (!(col_qalys %in% names(data))) {
+        cli::cli_abort(
+            c(
+                "{.var {rlang::caller_arg(delta_qalys)}} is not a column in {.var {rlang::caller_arg(data)}}."
+            ),
+            call = rlang::caller_env()
+        )
+    }
+    if (!(col_costs %in% names(data))) {
+        cli::cli_abort(
+            c(
+                "{.var {rlang::caller_arg(delta_costs)}} is not a column in {.var {rlang::caller_arg(data)}}."
+            ),
+            call = rlang::caller_env()
+        )
+    }
+
+    ## Input: WTP
+    if (!is.numeric(wtp_value)) {
+        cli::cli_abort("{.var wtp_value} must be numeric.")
+    }
+
+    if (wtp_value < 0) {
+        cli::cli_alert_warning("The WTP threshold is set to a negative value!")
+    }
+
+    if (wtp_value == 1) {
+        cli::cli_alert_warning("The WTP threshold is (still) set at 1.")
+    }
+
+    ## Inputs: Booleans
+    if (!is.logical(show_wtp)) {
+        cli::cli_abort("{.var show_twp} must be TRUE or FALSE.")
+    }
+
+    if (!is.logical(show_mean)) {
+        cli::cli_abort("{.var show_mean} must be TRUE or FALSE.")
+    }
+
+    ## Inputs: color
+    if (!check_color(point_color)) {
+        cli::cli_abort("{.var point_color} must be a hex color or in the R colors.")
+    }
+
+    if (!check_color(wtp_color)) {
+        cli::cli_abort("{.var wtp_color} must be a hex color or in the R colors.")
+    }
+
+    if (!check_color(mean_color)) {
+        cli::cli_abort("{.var mean_color} must be a hex color or in the R colors.")
+    }
+
+
+    # Calculate symmetrical plot limits
     max_qalys <- max(abs(data[[col_qalys]]))
     max_costs <- max(abs(data[[col_costs]]))
 
