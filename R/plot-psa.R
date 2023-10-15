@@ -21,6 +21,11 @@
 #' @param wtp_color Hex value for WTP threshold line color. Default is `#154754`.
 #' @param wtp_linetype A valid specification of the WTP threshold line type. Default is `dashed` (`2`). See the [ggplot2](https://ggplot2.tidyverse.org/reference/aes_linetype_size_shape.html) documentation for valid options.
 #' @param wtp_linewidth Numeric value for the WTP threshold line width. Default is `0.5`.
+#' @param show_mean Boolean indicating if the mean of incremental QALYs and costs should be displayed (as a point). Default is `TRUE`.
+#' @param mean_alpha Numeric value for mean point opacity. Default is `1`.
+#' @param mean_color Hex value for mean point color. Default is `#7a0d66`.
+#' @param mean_shape Integer value for mean point shape. Default is `18`. See `?pch` for available shapes.
+#' @param mean_size Numeric value for point size. Default is `3`.
 #'
 #' @return A ggplot object
 #' @importFrom ggplot2 %+replace%
@@ -47,7 +52,12 @@ plot_psa_scatter <- function(data,
                              wtp_alpha = 1,
                              wtp_color = "#154754",
                              wtp_linetype = "dashed",
-                             wtp_linewidth = 0.5) {
+                             wtp_linewidth = 0.5,
+                             show_mean = TRUE,
+                             mean_alpha = 1,
+                             mean_color = "#7a0d66",
+                             mean_shape = 18,
+                             mean_size = 3) {
     # Calculate symmetrical plot limits
     col_qalys <- rlang::as_string(rlang::ensym(delta_qalys))
     col_costs <- rlang::as_string(rlang::ensym(delta_costs))
@@ -111,6 +121,19 @@ plot_psa_scatter <- function(data,
                 color = wtp_color,
                 linetype = wtp_linetype,
                 linewidth = wtp_linewidth
+            )
+    } else {
+        p
+    }
+
+    # Add mean on plot
+    if (show_mean) {
+        p <- p +
+            stat_doublemean(
+                alpha = mean_alpha,
+                color = mean_color,
+                shape = mean_shape,
+                size  = mean_size
             )
     } else {
         p

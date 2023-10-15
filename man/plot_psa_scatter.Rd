@@ -20,7 +20,12 @@ plot_psa_scatter(
   wtp_alpha = 1,
   wtp_color = "#154754",
   wtp_linetype = "dashed",
-  wtp_linewidth = 0.5
+  wtp_linewidth = 0.5,
+  show_mean = TRUE,
+  mean_alpha = 1,
+  mean_color = "#7a0d66",
+  mean_shape = 18,
+  mean_size = 3
 )
 }
 \arguments{
@@ -53,6 +58,16 @@ plot_psa_scatter(
 \item{wtp_linetype}{A valid specification of the WTP threshold line type. Default is \code{dashed} (\code{2}). See the \href{https://ggplot2.tidyverse.org/reference/aes_linetype_size_shape.html}{ggplot2} documentation for valid options.}
 
 \item{wtp_linewidth}{Numeric value for the WTP threshold line width. Default is \code{0.5}.}
+
+\item{show_mean}{Boolean indicating if the mean of incremental QALYs and costs should be displayed (as a point). Default is \code{TRUE}.}
+
+\item{mean_alpha}{Numeric value for mean point opacity. Default is \code{1}.}
+
+\item{mean_color}{Hex value for mean point color. Default is \verb{#7a0d66}.}
+
+\item{mean_shape}{Integer value for mean point shape. Default is \code{18}. See \code{?pch} for available shapes.}
+
+\item{mean_size}{Numeric value for point size. Default is \code{3}.}
 }
 \value{
 A ggplot object
