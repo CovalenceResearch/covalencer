@@ -7,7 +7,13 @@ plot_psa_scatter <- function(data,
                              point_shape = 16,
                              point_size = 2,
                              point_jitter_height = 0.4,
-                             point_jitter_width = 0.4) {
+                             point_jitter_width = 0.4,
+                             show_wtp = TRUE,
+                             wtp_value = 1,
+                             wtp_alpha = 1,
+                             wtp_color = "#154754",
+                             wtp_linetype = "dashed",
+                             wtp_linewidth = 0.5) {
     # Calculate symmetrical plot limits
     col_qalys <- rlang::as_string(rlang::ensym(delta_qalys))
     col_costs <- rlang::as_string(rlang::ensym(delta_costs))
@@ -60,6 +66,21 @@ plot_psa_scatter <- function(data,
         ) +
         theme_covalence() %+replace%
         theme(panel.grid.major = ggplot2::element_blank())
+
+    # Add willingness-to-pay (WTP) threshold as line
+    if (show_wtp) {
+        p <- p +
+            ggplot2::geom_abline(
+                intercept = 0,
+                slope = wtp_value,
+                alpha = wtp_alpha,
+                color = wtp_color,
+                linetype = wtp_linetype,
+                linewidth = wtp_linewidth
+            )
+    } else {
+        p
+    }
 
     p
 }
