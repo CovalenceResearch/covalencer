@@ -13,8 +13,8 @@ plot_psa_scatter(
   point_color = "#249bc9",
   point_shape = 16,
   point_size = 2,
-  point_jitter_height = 0.4,
-  point_jitter_width = 0.4,
+  point_jitter_height = 0,
+  point_jitter_width = 0,
   show_wtp = TRUE,
   wtp_value = 1,
   wtp_alpha = 1,
@@ -40,9 +40,7 @@ plot_psa_scatter(
 
 \item{point_size}{Numeric value for point size. Default is \code{2}.}
 
-\item{point_jitter_height}{Numeric value for vertical jittering. Default is 0.4 (the \href{https://ggplot2.tidyverse.org/reference/geom_jitter.html}{\code{geom_jitter()}} default). Set to \code{0} if you don't want vertical jittering.}
-
-\item{point_jitter_width}{Numeric value for horizontal jittering. Default is 0.4 (the \href{https://ggplot2.tidyverse.org/reference/geom_jitter.html}{\code{geom_jitter()}} default). Set to \code{0} if you don't want horizontal jittering.}
+\item{point_jitter_height, point_jitter_width}{Numeric value for vertical and horizontal jittering. Default is \code{0} (no jittering). Be careful that some key-outcome pairs may not be plotted if jitter too much.}
 
 \item{show_wtp}{Boolean indicating if the willingness-to-pay (WTP) threshold should be displayed (as a line). Default is \code{TRUE}.}
 
@@ -67,7 +65,7 @@ Fore more information on the display of incremental outcomes on the cost-effecti
 }
 \examples{
 library(ggplot2)
-df <- data.frame(d_qalys = runif(1000, -2, 2),
+df <- data.frame(d_qalys = runif(1000, -1, 2),
                  d_costs = runif(1000, -1000, 10000))
 
 plot_psa_scatter(df, d_qalys, d_costs, wtp_value = 20000)
