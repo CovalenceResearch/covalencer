@@ -28,7 +28,6 @@
 #' @param mean_size Numeric value for point size. Default is `3`.
 #'
 #' @return A ggplot object
-#' @importFrom ggplot2 %+replace%
 #' @export
 #'
 #' @examples
