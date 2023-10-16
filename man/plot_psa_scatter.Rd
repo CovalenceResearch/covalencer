@@ -6,8 +6,8 @@
 \usage{
 plot_psa_scatter(
   data,
-  delta_qalys = NULL,
-  delta_costs = NULL,
+  delta_qalys,
+  delta_costs,
   currency = "$",
   point_alpha = 0.4,
   point_color = "#249bc9",
@@ -39,13 +39,13 @@ plot_psa_scatter(
 
 \item{point_alpha}{Numeric value for point opacity. Default is \code{0.4}.}
 
-\item{point_color}{Hex value for point color. Default is \verb{#249bc9}.}
+\item{point_color}{Point color. Default is \verb{#249bc9}.}
 
 \item{point_shape}{Integer value for point shape. Default is \code{16}. See \code{?pch} for available shapes.}
 
 \item{point_size}{Numeric value for point size. Default is \code{2}.}
 
-\item{point_jitter_height, point_jitter_width}{Numeric value for vertical and horizontal jittering. Default is \code{0} (no jittering). Be careful that some key-outcome pairs may not be plotted if jitter too much.}
+\item{point_jitter_height, point_jitter_width}{Numeric value for vertical and horizontal jittering. Default is \code{0} (no jittering). Be careful that some key-outcome pairs may not be plotted if there is too much jitter.}
 
 \item{show_wtp}{Boolean indicating if the willingness-to-pay (WTP) threshold should be displayed (as a line). Default is \code{TRUE}.}
 
@@ -53,7 +53,7 @@ plot_psa_scatter(
 
 \item{wtp_alpha}{Numeric value for WTP threshold line opacity. Default is \code{1}.}
 
-\item{wtp_color}{Hex value for WTP threshold line color. Default is \verb{#154754}.}
+\item{wtp_color}{Color for WTP threshold line. Default is \verb{#154754}.}
 
 \item{wtp_linetype}{A valid specification of the WTP threshold line type. Default is \code{dashed} (\code{2}). See the \href{https://ggplot2.tidyverse.org/reference/aes_linetype_size_shape.html}{ggplot2} documentation for valid options.}
 
@@ -63,7 +63,7 @@ plot_psa_scatter(
 
 \item{mean_alpha}{Numeric value for mean point opacity. Default is \code{1}.}
 
-\item{mean_color}{Hex value for mean point color. Default is \verb{#7a0d66}.}
+\item{mean_color}{Color for the mean point. Default is \verb{#7a0d66}.}
 
 \item{mean_shape}{Integer value for mean point shape. Default is \code{18}. See \code{?pch} for available shapes.}
 

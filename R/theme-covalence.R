@@ -13,7 +13,6 @@
 #' @param ...              Additional arguments to be passed to the theme
 #'
 #' @return A ggplot2 [theme][ggplot2::theme] object.
-#' @importFrom ggplot2 %+replace%
 #' @export
 #'
 #' @examples
@@ -50,7 +49,7 @@ theme_covalence <- function(base_size = 12,
     # ggplot2 theme
     ggplot2::theme_light(...,
                          base_size = base_size,
-                         base_family = base_family) %+replace%
+                         base_family = base_family) +
         ggplot2::theme(
             text = ggplot2::element_text(lineheight = 1.1),
             axis.line = ggplot2::element_line(color = "#000000"),
@@ -60,7 +59,9 @@ theme_covalence <- function(base_size = 12,
             axis.text = ggplot2::element_text(color = "#000000",
                                               size = ggplot2::rel(0.80)),
             axis.text.x = ggplot2::element_text(margin = ggplot2::margin(t = -1)),
-            axis.text.y = ggplot2::element_text(margin = ggplot2::margin(r = -1)),
+            axis.text.y = ggplot2::element_text(
+                hjust = 1,
+                margin = ggplot2::margin(r = -1)),
             legend.background = ggplot2::element_blank(),
             legend.direction = "horizontal",
             legend.justification = "right",
