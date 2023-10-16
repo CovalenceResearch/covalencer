@@ -15,8 +15,7 @@
 #' @param point_shape Integer value for point shape. Default is `16`. See `?pch` for available shapes.
 #' @param point_size Numeric value for point size. Default is `2`.
 #' @param point_jitter_height,point_jitter_width Numeric value for vertical and horizontal jittering. Default is `0` (no jittering). Be careful that some key-outcome pairs may not be plotted if there is too much jitter.
-#' @param show_wtp Boolean indicating if the willingness-to-pay (WTP) threshold should be displayed (as a line). Default is `TRUE`.
-#' @param wtp_value Numeric value for WTP threshold. Default is `1`, a deliberately unrealistic value to remind you to set the value to your specific example.
+#' @param plot_wtp_at Numeric value at which to plot the WTP threshold. By default, this argument is `NULL` and the WTP threshold is not plotted.
 #' @param wtp_alpha Numeric value for WTP threshold line opacity. Default is `1`.
 #' @param wtp_color Color for WTP threshold line. Default is `#154754`.
 #' @param wtp_linetype A valid specification of the WTP threshold line type. Default is `dashed` (`2`). See the [ggplot2](https://ggplot2.tidyverse.org/reference/aes_linetype_size_shape.html) documentation for valid options.
@@ -36,10 +35,14 @@
 #'                  d_costs = runif(1000, -1000, 10000),
 #'                  country = rep(c("Country A", "Country B"), each = 500))
 #'
-#' plot_psa_scatter(df, d_qalys, d_costs, wtp_value = 20000)
+#' # Standard plot (without WTP threshold)
+#' plot_psa_scatter(df, d_qalys, d_costs)
+#'
+#' # Now with a WTP threshold of 20,000
+#' plot_psa_scatter(df, d_qalys, d_costs, plot_wtp_at = 20000)
 #'
 #' # Facet plot by adding a call to facet_plot/facet_grid
-#' plot_psa_scatter(df, d_qalys, d_costs, show_wtp = FALSE) +
+#' plot_psa_scatter(df, d_qalys, d_costs, plot_wtp_at = 20000) +
 #'   facet_wrap(vars(country))
 #'
 #' # Don't forget that column names should be unquoted
@@ -56,8 +59,7 @@ plot_psa_scatter <- function(data,
                              point_size = 2,
                              point_jitter_height = 0,
                              point_jitter_width = 0,
-                             show_wtp = TRUE,
-                             wtp_value = 1,
+                             plot_wtp_at = NULL,
                              wtp_alpha = 1,
                              wtp_color = "#154754",
                              wtp_linetype = "dashed",
@@ -94,28 +96,25 @@ plot_psa_scatter <- function(data,
     }
 
     ## Input: WTP
-    if (!is.numeric(wtp_value)) {
-        cli::cli_abort("{.var wtp_value} must be numeric.")
+    if (!(is.numeric(plot_wtp_at) | is.null(plot_wtp_at))) {
+        cli::cli_abort("{.var plot_wtp_at} must be numeric or {.val NULL}.")
     }
 
-    if (wtp_value < 0) {
-        cli::cli_alert_warning("The WTP threshold is set to a negative value!")
+    if (is.null(plot_wtp_at)) {
+        cli::cli_alert_info("No WTP threshold is plotted.")
+    } else if (plot_wtp_at < 0) {
+        cli::cli_alert_warning("The WTP threshold is negative.")
+    } else {
+        cli::cli_alert_info(c("The WTP threshold is plotted at ",
+                              "{currency}{plot_wtp_at} per QALY gained."))
     }
 
-    if (wtp_value == 1) {
-        cli::cli_alert_warning("The WTP threshold is (still) set at 1.")
-    }
-
-    ## Inputs: Booleans
-    if (!is.logical(show_wtp)) {
-        cli::cli_abort("{.var show_twp} must be TRUE or FALSE.")
-    }
-
+    ## Inputs: Boolean
     if (!is.logical(show_mean)) {
         cli::cli_abort("{.var show_mean} must be TRUE or FALSE.")
     }
 
-    ## Inputs: color
+    ## Inputs: colors
     if (!check_color(point_color)) {
         cli::cli_abort("{.var point_color} must be a hex color or in the R colors.")
     }
@@ -180,11 +179,11 @@ plot_psa_scatter <- function(data,
         ggplot2::theme(panel.grid.major = ggplot2::element_blank())
 
     # Add willingness-to-pay (WTP) threshold as line
-    if (show_wtp) {
+    if (is.numeric(plot_wtp_at)) {
         p <- p +
             ggplot2::geom_abline(
                 intercept = 0,
-                slope = wtp_value,
+                slope = plot_wtp_at,
                 alpha = wtp_alpha,
                 color = wtp_color,
                 linetype = wtp_linetype,

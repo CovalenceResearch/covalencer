@@ -15,8 +15,7 @@ plot_psa_scatter(
   point_size = 2,
   point_jitter_height = 0,
   point_jitter_width = 0,
-  show_wtp = TRUE,
-  wtp_value = 1,
+  plot_wtp_at = NULL,
   wtp_alpha = 1,
   wtp_color = "#154754",
   wtp_linetype = "dashed",
@@ -47,9 +46,7 @@ plot_psa_scatter(
 
 \item{point_jitter_height, point_jitter_width}{Numeric value for vertical and horizontal jittering. Default is \code{0} (no jittering). Be careful that some key-outcome pairs may not be plotted if there is too much jitter.}
 
-\item{show_wtp}{Boolean indicating if the willingness-to-pay (WTP) threshold should be displayed (as a line). Default is \code{TRUE}.}
-
-\item{wtp_value}{Numeric value for WTP threshold. Default is \code{1}, a deliberately unrealistic value to remind you to set the value to your specific example.}
+\item{plot_wtp_at}{Numeric value at which to plot the WTP threshold. By default, this argument is \code{NULL} and the WTP threshold is not plotted.}
 
 \item{wtp_alpha}{Numeric value for WTP threshold line opacity. Default is \code{1}.}
 
@@ -84,10 +81,14 @@ df <- data.frame(d_qalys = runif(1000, -1, 2),
                  d_costs = runif(1000, -1000, 10000),
                  country = rep(c("Country A", "Country B"), each = 500))
 
-plot_psa_scatter(df, d_qalys, d_costs, wtp_value = 20000)
+# Standard plot (without WTP threshold)
+plot_psa_scatter(df, d_qalys, d_costs)
+
+# Now with a WTP threshold of 20,000
+plot_psa_scatter(df, d_qalys, d_costs, plot_wtp_at = 20000)
 
 # Facet plot by adding a call to facet_plot/facet_grid
-plot_psa_scatter(df, d_qalys, d_costs, show_wtp = FALSE) +
+plot_psa_scatter(df, d_qalys, d_costs, plot_wtp_at = 20000) +
   facet_wrap(vars(country))
 
 # Don't forget that column names should be unquoted
