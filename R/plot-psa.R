@@ -42,6 +42,11 @@
 #' # Facet plot by adding a call to facet_plot/facet_grid
 #' plot_psa_scatter(df, d_qalys, d_costs, show_wtp = FALSE) +
 #'   facet_wrap(vars(country))
+#'
+#' # Don't forget that column names should be unquoted
+#' \dontrun{
+#'   plot_psa_scatter(df, "d_qalys", "d_costs")
+#' }
 plot_psa_scatter <- function(data,
                              delta_qalys ,
                              delta_costs,
