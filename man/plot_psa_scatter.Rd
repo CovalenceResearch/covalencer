@@ -81,7 +81,17 @@ Fore more information on the display of incremental outcomes on the cost-effecti
 \examples{
 library(ggplot2)
 df <- data.frame(d_qalys = runif(1000, -1, 2),
-                 d_costs = runif(1000, -1000, 10000))
+                 d_costs = runif(1000, -1000, 10000),
+                 country = rep(c("Country A", "Country B"), each = 500))
 
 plot_psa_scatter(df, d_qalys, d_costs, wtp_value = 20000)
+
+# Facet plot by adding a call to facet_plot/facet_grid
+plot_psa_scatter(df, d_qalys, d_costs, show_wtp = FALSE) +
+  facet_wrap(vars(country))
+
+# Don't forget that column names should be unquoted
+\dontrun{
+  plot_psa_scatter(df, "d_qalys", "d_costs")
+}
 }
