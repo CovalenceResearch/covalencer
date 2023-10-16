@@ -216,6 +216,10 @@ plot_psa_scatter <- function(data,
 #' @description
 #' Calculate the arithmetic mean of two variables, for subsequent use in a call to [`geom_point()`](https://ggplot2.tidyverse.org/reference/geom_point.html).
 #'
+#' @details
+#' The code for the `stat` and `layer` are heavily based on the [extending `ggplot2`](https://ggplot2.tidyverse.org/articles/extending-ggplot2.html) vignette.
+#'
+#'
 #' @inheritParams ggplot2::layer
 #' @inheritParams ggplot2::geom_point
 #'
