@@ -167,7 +167,7 @@ plot_psa_scatter <- function(data,
             labels = scales::label_dollar(prefix = currency, big.mark = ","),
             limits = limits_costs
         ) +
-        theme_covalence() %+replace%
+        theme_covalence() +
         ggplot2::theme(panel.grid.major = ggplot2::element_blank())
 
     # Add willingness-to-pay (WTP) threshold as line
