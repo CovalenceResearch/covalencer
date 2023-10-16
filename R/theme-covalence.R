@@ -10,9 +10,9 @@
 #' @param base_family      Base font family. Default is "sans".
 #' @param strip_bg_color   Color to fill strip backgrounds. Default is #326aa0.
 #' @param strip_text_color Color for strip labels. Default is #FFFFFF (white).
+#' @param ...              Additional variables to be passed on to `theme()`.
 #'
 #' @return A ggplot2 [theme][ggplot2::theme] object.
-#' @import ggplot2 %+replace+
 #' @export
 #'
 #' @examples
@@ -49,7 +49,7 @@ theme_covalence <- function(base_size = 12,
     # ggplot2 theme
     ggplot2::theme_light(...,
                          base_size = base_size,
-                         base_family = base_family) %+replace%
+                         base_family = base_family) +
         ggplot2::theme(
             text = ggplot2::element_text(lineheight = 1.1),
             axis.line = ggplot2::element_line(color = "#000000"),

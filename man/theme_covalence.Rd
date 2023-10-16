@@ -8,7 +8,8 @@ theme_covalence(
   base_size = 12,
   base_family = "sans",
   strip_bg_color = "#FFFFFF",
-  strip_text_color = "#326aa0"
+  strip_text_color = "#326aa0",
+  ...
 )
 }
 \arguments{
@@ -19,6 +20,8 @@ theme_covalence(
 \item{strip_bg_color}{Color to fill strip backgrounds. Default is #326aa0.}
 
 \item{strip_text_color}{Color for strip labels. Default is #FFFFFF (white).}
+
+\item{...}{Additional variables to be passed on to \code{theme()}.}
 }
 \value{
 A ggplot2 \link[ggplot2:theme]{theme} object.
