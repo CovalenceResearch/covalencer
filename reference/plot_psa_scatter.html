@@ -53,8 +53,7 @@
 <span>  point_size <span class="op">=</span> <span class="fl">2</span>,</span>
 <span>  point_jitter_height <span class="op">=</span> <span class="fl">0</span>,</span>
 <span>  point_jitter_width <span class="op">=</span> <span class="fl">0</span>,</span>
-<span>  show_wtp <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  wtp_value <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  plot_wtp_at <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  wtp_alpha <span class="op">=</span> <span class="fl">1</span>,</span>
 <span>  wtp_color <span class="op">=</span> <span class="st">"#154754"</span>,</span>
 <span>  wtp_linetype <span class="op">=</span> <span class="st">"dashed"</span>,</span>
@@ -105,12 +104,8 @@
 <dd><p>Numeric value for vertical and horizontal jittering. Default is <code>0</code> (no jittering). Be careful that some key-outcome pairs may not be plotted if there is too much jitter.</p></dd>
 
 
-<dt>show_wtp</dt>
-<dd><p>Boolean indicating if the willingness-to-pay (WTP) threshold should be displayed (as a line). Default is <code>TRUE</code>.</p></dd>
-
-
-<dt>wtp_value</dt>
-<dd><p>Numeric value for WTP threshold. Default is <code>1</code>, a deliberately unrealistic value to remind you to set the value to your specific example.</p></dd>
+<dt>plot_wtp_at</dt>
+<dd><p>Numeric value at which to plot the WTP threshold. By default, this argument is <code>NULL</code> and the WTP threshold is not plotted.</p></dd>
 
 
 <dt>wtp_alpha</dt>
@@ -167,14 +162,21 @@
 <span class="r-in"><span>                 d_costs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">1000</span>, <span class="op">-</span><span class="fl">1000</span>, <span class="fl">10000</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>                 country <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Country A"</span>, <span class="st">"Country B"</span><span class="op">)</span>, each <span class="op">=</span> <span class="fl">500</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu">plot_psa_scatter</span><span class="op">(</span><span class="va">df</span>, <span class="va">d_qalys</span>, <span class="va">d_costs</span>, wtp_value <span class="op">=</span> <span class="fl">20000</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># Standard plot (without WTP threshold)</span></span></span>
+<span class="r-in"><span><span class="fu">plot_psa_scatter</span><span class="op">(</span><span class="va">df</span>, <span class="va">d_qalys</span>, <span class="va">d_costs</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> No WTP threshold is plotted.</span>
 <span class="r-plt img"><img src="plot_psa_scatter-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Facet plot by adding a call to facet_plot/facet_grid</span></span></span>
-<span class="r-in"><span><span class="fu">plot_psa_scatter</span><span class="op">(</span><span class="va">df</span>, <span class="va">d_qalys</span>, <span class="va">d_costs</span>, show_wtp <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span></span>
-<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">country</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> The WTP threshold is (still) set at 1.</span>
+<span class="r-in"><span><span class="co"># Now with a WTP threshold of 20,000</span></span></span>
+<span class="r-in"><span><span class="fu">plot_psa_scatter</span><span class="op">(</span><span class="va">df</span>, <span class="va">d_qalys</span>, <span class="va">d_costs</span>, plot_wtp_at <span class="op">=</span> <span class="fl">20000</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> The WTP threshold is plotted at $20000 per QALY gained.</span>
 <span class="r-plt img"><img src="plot_psa_scatter-2.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Facet plot by adding a call to facet_plot/facet_grid</span></span></span>
+<span class="r-in"><span><span class="fu">plot_psa_scatter</span><span class="op">(</span><span class="va">df</span>, <span class="va">d_qalys</span>, <span class="va">d_costs</span>, plot_wtp_at <span class="op">=</span> <span class="fl">20000</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">country</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> The WTP threshold is plotted at $20000 per QALY gained.</span>
+<span class="r-plt img"><img src="plot_psa_scatter-3.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Don't forget that column names should be unquoted</span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
