@@ -15,7 +15,7 @@ palettes.
 ## How to install
 
 You can install the development version of `covalencer` from
-[GitHub](https://github.com/) with:
+[GitHub](https://github.com/CovalenceResearch/covalencer) using:
 
 ``` r
 # install.packages("pak")

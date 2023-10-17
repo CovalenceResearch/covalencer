@@ -22,7 +22,7 @@ knitr::opts_chunk$set(
 
 ## How to install
 
-You can install the development version of `covalencer` from [GitHub](https://github.com/CovalenceResearch/covalencer) with:
+You can install the development version of `covalencer` from [GitHub](https://github.com/CovalenceResearch/covalencer) using:
 
 ```{r eval = FALSE}
 # install.packages("pak")
