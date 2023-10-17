@@ -5,6 +5,9 @@ Authors@R: c(
     person("Johannes", "Pöhlmann", , "poehlmann@covalence-research.com",
            role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-8065-755X")),
+    person("Richard", "Pollock", , "pollock@covalence-research.com",
+           role = c("aut"),
+           comment = c(ORCID = "0000-0002-9873-7507")),
     person("Covalence Research Ltd", role = c("cph", "fnd"))
     )
 Description: Useful functions for various health economic, literature synthesis,
