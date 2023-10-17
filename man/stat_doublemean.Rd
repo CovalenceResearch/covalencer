@@ -70,7 +70,7 @@ to the paired geom/stat.}
 A 'ggplot2' stat.
 }
 \description{
-Calculate the arithmetic mean of two variables, for subsequent use in a call to \href{https://ggplot2.tidyverse.org/reference/geom_point.html}{\code{geom_point()}}.
+Calculate the arithmetic mean of two variables, \code{x} and \code{y}, for subsequent use in a call to \href{https://ggplot2.tidyverse.org/reference/geom_point.html}{\code{geom_point()}}.
 }
 \details{
 The code for the \code{stat} and \code{layer} are heavily based on the \href{https://ggplot2.tidyverse.org/articles/extending-ggplot2.html}{extending \code{ggplot2}} vignette.
