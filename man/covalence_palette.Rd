@@ -9,7 +9,7 @@ covalence_palette(..., palette = c("complete", "main", "accent"))
 \arguments{
 \item{...}{Arguments to be passed on.}
 
-\item{palette}{Palette to use. One of 'complete', 'main', or 'accent'.}
+\item{palette}{Palette to use. One of 'complete', 'main', 'accent', or 'rainbow_12_bit'.}
 }
 \value{
 A named vector of brand colors.

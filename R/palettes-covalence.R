@@ -51,7 +51,7 @@ covalence_colors <- function(...) {
 #' The [12-bit rainbow palette](https://iamkate.com/data/12-bit-rainbow/) was developed by Kate Morley and released under the terms of the Creative Commons CC0 1.0 Universal Legal Code.
 #'
 #' @param ... Arguments to be passed on.
-#' @param palette Palette to use. One of 'complete', 'main', or 'accent'.
+#' @param palette Palette to use. One of 'complete', 'main', 'accent', or 'rainbow_12_bit'.
 #'
 #' @return A named vector of brand colors.
 #' @export
@@ -64,25 +64,26 @@ covalence_palette <-
              palette = c("complete", "main", "accent")) {
         # Check arguments
         pal <-
-            rlang::arg_match(palette, values = c("complete", "main", "accent"))
+            rlang::arg_match(palette, values = c("complete", "main", "accent",
+                                                 "rainbow_12_bit"))
 
         # Palette
         covalence_pals <- list(
             `complete` = covalence_colors(),
             `main` = covalence_colors("lightblue", "darkblue", "teal", "gray"),
             `accent` = covalence_colors("red", "green", "orange", "purple"),
-            `rainbow_12_bit` = c("#817",
-                                 "#a35",
-                                 "#c66",
-                                 "#e94",
-                                 "#ed0",
-                                 "#9d5",
-                                 "#4d8",
-                                 "#2cb",
-                                 "#0bc",
-                                 "#09c",
-                                 "#36b",
-                                 "#639")
+            `rainbow_12_bit` = c("#881177",
+                                 "#aa3355",
+                                 "#cc6666",
+                                 "#ee9944",
+                                 "#eedd00",
+                                 "#99dd55",
+                                 "#44dd88",
+                                 "#22ccbb",
+                                 "#00bbcc",
+                                 "#0099cc",
+                                 "#3366bb",
+                                 "#663399")
         )
 
         covalence_pals[[pal]]
@@ -107,7 +108,8 @@ generate_pal <- function(palette,
                          reverse = FALSE) {
     # Check arguments
     arg_pal  <- rlang::arg_match(palette,
-                                  values = c("complete", "main", "accent"))
+                                  values = c("complete", "main", "accent",
+                                             "rainbow_12_bit"))
     arg_type  <- rlang::arg_match(type,
                                   values = c("discrete", "continuous"))
     if (!is.logical(reverse)) {
@@ -156,7 +158,7 @@ generate_pal <- function(palette,
 #'
 #' ggplot(data = diamonds, aes(x = price)) +
 #'   geom_histogram(aes(fill = cut)) +
-#'   scale_fill_covalence_d(palette = "complete", reverse = TRUE) +
+#'   scale_fill_covalence_d(palette = "rainbow_12_bit", reverse = TRUE) +
 #'   theme_covalence()
 #'
 scale_colour_covalence_d <- function(palette = "complete",

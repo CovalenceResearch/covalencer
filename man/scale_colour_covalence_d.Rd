@@ -22,7 +22,7 @@ scale_color_covalence_c(palette = "complete", reverse = FALSE)
 scale_fill_covalence_c(palette = "complete", reverse = FALSE)
 }
 \arguments{
-\item{palette}{Palette to use. One of 'complete', 'main', or 'accent'.}
+\item{palette}{Palette to use. One of 'complete', 'main', 'accent', or 'rainbow_12_bit'.}
 
 \item{reverse}{Should the palette be reversed? Either 'TRUE' or 'FALSE'.}
 }
@@ -51,7 +51,7 @@ ggplot(data = diamonds, aes(x = carat, y = price)) +
 
 ggplot(data = diamonds, aes(x = price)) +
   geom_histogram(aes(fill = cut)) +
-  scale_fill_covalence_d(palette = "complete", reverse = TRUE) +
+  scale_fill_covalence_d(palette = "rainbow_12_bit", reverse = TRUE) +
   theme_covalence()
 
 }

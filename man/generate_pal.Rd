@@ -7,7 +7,7 @@
 generate_pal(palette, n, type = "discrete", reverse = FALSE)
 }
 \arguments{
-\item{palette}{Palette to use. One of 'complete', 'main', or 'accent'.}
+\item{palette}{Palette to use. One of 'complete', 'main', 'accent', or 'rainbow_12_bit'.}
 
 \item{n}{Number of colors wanted from palette.}
 
