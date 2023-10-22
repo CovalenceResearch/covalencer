@@ -11,7 +11,7 @@
 #' @param delta_costs Unquoted column name for incremental costs.
 #' @param currency String for the currency symbol. Default is `$`.
 #' @param point_alpha Numeric value for point opacity. Default is `0.4`.
-#' @param point_color Point color. Default is `#249bc9`.
+#' @param point_color Point color. Default is `#0099cc`.
 #' @param point_shape Integer value for point shape. Default is `16`. See `?pch` for available shapes.
 #' @param point_size Numeric value for point size. Default is `2`.
 #' @param point_jitter_height,point_jitter_width Numeric value for vertical and horizontal jittering. Default is `0` (no jittering). Be careful that some key-outcome pairs may not be plotted if there is too much jitter.
@@ -54,7 +54,7 @@ plot_psa_scatter <- function(data,
                              delta_costs,
                              currency = "$",
                              point_alpha = 0.4,
-                             point_color = "#249bc9",
+                             point_color = "#0099cc",
                              point_shape = 16,
                              point_size = 2,
                              point_jitter_height = 0,
@@ -230,7 +230,7 @@ plot_psa_scatter <- function(data,
 #'
 #' ggplot(diamonds, aes(x = carat, y = price)) +
 #'   geom_point() +
-#'   stat_doublemean(color = "#249bc9", shape = 18, size = 3)
+#'   stat_doublemean(color = "#0099cc", shape = 18, size = 3)
 stat_doublemean <- function(mapping = NULL,
                             data = NULL,
                             geom = "point",

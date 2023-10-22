@@ -17,7 +17,7 @@
 #' covalence_colors("darkblue")
 covalence_colors <- function(...) {
     covalence_cols <- c(
-        `lightblue` = "#249bc9",
+        `lightblue` = "#0099cc",
         `darkblue`  = "#326aa0",
         `teal`      = "#154754",
         `gray`      = "#848088",
