@@ -80,6 +80,6 @@ library(ggplot2)
 
 ggplot(diamonds, aes(x = carat, y = price)) +
   geom_point() +
-  stat_doublemean(color = "#249bc9", shape = 18, size = 3)
+  stat_doublemean(color = "#0099cc", shape = 18, size = 3)
 }
 \keyword{datasets}

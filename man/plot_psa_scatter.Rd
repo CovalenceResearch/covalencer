@@ -10,7 +10,7 @@ plot_psa_scatter(
   delta_costs,
   currency = "$",
   point_alpha = 0.4,
-  point_color = "#249bc9",
+  point_color = "#0099cc",
   point_shape = 16,
   point_size = 2,
   point_jitter_height = 0,
@@ -38,7 +38,7 @@ plot_psa_scatter(
 
 \item{point_alpha}{Numeric value for point opacity. Default is \code{0.4}.}
 
-\item{point_color}{Point color. Default is \verb{#249bc9}.}
+\item{point_color}{Point color. Default is \verb{#0099cc}.}
 
 \item{point_shape}{Integer value for point shape. Default is \code{16}. See \code{?pch} for available shapes.}
 
