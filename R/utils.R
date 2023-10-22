@@ -8,7 +8,11 @@
 #' @examples
 #' is_hex("#000000") #TRUE
 #' is_hex("#0000")   #FALSE
-is_hex <- function(color) {grepl("^\\#[0-9a-fA-F]{6}$", color)}
+#' is_hex("#09c")     #TRUE
+is_hex <- function(color) {
+    xor(grepl("^\\#[0-9a-fA-F]{6}$", color),
+        grepl("^\\#[0-9a-fA-F]{3}$", color))
+}
 
 #' Check if a string is a color
 #'
