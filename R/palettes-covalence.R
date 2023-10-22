@@ -69,7 +69,19 @@ covalence_palette <-
         covalence_pals <- list(
             `complete` = covalence_colors(),
             `main` = covalence_colors("lightblue", "darkblue", "teal", "gray"),
-            `accent` = covalence_colors("red", "green", "orange", "purple")
+            `accent` = covalence_colors("red", "green", "orange", "purple"),
+            `rainbow_12_bit` = c("#817",
+                                 "#a35",
+                                 "#c66",
+                                 "#e94",
+                                 "#ed0",
+                                 "#9d5",
+                                 "#4d8",
+                                 "#2cb",
+                                 "#0bc",
+                                 "#09c",
+                                 "#36b",
+                                 "#639")
         )
 
         covalence_pals[[pal]]
