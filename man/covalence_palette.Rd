@@ -24,6 +24,7 @@ The various Covalence palettes:
 }
 \details{
 This function is slightly modified from a 2022 \href{https://meghan.rbind.io/blog/2022-10-11-creating-custom-color-palettes-with-ggplot2/#defining-custom-colors-and-palettes}{blog post} by Meghan Hall.
+The \href{https://iamkate.com/data/12-bit-rainbow/}{12-bit rainbow palette} was developed by Kate Morley and released under the terms of the Creative Commons CC0 1.0 Universal Legal Code.
 }
 \examples{
 require(scales)

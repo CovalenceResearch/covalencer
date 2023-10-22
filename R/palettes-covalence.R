@@ -48,6 +48,7 @@ covalence_colors <- function(...) {
 #'
 #' @details
 #' This function is slightly modified from a 2022 [blog post](https://meghan.rbind.io/blog/2022-10-11-creating-custom-color-palettes-with-ggplot2/#defining-custom-colors-and-palettes) by Meghan Hall.
+#' The [12-bit rainbow palette](https://iamkate.com/data/12-bit-rainbow/) was developed by Kate Morley and released under the terms of the Creative Commons CC0 1.0 Universal Legal Code.
 #'
 #' @param ... Arguments to be passed on.
 #' @param palette Palette to use. One of 'complete', 'main', or 'accent'.
