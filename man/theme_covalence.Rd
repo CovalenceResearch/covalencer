@@ -7,8 +7,8 @@
 theme_covalence(
   base_size = 12,
   base_family = "sans",
-  strip_bg_color = "#FFFFFF",
-  strip_text_color = "#326aa0",
+  strip_bg_colour = "#FFFFFF",
+  strip_text_colour = "#326aa0",
   ...
 )
 }
@@ -17,9 +17,9 @@ theme_covalence(
 
 \item{base_family}{Base font family. Default is "sans".}
 
-\item{strip_bg_color}{Color to fill strip backgrounds. Default is #326aa0.}
+\item{strip_bg_colour}{colour to fill strip backgrounds. Default is #326aa0.}
 
-\item{strip_text_color}{Color for strip labels. Default is #FFFFFF (white).}
+\item{strip_text_colour}{colour for strip labels. Default is #FFFFFF (white).}
 
 \item{...}{Additional arguments to be passed to the theme}
 }
@@ -29,7 +29,7 @@ A ggplot2 \link[ggplot2:theme]{theme} object.
 \description{
 This theme provides the defaults required to generate plots, using \link{ggplot2},
 that are aligned with the Covalence Research house style. The theme can be
-modified further by using \code{theme()}. Also consider using the various color
+modified further by using \code{theme()}. Also consider using the various colour
 palettes to ensure the house style is met.
 }
 \examples{
@@ -40,7 +40,7 @@ ggplot(data = msleep, aes(x = brainwt, y = bodywt)) +
    theme_covalence()
 
 ggplot(data = diamonds, aes(x = price, y = carat)) +
-   geom_point(color = covalence_colors("lightblue"), alpha = 0.4) +
+   geom_point(colour = covalence_colours("cov_lightblue"), alpha = 0.4) +
    facet_wrap(vars(cut)) +
    theme_covalence()
 }

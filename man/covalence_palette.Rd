@@ -4,7 +4,11 @@
 \alias{covalence_palette}
 \title{Covalence palette}
 \usage{
-covalence_palette(..., palette = c("complete", "main", "accent"))
+covalence_palette(
+  ...,
+  palette = c("complete", "main", "accent", "rainbow_12_bit", "orange_teal",
+    "orange_purple", "orange_darkblue", "darkblues", "teals", "purples")
+)
 }
 \arguments{
 \item{...}{Arguments to be passed on.}
@@ -12,14 +16,14 @@ covalence_palette(..., palette = c("complete", "main", "accent"))
 \item{palette}{Palette to use. One of 'complete', 'main', 'accent', or 'rainbow_12_bit'.}
 }
 \value{
-A named vector of brand colors.
+A named vector of brand colours.
 }
 \description{
 The various Covalence palettes:
 \itemize{
-\item The \emph{complete} palette that contains all brand colors.
-\item The \emph{main} palette that contains the main, mostly blue-ish, brand colors.
-\item The \emph{accent} palette that contains additional, more prominent colors.
+\item The \emph{complete} palette that contains all brand colours.
+\item The \emph{main} palette that contains the main, mostly blue-ish, brand colours.
+\item The \emph{accent} palette that contains additional, more prominent colours.
 }
 }
 \details{

@@ -4,14 +4,12 @@
 \alias{generate_pal}
 \title{Function factory to generate palette}
 \usage{
-generate_pal(palette, n, type = "discrete", reverse = FALSE)
+generate_pal(palette, n, reverse = FALSE)
 }
 \arguments{
 \item{palette}{Palette to use. One of 'complete', 'main', 'accent', or 'rainbow_12_bit'.}
 
-\item{n}{Number of colors wanted from palette.}
-
-\item{type}{Type of palette. Either 'discrete' or 'continuous'.}
+\item{n}{Number of colours wanted from palette.}
 
 \item{reverse}{Should the palette be reversed? Either 'TRUE' or 'FALSE'.}
 }
@@ -24,3 +22,4 @@ This function generates a second function, for use in the 'ggplot' scales.
 \details{
 This function is slightly modified from a 2022 \href{https://www.jumpingrivers.com/blog/custom-colour-palettes-for-ggplot2/}{blog post} by Nicola Rennie.
 }
+\keyword{Internal}

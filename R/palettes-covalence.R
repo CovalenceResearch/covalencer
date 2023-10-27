@@ -1,30 +1,31 @@
-#' Covalence colors
+#' Covalence colours
 #'
 #' @description
-#' The Covalence brand colors, including the primary colors
-#' ('lightblue', 'darkblue', 'teal', and 'grey') and the accent colors
-#' ('red', 'green', 'purple', and 'orange').
+#' The Covalence brand colours, including the primary colours
+#' ('lightblue', 'darkblue', 'teal', and 'grey') and the accent colours
+#' ('red', 'green', 'purple', and 'orange'). Each colour name is prefixed with
+#' "cov_" to avoid confusion with the default R colour names.
 #'
 #' @details
 #' This function is taken from a 2022 [blog post](https://meghan.rbind.io/blog/2022-10-11-creating-custom-color-palettes-with-ggplot2/#defining-custom-colors-and-palettes) by Meghan Hall.
 #'
-#' @param ... Access specific colors
+#' @param ... Access specific colours
 #'
-#' @return A named vector of brand colors
+#' @return A named vector of brand colours
 #' @export
 #'
 #' @examples
-#' covalence_colors("darkblue")
-covalence_colors <- function(...) {
+#' covalence_colours("darkblue")
+covalence_colours <- function(...) {
     covalence_cols <- c(
-        `lightblue` = "#0099cc",
-        `darkblue`  = "#326aa0",
-        `teal`      = "#154754",
-        `gray`      = "#848088",
-        `red`       = "#c30026",
-        `green`     = "#008040",
-        `purple`    = "#7a0d66",
-        `orange`    = "#ffb300"
+        `cov_lightblue` = "#0099cc",
+        `cov_darkblue`  = "#326aa0",
+        `cov_teal`      = "#154754",
+        `cov_gray`      = "#848088",
+        `cov_red`       = "#c30026",
+        `cov_green`     = "#008040",
+        `cov_purple`    = "#7a0d66",
+        `cov_orange`    = "#ffb300"
     )
 
 
@@ -42,9 +43,9 @@ covalence_colors <- function(...) {
 #'
 #' @description
 #' The various Covalence palettes:
-#'   * The _complete_ palette that contains all brand colors.
-#'   * The _main_ palette that contains the main, mostly blue-ish, brand colors.
-#'   * The _accent_ palette that contains additional, more prominent colors.
+#'   * The _complete_ palette that contains all brand colours.
+#'   * The _main_ palette that contains the main, mostly blue-ish, brand colours.
+#'   * The _accent_ palette that contains additional, more prominent colours.
 #'
 #' @details
 #' This function is slightly modified from a 2022 [blog post](https://meghan.rbind.io/blog/2022-10-11-creating-custom-color-palettes-with-ggplot2/#defining-custom-colors-and-palettes) by Meghan Hall.
@@ -53,7 +54,7 @@ covalence_colors <- function(...) {
 #' @param ... Arguments to be passed on.
 #' @param palette Palette to use. One of 'complete', 'main', 'accent', or 'rainbow_12_bit'.
 #'
-#' @return A named vector of brand colors.
+#' @return A named vector of brand colours.
 #' @export
 #'
 #' @examples
@@ -61,29 +62,82 @@ covalence_colors <- function(...) {
 #' show_col(covalence_palette(palette = "main"))
 covalence_palette <-
     function(...,
-             palette = c("complete", "main", "accent")) {
+             palette = c(
+                 "complete",
+                 "main",
+                 "accent",
+                 "rainbow_12_bit",
+                 "orange_teal",
+                 "orange_purple",
+                 "orange_darkblue",
+                 "darkblues",
+                 "teals",
+                 "purples"
+             )) {
         # Check arguments
         pal <-
-            rlang::arg_match(palette, values = c("complete", "main", "accent",
-                                                 "rainbow_12_bit"))
+            rlang::arg_match(
+                palette,
+                values = c(
+                    "complete",
+                    "main",
+                    "accent",
+                    "rainbow_12_bit",
+                    "orange_teal",
+                    "orange_purple",
+                    "orange_darkblue",
+                    "darkblues",
+                    "teals",
+                    "purples"
+                )
+            )
 
         # Palette
         covalence_pals <- list(
-            `complete` = covalence_colors(),
-            `main` = covalence_colors("lightblue", "darkblue", "teal", "gray"),
-            `accent` = covalence_colors("red", "green", "orange", "purple"),
-            `rainbow_12_bit` = c("#881177",
-                                 "#aa3355",
-                                 "#cc6666",
-                                 "#ee9944",
-                                 "#eedd00",
-                                 "#99dd55",
-                                 "#44dd88",
-                                 "#22ccbb",
-                                 "#00bbcc",
-                                 "#0099cc",
-                                 "#3366bb",
-                                 "#663399")
+            `complete` = covalence_colours(),
+            `main` = covalence_colours("cov_lightblue",
+                                       "cov_darkblue",
+                                       "cov_teal",
+                                       "cov_gray"),
+            `accent` = covalence_colours("cov_red",
+                                         "cov_green",
+                                         "cov_orange",
+                                         "cov_purple"),
+            `rainbow_12_bit` = c(
+                "#881177",
+                "#aa3355",
+                "#cc6666",
+                "#ee9944",
+                "#eedd00",
+                "#99dd55",
+                "#44dd88",
+                "#22ccbb",
+                "#00bbcc",
+                "#0099cc",
+                "#3366bb",
+                "#663399"
+            ),
+            `orange_teal` = c(
+                covalence_colours("cov_orange"),
+                "#A18721",
+                covalence_colours("cov_teal")
+            ),
+            `orange_purple` = c(
+                covalence_colours("cov_orange"),
+                "#AF4F3D",
+                covalence_colours("cov_purple")
+            ),
+            `orange_darkblue` = c(
+                covalence_colours("cov_orange"),
+                "#AD9540",
+                covalence_colours("cov_darkblue")
+            ),
+            `darkblues` = c("#D6E1EC",
+                            covalence_colours("cov_darkblue")),
+            `teals` = c("#D0DADC",
+                        covalence_colours("cov_teal")),
+            `purples` = c("#E4CEE0",
+                          covalence_colours("cov_purple"))
         )
 
         covalence_pals[[pal]]
@@ -96,22 +150,22 @@ covalence_palette <-
 #'
 #' @details
 #' This function is slightly modified from a 2022 [blog post](https://www.jumpingrivers.com/blog/custom-colour-palettes-for-ggplot2/) by Nicola Rennie.
-#' @param n Number of colors wanted from palette.
-#' @param type Type of palette. Either 'discrete' or 'continuous'.
+#' @param n Number of colours wanted from palette.
 #' @param reverse Should the palette be reversed? Either 'TRUE' or 'FALSE'.
 #' @inheritParams covalence_palette
 #'
 #' @return A palette-generating function.
+#' @keywords Internal
 generate_pal <- function(palette,
                          n,
-                         type = "discrete",
                          reverse = FALSE) {
-    # Check arguments
+    # Check arguments - only discrete palettes
     arg_pal  <- rlang::arg_match(palette,
-                                  values = c("complete", "main", "accent",
-                                             "rainbow_12_bit"))
-    arg_type  <- rlang::arg_match(type,
-                                  values = c("discrete", "continuous"))
+                                 values = c("complete",
+                                            "main",
+                                            "accent",
+                                            "rainbow_12_bit"))
+
     if (!is.logical(reverse)) {
         cli::cli_abort("{.var reverse} must be TRUE or FALSE.")
     }
@@ -120,93 +174,258 @@ generate_pal <- function(palette,
     if (rlang::is_missing(n))
         n <- length(pal)
 
-    out <- switch(
-        arg_type,
-        discrete = unname(pal)[1:n],
-        continuous = grDevices::colorRampPalette(pal)(n)
-    )
+    out <- unname(pal)[1:n]
 
     structure(out, name = arg_pal, class = "palette")
 }
 
-#' Covalence color and fill scales for ggplot2
+#' Discrete colour and fill scales for ggplot2
 #'
 #' @description
-#' The `scale_*_covalence_*` functions provide discrete (`_d`) and continuous
-#' (`_c`) scales of Covalence colors for use in [ggplot2] plots.
+#' The `scale_*_covalence_discrete` functions provide discrete scales of
+#' Covalence colours for use in [ggplot2] plots.
 #'
 #' @details
 #' These functions are inspired by a 2022 [blog post](https://www.jumpingrivers.com/blog/custom-colour-palettes-for-ggplot2/) by Nicola Rennie.
 #'
 #' @inheritParams generate_pal
 #'
-#' @return Discrete/continuous color/fill scales for ggplot2.
+#' @return Discrete colour/fill scales for ggplot2.
 #' @export
 #'
 #' @examples
 #' library(ggplot2)
 #'
 #' ggplot(data = diamonds, aes(x = carat, y = price)) +
-#'   geom_point(aes(color = cut), alpha = 0.4) +
-#'   scale_color_covalence_d(palette = "complete") +
-#'   theme_covalence()
-#'
-#' ggplot(data = diamonds, aes(x = carat, y = price)) +
-#'   geom_point(aes(color = x), alpha = 0.4) +
-#'   scale_colour_covalence_c(palette = "complete") +
+#'   geom_point(aes(colour = cut), alpha = 0.4) +
+#'   scale_colour_covalence_discrete(palette = "complete") +
 #'   theme_covalence()
 #'
 #' ggplot(data = diamonds, aes(x = price)) +
 #'   geom_histogram(aes(fill = cut)) +
-#'   scale_fill_covalence_d(palette = "rainbow_12_bit", reverse = TRUE) +
+#'   scale_fill_covalence_discrete(
+#'     palette = "rainbow_12_bit",
+#'     reverse = TRUE
+#'   ) +
+#'   theme_covalence()
+scale_colour_covalence_discrete <-
+    function(palette = "complete",
+             reverse = FALSE) {
+        ggplot2::scale_colour_manual(values = generate_pal(palette = palette,
+                                                           reverse = reverse))
+    }
+
+#' @rdname scale_colour_covalence_discrete
+#' @export
+scale_color_covalence_discrete <- scale_colour_covalence_discrete
+
+#' @rdname scale_colour_covalence_discrete
+#' @export
+scale_fill_covalence_discrete <-
+    function(palette = "complete",
+             reverse = FALSE) {
+        ggplot2::scale_fill_manual(values = generate_pal(palette = palette,
+                                                         reverse = reverse))
+    }
+
+#' Diverging colour and fill scales for ggplot2
+#'
+#' @description
+#' The `scale_*_covalence_diverging` functions provide diverging
+#' scales of Covalence colours for use in [ggplot2] plots.
+#'
+#' @details
+#' These functions are inspired by a 2022 [blog post](https://rfortherestofus.com/2022/02/data-viz-org-branding/) by Cara Thompson.
+#'
+#' @param palette One of the diverging colour palettes (`orange_teal`,
+#'   `orange_purple`, or `orange_darkblue`). Default is `orange_teal`).
+#' @param na_colour Colour for missing values. Default is "#cccccc" (grey80).
+#' @param midpoint Numeric value for midpoint. Default is 0.
+#' @inheritParams generate_pal
+#'
+#' @return Diverging colour/fill scales for ggplot2.
+#' @export
+#'
+#' @examples
+#' library(ggplot2)
+#'
+# ggplot(data = diamonds, aes(x = carat, y = depth)) +
+#   geom_point(aes(colour = log(price)), alpha = 0.1) +
+#   scale_colour_covalence_diverging(palette = "orange_darkblue",
+#                                   midpoint = 8) +
+#   theme_covalence()
+scale_colour_covalence_diverging <-
+    function(palette = "orange_teal",
+             reverse = FALSE,
+             midpoint = 0,
+             na_colour = "#cccccc") {
+        if (!is.logical(reverse)) {
+            cli::cli_abort("{.var reverse} must be TRUE or FALSE.")
+        }
+
+        if (!is.numeric(midpoint)) {
+            cli::cli_abort("{.var midpoint} must be numeric.")
+        }
+
+        palette <-
+            rlang::arg_match(palette,
+                             values = c("orange_teal",
+                                        "orange_purple",
+                                        "orange_darkblue"))
+
+        if (reverse) {
+            pal_colours <- rev(covalence_palette(palette = palette))
+        } else {
+            pal_colours <- covalence_palette(palette = palette)
+        }
+
+        ggplot2::scale_colour_gradient2(
+            low = pal_colours[1],
+            mid = pal_colours[2],
+            high = pal_colours[3],
+            midpoint = midpoint,
+            space = "Lab",
+            na.value = na_colour,
+            #grey80
+            guide = "colourbar",
+            aesthetics = "colour"
+        )
+    }
+
+#' @rdname scale_colour_covalence_diverging
+#' @export
+scale_color_covalence_diverging <- scale_colour_covalence_diverging
+
+#' @rdname scale_colour_covalence_diverging
+#' @export
+scale_fill_covalence_diverging <-
+    function(palette = "orange_teal",
+             reverse = FALSE,
+             midpoint = 0,
+             na_colour = "#cccccc") {
+        if (!is.logical(reverse)) {
+            cli::cli_abort("{.var reverse} must be TRUE or FALSE.")
+        }
+
+        if (!is.numeric(midpoint)) {
+            cli::cli_abort("{.var midpoint} must be numeric.")
+        }
+
+        palette <-
+            rlang::arg_match(palette,
+                             values = c("orange_teal",
+                                        "orange_purple",
+                                        "orange_darkblue"))
+
+
+        if (reverse) {
+            pal_colours <- rev(covalence_palette(palette = palette))
+        } else {
+            pal_colours <- covalence_palette(palette = palette)
+        }
+
+        ggplot2::scale_fill_gradient2(
+            low = pal_colours[1],
+            mid = pal_colours[2],
+            high = pal_colours[3],
+            midpoint = midpoint,
+            space = "Lab",
+            na.value = na_colour,
+            guide = "colourbar",
+            aesthetics = "fill"
+        )
+    }
+
+#' Sequential colour and fill scales for ggplot2
+#'
+#' @description
+#' The `scale_*_covalence_sequential` functions provide sequential
+#' scales of Covalence colours for use in [ggplot2] plots.
+#'
+#' @param palette One of the sequential colour palettes (`darkblues`,
+#'   `teals`, or `purples`). Default is `darkblues`).
+#' @param na_colour Colour for missing values. Default is "#cccccc" (grey80).
+#' @inheritParams generate_pal
+#'
+#' @return Sequential colour/fill scales for ggplot2.
+#' @export
+#'
+#' @examples
+#' library(ggplot2)
+#'
+#' ggplot(data = diamonds, aes(x = cut, y = carat)) +
+#'   geom_point(aes(colour = price)) +
+#'   scale_colour_covalence_sequential() +
 #'   theme_covalence()
 #'
-scale_colour_covalence_d <- function(palette = "complete",
-                                     reverse = FALSE) {
-    ggplot2::scale_colour_manual(values = generate_pal(
-        palette = palette,
-        reverse = reverse,
-        type = "discrete"
-    ))
+#' ggplot(data = diamonds, aes(x = cut, y = color)) +
+#'   geom_tile(aes(fill = depth)) +
+#'   scale_fill_covalence_sequential(palette = "teals") +
+#'   theme_covalence() +
+#'   theme(panel.grid.major = element_blank())
+scale_colour_covalence_sequential <- function(palette = "darkblues",
+                                              reverse = FALSE,
+                                              na_colour = "#cccccc") {
+    # Check arguments - only sequential palettes
+    if (!is.logical(reverse)) {
+        cli::cli_abort("{.var reverse} must be TRUE or FALSE.")
+    }
+
+    arg_pal <-
+        rlang::arg_match(palette,
+                         values = c("darkblues",
+                                    "teals",
+                                    "purples"))
+
+    if (reverse) {
+        pal_colours <- rev(covalence_palette(palette = arg_pal))
+    } else {
+        pal_colours <- covalence_palette(palette = arg_pal)
+    }
+
+    ggplot2::scale_color_gradient(
+        low = pal_colours[1],
+        high = pal_colours[2],
+        space = "Lab",
+        na.value = na_colour,
+        guide = "colourbar",
+        aesthetics = "colour"
+    )
 }
 
-#' @rdname scale_colour_covalence_d
+#' @rdname scale_colour_covalence_sequential
 #' @export
-scale_color_covalence_d <- scale_colour_covalence_d
+scale_color_covalence_sequential <-
+    scale_colour_covalence_sequential
 
-#' @rdname scale_colour_covalence_d
+#' @rdname scale_colour_covalence_sequential
 #' @export
-scale_fill_covalence_d <- function(palette = "complete",
-                                   reverse = FALSE) {
-    ggplot2::scale_fill_manual(values = generate_pal(
-        palette = palette,
-        reverse = reverse,
-        type = "discrete"
-    ))
-}
+scale_fill_covalence_sequential <- function(palette = "darkblues",
+                                            reverse = FALSE,
+                                            na_colour = "#cccccc") {
+    # Check arguments - only sequential palettes
+    if (!is.logical(reverse)) {
+        cli::cli_abort("{.var reverse} must be TRUE or FALSE.")
+    }
 
-#' @rdname scale_colour_covalence_d
-#' @export
-scale_colour_covalence_c <- function(palette = "complete",
-                                     reverse = FALSE) {
-    ggplot2::scale_colour_gradientn(colors = generate_pal(
-        palette = palette,
-        reverse = reverse,
-        type = "continuous"
-    ))
-}
+    arg_pal <-
+        rlang::arg_match(palette,
+                         values = c("darkblues",
+                                    "teals",
+                                    "purples"))
 
-#' @rdname scale_colour_covalence_d
-#' @export
-scale_color_covalence_c <- scale_colour_covalence_c
+    if (reverse) {
+        pal_colours <- rev(covalence_palette(palette = arg_pal))
+    } else {
+        pal_colours <- covalence_palette(palette = arg_pal)
+    }
 
-#' @rdname scale_colour_covalence_d
-#' @export
-scale_fill_covalence_c <- function(palette = "complete",
-                                   reverse = FALSE) {
-    ggplot2::scale_fill_gradientn(colors = generate_pal(
-        palette = palette,
-        reverse = reverse,
-        type = "continuous"
-    ))
+    ggplot2::scale_fill_gradient(
+        low = pal_colours[1],
+        high = pal_colours[2],
+        space = "Lab",
+        na.value = na_colour,
+        guide = "colourbar",
+        aesthetics = "fill"
+    )
 }
