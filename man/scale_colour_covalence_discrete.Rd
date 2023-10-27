@@ -79,6 +79,6 @@ ggplot(data = diamonds, aes(x = price)) +
 
 ggplot(data = diamonds, aes(x = carat, y = price)) +
   geom_point(aes(x= cut), alpha = 0.4) +
-  scale_color_covalence_diverging(palette = "orange_teal") +
+  scale_color_covalence_diverging(palette = "orange_purple") +
   theme_covalence()
 }
