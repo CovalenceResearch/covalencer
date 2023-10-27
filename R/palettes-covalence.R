@@ -248,7 +248,7 @@ scale_fill_covalence_c <- function(palette = "discrete_complete",
     ))
 }
 
-scale_color_covalence_div <- function(palette = "diverging_OrTe",
+scale_color_covalence_diverging <- function(palette = "diverging_OrTe",
                                       reverse = FALSE,
                                       midpoint = 0) {
     if (reverse) {
