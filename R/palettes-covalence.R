@@ -61,9 +61,13 @@ covalence_colors <- function(...) {
 #' show_col(covalence_palette(palette = "discrete_main"))
 covalence_palette <-
     function(...,
-             palette = c("discrete_complete",
-                         "discrete_main",
-                         "discrete_accent")) {
+             palette = c(
+                 "discrete_complete",
+                 "discrete_main",
+                 "discrete_accent",
+                 "discrete_rainbow_12_bit",
+                 "diverging_OrTe"
+             )) {
         # Check arguments
         pal <-
             rlang::arg_match(
@@ -72,7 +76,8 @@ covalence_palette <-
                     "discrete_complete",
                     "discrete_main",
                     "discrete_accent",
-                    "discrete_rainbow_12_bit"
+                    "discrete_rainbow_12_bit",
+                    "diverging_OrTe"
                 )
             )
 
@@ -103,7 +108,7 @@ covalence_palette <-
             ),
             `diverging_OrTe` = c(
                 covalence_colors("cov_orange"),
-                "A18721",
+                "#A18721",
                 covalence_colors("cov_teal")
             )
         )
@@ -135,7 +140,8 @@ generate_pal <- function(palette,
             "discrete_complete",
             "discrete_main",
             "discrete_accent",
-            "discrete_rainbow_12_bit"
+            "discrete_rainbow_12_bit",
+            "diverging_OrTe"
         )
     )
     arg_type  <- rlang::arg_match(type,
@@ -240,4 +246,27 @@ scale_fill_covalence_c <- function(palette = "discrete_complete",
         reverse = reverse,
         type = "continuous"
     ))
+}
+
+scale_color_covalence_div <- function(palette = "diverging_OrTe",
+                                      reverse = FALSE,
+                                      midpoint = 0) {
+    if (reverse) {
+        pal <- rev(covalence_palette(palette = palette))
+    } else {
+        pal <- covalence_palette(palette = palette)
+    }
+    pal_colors <- covalence_palette(palette = palette)
+
+    ggplot2::scale_color_gradient2(
+        low = pal_colors[1],
+        mid = pal_colors[2],
+        high = pal_colors[3],
+        midpoint = midpoint,
+        space = "Lab",
+        na.value = "#cccccc",
+        #grey80
+        guide = "colourbar",
+        aesthetics = "colour"
+    )
 }
