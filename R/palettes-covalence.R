@@ -202,14 +202,15 @@ generate_pal <- function(palette,
 #'   geom_point(aes(x= cut), alpha = 0.4) +
 #'   scale_color_covalence_diverging(palette = "orange_teal") +
 #'   theme_covalence()
-scale_colour_covalence_discrete <- function(palette = "discrete_complete",
-                                     reverse = FALSE) {
-    ggplot2::scale_colour_manual(values = generate_pal(
-        palette = palette,
-        reverse = reverse,
-        type = "discrete"
-    ))
-}
+scale_colour_covalence_discrete <-
+    function(palette = "discrete_complete",
+             reverse = FALSE) {
+        ggplot2::scale_colour_manual(values = generate_pal(
+            palette = palette,
+            reverse = reverse,
+            type = "discrete"
+        ))
+    }
 
 #' @rdname scale_colour_covalence_discrete
 #' @export
@@ -217,14 +218,15 @@ scale_color_covalence_discrete <- scale_colour_covalence_discrete
 
 #' @rdname scale_colour_covalence_discrete
 #' @export
-scale_fill_covalence_discrete <- function(palette = "discrete_complete",
-                                   reverse = FALSE) {
-    ggplot2::scale_fill_manual(values = generate_pal(
-        palette = palette,
-        reverse = reverse,
-        type = "discrete"
-    ))
-}
+scale_fill_covalence_discrete <-
+    function(palette = "discrete_complete",
+             reverse = FALSE) {
+        ggplot2::scale_fill_manual(values = generate_pal(
+            palette = palette,
+            reverse = reverse,
+            type = "discrete"
+        ))
+    }
 
 #' @rdname scale_colour_covalence_discrete
 #' @export
@@ -256,29 +258,30 @@ scale_fill_covalence_c <- function(palette = "discrete_complete",
 #' @param na_colour Colour for missing values. Defaults to "#cccccc" (grey80).
 #' @rdname scale_colour_covalence_discrete
 #' @export
-scale_colour_covalence_diverging <- function(palette = "orange_teal",
-                                      reverse = FALSE,
-                                      midpoint = 0,
-                                      na_colour = "#cccccc") {
-    if (reverse) {
-        pal <- rev(covalence_palette(palette = palette))
-    } else {
-        pal <- covalence_palette(palette = palette)
-    }
-    pal_colours <- covalence_palette(palette = palette)
+scale_colour_covalence_diverging <-
+    function(palette = "orange_teal",
+             reverse = FALSE,
+             midpoint = 0,
+             na_colour = "#cccccc") {
+        if (reverse) {
+            pal <- rev(covalence_palette(palette = palette))
+        } else {
+            pal <- covalence_palette(palette = palette)
+        }
+        pal_colours <- covalence_palette(palette = palette)
 
-    ggplot2::scale_color_gradient2(
-        low = pal_colours[1],
-        mid = pal_colours[2],
-        high = pal_colours[3],
-        midpoint = midpoint,
-        space = "Lab",
-        na.value = na_colour,
-        #grey80
-        guide = "colourbar",
-        aesthetics = "colour"
-    )
-}
+        ggplot2::scale_color_gradient2(
+            low = pal_colours[1],
+            mid = pal_colours[2],
+            high = pal_colours[3],
+            midpoint = midpoint,
+            space = "Lab",
+            na.value = na_colour,
+            #grey80
+            guide = "colourbar",
+            aesthetics = "colour"
+        )
+    }
 
 #' @rdname scale_colour_covalence_discrete
 #' @export
