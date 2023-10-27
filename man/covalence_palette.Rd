@@ -4,7 +4,10 @@
 \alias{covalence_palette}
 \title{Covalence palette}
 \usage{
-covalence_palette(..., palette = c("complete", "main", "accent"))
+covalence_palette(
+  ...,
+  palette = c("discrete_complete", "discrete_main", "discrete_accent")
+)
 }
 \arguments{
 \item{...}{Arguments to be passed on.}
@@ -28,5 +31,5 @@ The \href{https://iamkate.com/data/12-bit-rainbow/}{12-bit rainbow palette} was 
 }
 \examples{
 require(scales)
-show_col(covalence_palette(palette = "main"))
+show_col(covalence_palette(palette = "discrete_main"))
 }
