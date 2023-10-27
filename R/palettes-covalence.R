@@ -90,13 +90,13 @@ covalence_palette <-
         covalence_pals <- list(
             `complete` = covalence_colours(),
             `main` = covalence_colours("cov_lightblue",
-                                                "cov_darkblue",
-                                                "cov_teal",
-                                                "cov_gray"),
+                                       "cov_darkblue",
+                                       "cov_teal",
+                                       "cov_gray"),
             `accent` = covalence_colours("cov_red",
-                                                  "cov_green",
-                                                  "cov_orange",
-                                                  "cov_purple"),
+                                         "cov_green",
+                                         "cov_orange",
+                                         "cov_purple"),
             `rainbow_12_bit` = c(
                 "#881177",
                 "#aa3355",
@@ -148,15 +148,11 @@ generate_pal <- function(palette,
                          n,
                          reverse = FALSE) {
     # Check arguments - only discrete palettes
-    arg_pal  <- rlang::arg_match(
-        palette,
-        values = c(
-            "complete",
-            "main",
-            "accent",
-            "rainbow_12_bit"
-        )
-    )
+    arg_pal  <- rlang::arg_match(palette,
+                                 values = c("complete",
+                                            "main",
+                                            "accent",
+                                            "rainbow_12_bit"))
 
     if (!is.logical(reverse)) {
         cli::cli_abort("{.var reverse} must be TRUE or FALSE.")
@@ -208,10 +204,8 @@ generate_pal <- function(palette,
 scale_colour_covalence_discrete <-
     function(palette = "complete",
              reverse = FALSE) {
-        ggplot2::scale_colour_manual(values = generate_pal(
-            palette = palette,
-            reverse = reverse
-        ))
+        ggplot2::scale_colour_manual(values = generate_pal(palette = palette,
+                                                           reverse = reverse))
     }
 
 #' @rdname scale_colour_covalence_discrete
@@ -223,20 +217,16 @@ scale_color_covalence_discrete <- scale_colour_covalence_discrete
 scale_fill_covalence_discrete <-
     function(palette = "complete",
              reverse = FALSE) {
-        ggplot2::scale_fill_manual(values = generate_pal(
-            palette = palette,
-            reverse = reverse
-        ))
+        ggplot2::scale_fill_manual(values = generate_pal(palette = palette,
+                                                         reverse = reverse))
     }
 
 #' @rdname scale_colour_covalence_discrete
 #' @export
 scale_colour_covalence_c <- function(palette = "complete",
                                      reverse = FALSE) {
-    ggplot2::scale_colour_gradientn(colours = generate_pal(
-        palette = palette,
-        reverse = reverse
-    ))
+    ggplot2::scale_colour_gradientn(colours = generate_pal(palette = palette,
+                                                           reverse = reverse))
 }
 
 #' @rdname scale_colour_covalence_discrete
@@ -247,10 +237,8 @@ scale_color_covalence_c <- scale_colour_covalence_c
 #' @export
 scale_fill_covalence_c <- function(palette = "complete",
                                    reverse = FALSE) {
-    ggplot2::scale_fill_gradientn(colours = generate_pal(
-        palette = palette,
-        reverse = reverse
-    ))
+    ggplot2::scale_fill_gradientn(colours = generate_pal(palette = palette,
+                                                         reverse = reverse))
 }
 
 #' Diverging colour and fill scales for ggplot2
