@@ -3,13 +3,13 @@
 #' @description
 #' This theme provides the defaults required to generate plots, using [ggplot2],
 #' that are aligned with the Covalence Research house style. The theme can be
-#' modified further by using `theme()`. Also consider using the various color
+#' modified further by using `theme()`. Also consider using the various colour
 #' palettes to ensure the house style is met.
 #'
 #' @param base_size        Base font size, in points. Default is 12.
 #' @param base_family      Base font family. Default is "sans".
-#' @param strip_bg_color   Color to fill strip backgrounds. Default is #326aa0.
-#' @param strip_text_color Color for strip labels. Default is #FFFFFF (white).
+#' @param strip_bg_colour   colour to fill strip backgrounds. Default is #326aa0.
+#' @param strip_text_colour colour for strip labels. Default is #FFFFFF (white).
 #' @param ...              Additional arguments to be passed to the theme
 #'
 #' @return A ggplot2 [theme][ggplot2::theme] object.
@@ -23,27 +23,27 @@
 #'    theme_covalence()
 #'
 #' ggplot(data = diamonds, aes(x = price, y = carat)) +
-#'    geom_point(color = covalence_colors("lightblue"), alpha = 0.4) +
+#'    geom_point(colour = covalence_colours("cov_lightblue"), alpha = 0.4) +
 #'    facet_wrap(vars(cut)) +
 #'    theme_covalence()
 theme_covalence <- function(base_size = 12,
                             base_family = "sans",
-                            strip_bg_color = "#FFFFFF",
-                            strip_text_color = "#326aa0",
+                            strip_bg_colour = "#FFFFFF",
+                            strip_text_colour = "#326aa0",
                             ...) {
     # Check arguments
     if (!is.numeric(base_size)) {
         cli::cli_abort("{.var base_size} must be numeric.")
     }
 
-    if (!(is_hex(strip_bg_color) |
-          strip_bg_color %in% grDevices::colors())) {
-        cli::cli_abort("{.var strip_bg_color} must be a hex color or in the R colors.")
+    if (!(is_hex(strip_bg_colour) |
+          strip_bg_colour %in% grDevices::colours())) {
+        cli::cli_abort("{.var strip_bg_colour} must be a hex colour or in the R colours.")
     }
 
-    if (!(is_hex(strip_text_color) |
-          strip_text_color %in% grDevices::colors())) {
-        cli::cli_abort("{.var strip_text_color} must be a hex color or in the R colors.")
+    if (!(is_hex(strip_text_colour) |
+          strip_text_colour %in% grDevices::colours())) {
+        cli::cli_abort("{.var strip_text_colour} must be a hex colour or in the R colours.")
     }
 
     # ggplot2 theme
@@ -52,11 +52,11 @@ theme_covalence <- function(base_size = 12,
                          base_family = base_family) +
         ggplot2::theme(
             text = ggplot2::element_text(lineheight = 1.1),
-            axis.line = ggplot2::element_line(color = "#000000"),
+            axis.line = ggplot2::element_line(colour = "#000000"),
             axis.ticks = ggplot2::element_blank(),
             axis.title = ggplot2::element_text(face = "bold",
                                                size = ggplot2::rel(1.0)),
-            axis.text = ggplot2::element_text(color = "#000000",
+            axis.text = ggplot2::element_text(colour = "#000000",
                                               size = ggplot2::rel(0.80)),
             axis.text.x = ggplot2::element_text(margin = ggplot2::margin(t = -1)),
             axis.text.y = ggplot2::element_text(
@@ -72,7 +72,7 @@ theme_covalence <- function(base_size = 12,
                                                  size = ggplot2::rel(1.1)),
             panel.background = ggplot2::element_rect(fill = "#FFFFFF"),
             panel.border = ggplot2::element_blank(),
-            panel.grid.major = ggplot2::element_line(color = "#e5e5e5",
+            panel.grid.major = ggplot2::element_line(colour = "#e5e5e5",
                                                      linewidth = 0.5),
             panel.grid.minor = ggplot2::element_blank(),
             panel.spacing = ggplot2::unit(1, "lines"),
@@ -90,9 +90,9 @@ theme_covalence <- function(base_size = 12,
                                                size = ggplot2::rel(1.5)),
             plot.title.position = "plot",
             strip.background =
-                ggplot2::element_rect(fill = strip_bg_color),
+                ggplot2::element_rect(fill = strip_bg_colour),
             strip.text = ggplot2::element_text(
-                color = strip_text_color,
+                colour = strip_text_colour,
                 face = "bold",
                 hjust = 0,
                 vjust = 0,

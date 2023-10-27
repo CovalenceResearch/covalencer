@@ -9,7 +9,7 @@
 \alias{scale_fill_covalence_c}
 \alias{scale_colour_covalence_diverging}
 \alias{scale_color_covalence_diverging}
-\title{Covalence color and fill scales for ggplot2}
+\title{Covalence colour and fill scales for ggplot2}
 \usage{
 scale_colour_covalence_discrete(palette = "discrete_complete", reverse = FALSE)
 
@@ -47,11 +47,11 @@ scale_color_covalence_diverging(
 \item{na_colour}{Colour for missing values. Defaults to "#cccccc" (grey80).}
 }
 \value{
-Discrete/continuous color/fill scales for ggplot2.
+Discrete/continuous colour/fill scales for ggplot2.
 }
 \description{
 The \verb{scale_*_covalence_*} functions provide discrete (\verb{_discrete}) and continuous
-(\verb{_c}) scales of Covalence colors for use in \link{ggplot2} plots.
+(\verb{_c}) scales of Covalence colours for use in \link{ggplot2} plots.
 }
 \details{
 These functions are inspired by a 2022 \href{https://www.jumpingrivers.com/blog/custom-colour-palettes-for-ggplot2/}{blog post} by Nicola Rennie.
@@ -60,12 +60,12 @@ These functions are inspired by a 2022 \href{https://www.jumpingrivers.com/blog/
 library(ggplot2)
 
 ggplot(data = diamonds, aes(x = carat, y = price)) +
-  geom_point(aes(color = cut), alpha = 0.4) +
-  scale_color_covalence_discrete(palette = "discrete_complete") +
+  geom_point(aes(colour = cut), alpha = 0.4) +
+  scale_colour_covalence_discrete(palette = "discrete_complete") +
   theme_covalence()
 
 ggplot(data = diamonds, aes(x = carat, y = price)) +
-  geom_point(aes(color = x), alpha = 0.4) +
+  geom_point(aes(colour = x), alpha = 0.4) +
   scale_colour_covalence_c(palette = "discrete_complete") +
   theme_covalence()
 
@@ -78,8 +78,8 @@ ggplot(data = diamonds, aes(x = price)) +
   theme_covalence()
 
 ggplot(data = diamonds, aes(x = carat, y = price)) +
-  geom_point(aes(color = x), alpha = 0.4) +
-  scale_color_covalence_diverging(palette = "orange_purple",
+  geom_point(aes(colour = x), alpha = 0.4) +
+  scale_colour_covalence_diverging(palette = "orange_purple",
                                   midpoint = 2.5) +
   theme_covalence()
 }
