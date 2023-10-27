@@ -66,35 +66,41 @@ covalence_palette <-
                          "discrete_accent")) {
         # Check arguments
         pal <-
-            rlang::arg_match(palette,
-                             values = c("discrete_complete",
-                                        "discrete_main",
-                                        "discrete_accent",
-                                        "discrete_rainbow_12_bit"))
+            rlang::arg_match(
+                palette,
+                values = c(
+                    "discrete_complete",
+                    "discrete_main",
+                    "discrete_accent",
+                    "discrete_rainbow_12_bit"
+                )
+            )
 
         # Palette
         covalence_pals <- list(
             `discrete_complete` = covalence_colors(),
             `discrete_main` = covalence_colors("cov_lightblue",
-                                      "cov_darkblue",
-                                      "cov_teal",
-                                      "cov_gray"),
+                                               "cov_darkblue",
+                                               "cov_teal",
+                                               "cov_gray"),
             `discrete_accent` = covalence_colors("cov_red",
-                                        "cov_green",
-                                        "cov_orange",
-                                        "cov_purple"),
-            `discrete_rainbow_12_bit` = c("#881177",
-                                 "#aa3355",
-                                 "#cc6666",
-                                 "#ee9944",
-                                 "#eedd00",
-                                 "#99dd55",
-                                 "#44dd88",
-                                 "#22ccbb",
-                                 "#00bbcc",
-                                 "#0099cc",
-                                 "#3366bb",
-                                 "#663399")
+                                                 "cov_green",
+                                                 "cov_orange",
+                                                 "cov_purple"),
+            `discrete_rainbow_12_bit` = c(
+                "#881177",
+                "#aa3355",
+                "#cc6666",
+                "#ee9944",
+                "#eedd00",
+                "#99dd55",
+                "#44dd88",
+                "#22ccbb",
+                "#00bbcc",
+                "#0099cc",
+                "#3366bb",
+                "#663399"
+            )
         )
 
         covalence_pals[[pal]]
@@ -118,11 +124,15 @@ generate_pal <- function(palette,
                          type = "discrete",
                          reverse = FALSE) {
     # Check arguments
-    arg_pal  <- rlang::arg_match(palette,
-                                  values = c("discrete_complete",
-                                             "discrete_main",
-                                             "discrete_accent",
-                                             "discrete_rainbow_12_bit"))
+    arg_pal  <- rlang::arg_match(
+        palette,
+        values = c(
+            "discrete_complete",
+            "discrete_main",
+            "discrete_accent",
+            "discrete_rainbow_12_bit"
+        )
+    )
     arg_type  <- rlang::arg_match(type,
                                   values = c("discrete", "continuous"))
     if (!is.logical(reverse)) {
