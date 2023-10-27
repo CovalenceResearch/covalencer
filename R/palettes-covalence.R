@@ -294,11 +294,10 @@ scale_colour_covalence_diverging <-
 
 
         if (reverse) {
-            pal <- rev(covalence_palette(palette = palette))
+            pal_colours <- rev(covalence_palette(palette = palette))
         } else {
-            pal <- covalence_palette(palette = palette)
+            pal_colours <- covalence_palette(palette = palette)
         }
-        pal_colours <- covalence_palette(palette = pal)
 
         ggplot2::scale_colour_gradient2(
             low = pal_colours[1],
