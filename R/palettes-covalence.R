@@ -285,11 +285,11 @@ scale_fill_covalence_c <- function(palette = "discrete_complete",
 #' @examples
 #' library(ggplot2)
 #'
-#' ggplot(data = diamonds, aes(x = carat, y = price)) +
-#'   geom_point(aes(colour = x), alpha = 0.4) +
-#'   scale_colour_covalence_diverging(palette = "orange_purple",
-#'                                   midpoint = 2.5) +
-#'   theme_covalence()
+# ggplot(data = diamonds, aes(x = carat, y = depth)) +
+#   geom_point(aes(colour = log(price)), alpha = 0.1) +
+#   scale_colour_covalence_diverging(palette = "orange_darkblue",
+#                                   midpoint = 8) +
+#   theme_covalence()
 scale_colour_covalence_diverging <-
     function(palette = "orange_teal",
              reverse = FALSE,
@@ -332,3 +332,43 @@ scale_colour_covalence_diverging <-
 #' @rdname scale_colour_covalence_diverging
 #' @export
 scale_color_covalence_diverging <- scale_colour_covalence_diverging
+
+#' @rdname scale_colour_covalence_diverging
+#' @export
+scale_fill_covalence_diverging <-
+    function(palette = "orange_teal",
+             reverse = FALSE,
+             midpoint = 0,
+             na_colour = "#cccccc") {
+        if (!is.logical(reverse)) {
+            cli::cli_abort("{.var reverse} must be TRUE or FALSE.")
+        }
+
+        if (!is.numeric(midpoint)) {
+            cli::cli_abort("{.var midpoint} must be numeric.")
+        }
+
+        palette <-
+            rlang::arg_match(palette,
+                             values = c("orange_teal",
+                                        "orange_purple",
+                                        "orange_darkblue"))
+
+
+        if (reverse) {
+            pal_colours <- rev(covalence_palette(palette = palette))
+        } else {
+            pal_colours <- covalence_palette(palette = palette)
+        }
+
+        ggplot2::scale_fill_gradient2(
+            low = pal_colours[1],
+            mid = pal_colours[2],
+            high = pal_colours[3],
+            midpoint = midpoint,
+            space = "Lab",
+            na.value = na_colour,
+            guide = "colourbar",
+            aesthetics = "fill"
+        )
+    }

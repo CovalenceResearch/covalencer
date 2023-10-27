@@ -3,6 +3,7 @@
 \name{scale_colour_covalence_diverging}
 \alias{scale_colour_covalence_diverging}
 \alias{scale_color_covalence_diverging}
+\alias{scale_fill_covalence_diverging}
 \title{Covalence diverging colour and fill scales for ggplot2}
 \usage{
 scale_colour_covalence_diverging(
@@ -13,6 +14,13 @@ scale_colour_covalence_diverging(
 )
 
 scale_color_covalence_diverging(
+  palette = "orange_teal",
+  reverse = FALSE,
+  midpoint = 0,
+  na_colour = "#cccccc"
+)
+
+scale_fill_covalence_diverging(
   palette = "orange_teal",
   reverse = FALSE,
   midpoint = 0,
@@ -42,9 +50,4 @@ These functions are inspired by a 2022 \href{https://rfortherestofus.com/2022/02
 \examples{
 library(ggplot2)
 
-ggplot(data = diamonds, aes(x = carat, y = price)) +
-  geom_point(aes(colour = x), alpha = 0.4) +
-  scale_colour_covalence_diverging(palette = "orange_purple",
-                                  midpoint = 2.5) +
-  theme_covalence()
 }
