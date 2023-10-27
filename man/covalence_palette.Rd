@@ -6,8 +6,8 @@
 \usage{
 covalence_palette(
   ...,
-  palette = c("discrete_complete", "discrete_main", "discrete_accent",
-    "discrete_rainbow_12_bit", "orange_teal", "orange_purple", "orange_darkblue")
+  palette = c("complete", "main", "accent", "rainbow_12_bit", "orange_teal",
+    "orange_purple", "orange_darkblue")
 )
 }
 \arguments{
@@ -32,5 +32,5 @@ The \href{https://iamkate.com/data/12-bit-rainbow/}{12-bit rainbow palette} was 
 }
 \examples{
 require(scales)
-show_col(covalence_palette(palette = "discrete_main"))
+show_col(covalence_palette(palette = "main"))
 }

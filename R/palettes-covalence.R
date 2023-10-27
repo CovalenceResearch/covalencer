@@ -59,14 +59,14 @@ covalence_colours <- function(...) {
 #'
 #' @examples
 #' require(scales)
-#' show_col(covalence_palette(palette = "discrete_main"))
+#' show_col(covalence_palette(palette = "main"))
 covalence_palette <-
     function(...,
              palette = c(
-                 "discrete_complete",
-                 "discrete_main",
-                 "discrete_accent",
-                 "discrete_rainbow_12_bit",
+                 "complete",
+                 "main",
+                 "accent",
+                 "rainbow_12_bit",
                  "orange_teal",
                  "orange_purple",
                  "orange_darkblue"
@@ -76,10 +76,10 @@ covalence_palette <-
             rlang::arg_match(
                 palette,
                 values = c(
-                    "discrete_complete",
-                    "discrete_main",
-                    "discrete_accent",
-                    "discrete_rainbow_12_bit",
+                    "complete",
+                    "main",
+                    "accent",
+                    "rainbow_12_bit",
                     "orange_teal",
                     "orange_purple",
                     "orange_darkblue"
@@ -88,16 +88,16 @@ covalence_palette <-
 
         # Palette
         covalence_pals <- list(
-            `discrete_complete` = covalence_colours(),
-            `discrete_main` = covalence_colours("cov_lightblue",
+            `complete` = covalence_colours(),
+            `main` = covalence_colours("cov_lightblue",
                                                 "cov_darkblue",
                                                 "cov_teal",
                                                 "cov_gray"),
-            `discrete_accent` = covalence_colours("cov_red",
+            `accent` = covalence_colours("cov_red",
                                                   "cov_green",
                                                   "cov_orange",
                                                   "cov_purple"),
-            `discrete_rainbow_12_bit` = c(
+            `rainbow_12_bit` = c(
                 "#881177",
                 "#aa3355",
                 "#cc6666",
@@ -152,10 +152,10 @@ generate_pal <- function(palette,
     arg_pal  <- rlang::arg_match(
         palette,
         values = c(
-            "discrete_complete",
-            "discrete_main",
-            "discrete_accent",
-            "discrete_rainbow_12_bit"
+            "complete",
+            "main",
+            "accent",
+            "rainbow_12_bit"
         )
     )
     arg_type  <- rlang::arg_match(type,
@@ -196,23 +196,23 @@ generate_pal <- function(palette,
 #'
 #' ggplot(data = diamonds, aes(x = carat, y = price)) +
 #'   geom_point(aes(colour = cut), alpha = 0.4) +
-#'   scale_colour_covalence_discrete(palette = "discrete_complete") +
+#'   scale_colour_covalence_discrete(palette = "complete") +
 #'   theme_covalence()
 #'
 #' ggplot(data = diamonds, aes(x = carat, y = price)) +
 #'   geom_point(aes(colour = x), alpha = 0.4) +
-#'   scale_colour_covalence_c(palette = "discrete_complete") +
+#'   scale_colour_covalence_c(palette = "complete") +
 #'   theme_covalence()
 #'
 #' ggplot(data = diamonds, aes(x = price)) +
 #'   geom_histogram(aes(fill = cut)) +
 #'   scale_fill_covalence_discrete(
-#'     palette = "discrete_rainbow_12_bit",
+#'     palette = "rainbow_12_bit",
 #'     reverse = TRUE
 #'   ) +
 #'   theme_covalence()
 scale_colour_covalence_discrete <-
-    function(palette = "discrete_complete",
+    function(palette = "complete",
              reverse = FALSE) {
         ggplot2::scale_colour_manual(values = generate_pal(
             palette = palette,
@@ -228,7 +228,7 @@ scale_color_covalence_discrete <- scale_colour_covalence_discrete
 #' @rdname scale_colour_covalence_discrete
 #' @export
 scale_fill_covalence_discrete <-
-    function(palette = "discrete_complete",
+    function(palette = "complete",
              reverse = FALSE) {
         ggplot2::scale_fill_manual(values = generate_pal(
             palette = palette,
@@ -239,7 +239,7 @@ scale_fill_covalence_discrete <-
 
 #' @rdname scale_colour_covalence_discrete
 #' @export
-scale_colour_covalence_c <- function(palette = "discrete_complete",
+scale_colour_covalence_c <- function(palette = "complete",
                                      reverse = FALSE) {
     ggplot2::scale_colour_gradientn(colours = generate_pal(
         palette = palette,
@@ -254,7 +254,7 @@ scale_color_covalence_c <- scale_colour_covalence_c
 
 #' @rdname scale_colour_covalence_discrete
 #' @export
-scale_fill_covalence_c <- function(palette = "discrete_complete",
+scale_fill_covalence_c <- function(palette = "complete",
                                    reverse = FALSE) {
     ggplot2::scale_fill_gradientn(colours = generate_pal(
         palette = palette,
