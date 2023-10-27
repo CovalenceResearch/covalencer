@@ -143,6 +143,7 @@ covalence_palette <-
 #' @inheritParams covalence_palette
 #'
 #' @return A palette-generating function.
+#' @keywords Internal
 generate_pal <- function(palette,
                          n,
                          reverse = FALSE) {

@@ -22,3 +22,4 @@ This function generates a second function, for use in the 'ggplot' scales.
 \details{
 This function is slightly modified from a 2022 \href{https://www.jumpingrivers.com/blog/custom-colour-palettes-for-ggplot2/}{blog post} by Nicola Rennie.
 }
+\keyword{Internal}
