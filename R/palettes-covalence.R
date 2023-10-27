@@ -298,7 +298,6 @@ scale_colour_covalence_diverging <-
                                         "orange_purple",
                                         "orange_darkblue"))
 
-
         if (reverse) {
             pal_colours <- rev(covalence_palette(palette = palette))
         } else {
