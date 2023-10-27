@@ -198,6 +198,10 @@ generate_pal <- function(palette,
 #'   ) +
 #'   theme_covalence()
 #'
+#' ggplot(data = diamonds, aes(x = carat, y = price)) +
+#'   geom_point(aes(x= cut), alpha = 0.4) +
+#'   scale_color_covalence_diverging(palette = "diverging_OrTe") +
+#'   theme_covalence()
 scale_colour_covalence_discrete <- function(palette = "discrete_complete",
                                      reverse = FALSE) {
     ggplot2::scale_colour_manual(values = generate_pal(
@@ -248,6 +252,9 @@ scale_fill_covalence_c <- function(palette = "discrete_complete",
     ))
 }
 
+#' @param midpoint Numeric midpoint value. Default is 0.
+#' @rdname scale_colour_covalence_discrete
+#' @export
 scale_color_covalence_diverging <- function(palette = "diverging_OrTe",
                                       reverse = FALSE,
                                       midpoint = 0) {

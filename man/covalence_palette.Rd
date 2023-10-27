@@ -6,7 +6,8 @@
 \usage{
 covalence_palette(
   ...,
-  palette = c("discrete_complete", "discrete_main", "discrete_accent")
+  palette = c("discrete_complete", "discrete_main", "discrete_accent",
+    "discrete_rainbow_12_bit", "diverging_OrTe")
 )
 }
 \arguments{
