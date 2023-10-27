@@ -125,7 +125,13 @@ covalence_palette <-
                 covalence_colours("cov_orange"),
                 "#AD9540",
                 covalence_colours("cov_darkblue")
-            )
+            ),
+            `darkblues` = c("#D6E1EC",
+                            covalence_colours("cov_darkblue")),
+            `teals` = c("#D0DADC",
+                        covalence_colours("cov_teal")),
+            `purples` = c("#E4CEE0",
+                          covalence_colours("cov_purple"))
         )
 
         covalence_pals[[pal]]
