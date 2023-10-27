@@ -7,9 +7,7 @@
 \alias{scale_colour_covalence_c}
 \alias{scale_color_covalence_c}
 \alias{scale_fill_covalence_c}
-\alias{scale_colour_covalence_diverging}
-\alias{scale_color_covalence_diverging}
-\title{Covalence colour and fill scales for ggplot2}
+\title{Covalence discrete colour and fill scales for ggplot2}
 \usage{
 scale_colour_covalence_discrete(palette = "discrete_complete", reverse = FALSE)
 
@@ -22,36 +20,18 @@ scale_colour_covalence_c(palette = "discrete_complete", reverse = FALSE)
 scale_color_covalence_c(palette = "discrete_complete", reverse = FALSE)
 
 scale_fill_covalence_c(palette = "discrete_complete", reverse = FALSE)
-
-scale_colour_covalence_diverging(
-  palette = "orange_teal",
-  reverse = FALSE,
-  midpoint = 0,
-  na_colour = "#cccccc"
-)
-
-scale_color_covalence_diverging(
-  palette = "orange_teal",
-  reverse = FALSE,
-  midpoint = 0,
-  na_colour = "#cccccc"
-)
 }
 \arguments{
 \item{palette}{Palette to use. One of 'complete', 'main', 'accent', or 'rainbow_12_bit'.}
 
 \item{reverse}{Should the palette be reversed? Either 'TRUE' or 'FALSE'.}
-
-\item{midpoint}{Numeric midpoint value. Default is 0.}
-
-\item{na_colour}{Colour for missing values. Defaults to "#cccccc" (grey80).}
 }
 \value{
-Discrete/continuous colour/fill scales for ggplot2.
+Discrete colour/fill scales for ggplot2.
 }
 \description{
-The \verb{scale_*_covalence_*} functions provide discrete (\verb{_discrete}) and continuous
-(\verb{_c}) scales of Covalence colours for use in \link{ggplot2} plots.
+The \verb{scale_*_covalence_discrete} functions provide discrete scales of
+Covalence colours for use in \link{ggplot2} plots.
 }
 \details{
 These functions are inspired by a 2022 \href{https://www.jumpingrivers.com/blog/custom-colour-palettes-for-ggplot2/}{blog post} by Nicola Rennie.
@@ -75,11 +55,5 @@ ggplot(data = diamonds, aes(x = price)) +
     palette = "discrete_rainbow_12_bit",
     reverse = TRUE
   ) +
-  theme_covalence()
-
-ggplot(data = diamonds, aes(x = carat, y = price)) +
-  geom_point(aes(colour = x), alpha = 0.4) +
-  scale_colour_covalence_diverging(palette = "orange_purple",
-                                  midpoint = 2.5) +
   theme_covalence()
 }

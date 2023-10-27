@@ -177,18 +177,18 @@ generate_pal <- function(palette,
     structure(out, name = arg_pal, class = "palette")
 }
 
-#' Covalence colour and fill scales for ggplot2
+#' Covalence discrete colour and fill scales for ggplot2
 #'
 #' @description
-#' The `scale_*_covalence_*` functions provide discrete (`_discrete`) and continuous
-#' (`_c`) scales of Covalence colours for use in [ggplot2] plots.
+#' The `scale_*_covalence_discrete` functions provide discrete scales of
+#' Covalence colours for use in [ggplot2] plots.
 #'
 #' @details
 #' These functions are inspired by a 2022 [blog post](https://www.jumpingrivers.com/blog/custom-colour-palettes-for-ggplot2/) by Nicola Rennie.
 #'
 #' @inheritParams generate_pal
 #'
-#' @return Discrete/continuous colour/fill scales for ggplot2.
+#' @return Discrete colour/fill scales for ggplot2.
 #' @export
 #'
 #' @examples
@@ -210,12 +210,6 @@ generate_pal <- function(palette,
 #'     palette = "discrete_rainbow_12_bit",
 #'     reverse = TRUE
 #'   ) +
-#'   theme_covalence()
-#'
-#' ggplot(data = diamonds, aes(x = carat, y = price)) +
-#'   geom_point(aes(colour = x), alpha = 0.4) +
-#'   scale_colour_covalence_diverging(palette = "orange_purple",
-#'                                   midpoint = 2.5) +
 #'   theme_covalence()
 scale_colour_covalence_discrete <-
     function(palette = "discrete_complete",
@@ -269,10 +263,33 @@ scale_fill_covalence_c <- function(palette = "discrete_complete",
     ))
 }
 
-#' @param midpoint Numeric midpoint value. Default is 0.
-#' @param na_colour Colour for missing values. Defaults to "#cccccc" (grey80).
-#' @rdname scale_colour_covalence_discrete
+
+#' Covalence diverging colour and fill scales for ggplot2
+#'
+#' @description
+#' The `scale_*_covalence_diverging` functions provide diverging
+#' scales of Covalence colours for use in [ggplot2] plots.
+#'
+#' @details
+#' These functions are inspired by a 2022 [blog post](https://rfortherestofus.com/2022/02/data-viz-org-branding/) by Cara Thompson.
+#'
+#' @param palette One of the diverging colour palettes (`orange_teal`,
+#'   `orange_purple`, or `orange_darkblue`). Default is `orange_teal`).
+#' @param na_colour Colour for missing values. Default is "#cccccc" (grey80).
+#' @param midpoint Numeric value for midpoint. Default is 0.
+#' @inheritParams generate_pal
+#'
+#' @return Diverging colour/fill scales for ggplot2.
 #' @export
+#'
+#' @examples
+#' library(ggplot2)
+#'
+#' ggplot(data = diamonds, aes(x = carat, y = price)) +
+#'   geom_point(aes(colour = x), alpha = 0.4) +
+#'   scale_colour_covalence_diverging(palette = "orange_purple",
+#'                                   midpoint = 2.5) +
+#'   theme_covalence()
 scale_colour_covalence_diverging <-
     function(palette = "orange_teal",
              reverse = FALSE,
@@ -312,6 +329,6 @@ scale_colour_covalence_diverging <-
         )
     }
 
-#' @rdname scale_colour_covalence_discrete
+#' @rdname scale_colour_covalence_diverging
 #' @export
 scale_color_covalence_diverging <- scale_colour_covalence_diverging
