@@ -4,14 +4,12 @@
 \alias{generate_pal}
 \title{Function factory to generate palette}
 \usage{
-generate_pal(palette, n, type = "discrete", reverse = FALSE)
+generate_pal(palette, n, reverse = FALSE)
 }
 \arguments{
 \item{palette}{Palette to use. One of 'complete', 'main', 'accent', or 'rainbow_12_bit'.}
 
 \item{n}{Number of colours wanted from palette.}
-
-\item{type}{Type of palette. Either 'discrete' or 'continuous'.}
 
 \item{reverse}{Should the palette be reversed? Either 'TRUE' or 'FALSE'.}
 }

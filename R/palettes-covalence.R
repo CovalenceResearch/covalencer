@@ -139,14 +139,12 @@ covalence_palette <-
 #' @details
 #' This function is slightly modified from a 2022 [blog post](https://www.jumpingrivers.com/blog/custom-colour-palettes-for-ggplot2/) by Nicola Rennie.
 #' @param n Number of colours wanted from palette.
-#' @param type Type of palette. Either 'discrete' or 'continuous'.
 #' @param reverse Should the palette be reversed? Either 'TRUE' or 'FALSE'.
 #' @inheritParams covalence_palette
 #'
 #' @return A palette-generating function.
 generate_pal <- function(palette,
                          n,
-                         type = "discrete",
                          reverse = FALSE) {
     # Check arguments
     arg_pal  <- rlang::arg_match(
@@ -158,8 +156,7 @@ generate_pal <- function(palette,
             "rainbow_12_bit"
         )
     )
-    arg_type  <- rlang::arg_match(type,
-                                  values = c("discrete", "continuous"))
+
     if (!is.logical(reverse)) {
         cli::cli_abort("{.var reverse} must be TRUE or FALSE.")
     }
@@ -168,11 +165,7 @@ generate_pal <- function(palette,
     if (rlang::is_missing(n))
         n <- length(pal)
 
-    out <- switch(
-        arg_type,
-        discrete = unname(pal)[1:n],
-        continuous = grDevices::colorRampPalette(pal)(n)
-    )
+    out <- unname(pal)[1:n]
 
     structure(out, name = arg_pal, class = "palette")
 }
@@ -216,8 +209,7 @@ scale_colour_covalence_discrete <-
              reverse = FALSE) {
         ggplot2::scale_colour_manual(values = generate_pal(
             palette = palette,
-            reverse = reverse,
-            type = "discrete"
+            reverse = reverse
         ))
     }
 
@@ -232,8 +224,7 @@ scale_fill_covalence_discrete <-
              reverse = FALSE) {
         ggplot2::scale_fill_manual(values = generate_pal(
             palette = palette,
-            reverse = reverse,
-            type = "discrete"
+            reverse = reverse
         ))
     }
 
@@ -243,8 +234,7 @@ scale_colour_covalence_c <- function(palette = "complete",
                                      reverse = FALSE) {
     ggplot2::scale_colour_gradientn(colours = generate_pal(
         palette = palette,
-        reverse = reverse,
-        type = "continuous"
+        reverse = reverse
     ))
 }
 
@@ -258,11 +248,9 @@ scale_fill_covalence_c <- function(palette = "complete",
                                    reverse = FALSE) {
     ggplot2::scale_fill_gradientn(colours = generate_pal(
         palette = palette,
-        reverse = reverse,
-        type = "continuous"
+        reverse = reverse
     ))
 }
-
 
 #' Covalence diverging colour and fill scales for ggplot2
 #'
