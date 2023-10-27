@@ -17,14 +17,14 @@
 #' covalence_colors("darkblue")
 covalence_colors <- function(...) {
     covalence_cols <- c(
-        `lightblue` = "#0099cc",
-        `darkblue`  = "#326aa0",
-        `teal`      = "#154754",
-        `gray`      = "#848088",
-        `red`       = "#c30026",
-        `green`     = "#008040",
-        `purple`    = "#7a0d66",
-        `orange`    = "#ffb300"
+        `cov_lightblue` = "#0099cc",
+        `cov_darkblue`  = "#326aa0",
+        `cov_teal`      = "#154754",
+        `cov_gray`      = "#848088",
+        `cov_red`       = "#c30026",
+        `cov_green`     = "#008040",
+        `cov_purple`    = "#7a0d66",
+        `cov_orange`    = "#ffb300"
     )
 
 
@@ -70,8 +70,14 @@ covalence_palette <-
         # Palette
         covalence_pals <- list(
             `complete` = covalence_colors(),
-            `main` = covalence_colors("lightblue", "darkblue", "teal", "gray"),
-            `accent` = covalence_colors("red", "green", "orange", "purple"),
+            `main` = covalence_colors("cov_lightblue",
+                                      "cov_darkblue",
+                                      "cov_teal",
+                                      "cov_gray"),
+            `accent` = covalence_colors("cov_red",
+                                        "cov_green",
+                                        "cov_orange",
+                                        "cov_purple"),
             `rainbow_12_bit` = c("#881177",
                                  "#aa3355",
                                  "#cc6666",
