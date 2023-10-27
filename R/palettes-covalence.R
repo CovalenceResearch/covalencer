@@ -3,7 +3,8 @@
 #' @description
 #' The Covalence brand colors, including the primary colors
 #' ('lightblue', 'darkblue', 'teal', and 'grey') and the accent colors
-#' ('red', 'green', 'purple', and 'orange').
+#' ('red', 'green', 'purple', and 'orange'). Each color name is prefixed with
+#' "cov_" to avoid confusion with the default R color names.
 #'
 #' @details
 #' This function is taken from a 2022 [blog post](https://meghan.rbind.io/blog/2022-10-11-creating-custom-color-palettes-with-ggplot2/#defining-custom-colors-and-palettes) by Meghan Hall.
