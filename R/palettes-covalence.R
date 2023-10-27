@@ -171,7 +171,7 @@ generate_pal <- function(palette,
     structure(out, name = arg_pal, class = "palette")
 }
 
-#' Covalence discrete colour and fill scales for ggplot2
+#' Discrete colour and fill scales for ggplot2
 #'
 #' @description
 #' The `scale_*_covalence_discrete` functions provide discrete scales of
@@ -253,7 +253,7 @@ scale_fill_covalence_c <- function(palette = "complete",
     ))
 }
 
-#' Covalence diverging colour and fill scales for ggplot2
+#' Diverging colour and fill scales for ggplot2
 #'
 #' @description
 #' The `scale_*_covalence_diverging` functions provide diverging
