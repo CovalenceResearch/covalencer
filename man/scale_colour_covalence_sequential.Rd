@@ -3,6 +3,7 @@
 \name{scale_colour_covalence_sequential}
 \alias{scale_colour_covalence_sequential}
 \alias{scale_color_covalence_sequential}
+\alias{scale_fill_covalence_sequential}
 \title{Sequential colour and fill scales for ggplot2}
 \usage{
 scale_colour_covalence_sequential(
@@ -12,6 +13,12 @@ scale_colour_covalence_sequential(
 )
 
 scale_color_covalence_sequential(
+  palette = "darkblues",
+  reverse = FALSE,
+  na_colour = "#cccccc"
+)
+
+scale_fill_covalence_sequential(
   palette = "darkblues",
   reverse = FALSE,
   na_colour = "#cccccc"
@@ -39,4 +46,10 @@ ggplot(data = diamonds, aes(x = cut, y = carat)) +
   geom_point(aes(colour = price)) +
   scale_colour_covalence_sequential() +
  theme_covalence()
+
+ggplot(data = diamonds, aes(x = cut, y = color)) +
+  geom_tile(aes(fill = depth)) +
+  scale_fill_covalence_sequential(palette = "teals") +
+  theme_covalence() +
+  theme(panel.grid.major = element_blank())
 }

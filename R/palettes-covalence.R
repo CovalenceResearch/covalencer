@@ -382,6 +382,12 @@ scale_fill_covalence_diverging <-
 #'   geom_point(aes(colour = price)) +
 #'   scale_colour_covalence_sequential() +
 #'  theme_covalence()
+#'
+#' ggplot(data = diamonds, aes(x = cut, y = color)) +
+#'   geom_tile(aes(fill = depth)) +
+#'   scale_fill_covalence_sequential(palette = "teals") +
+#'   theme_covalence() +
+#'   theme(panel.grid.major = element_blank())
 scale_colour_covalence_sequential <- function(palette = "darkblues",
                                               reverse = FALSE,
                                               na_colour = "#cccccc") {
@@ -415,3 +421,35 @@ scale_colour_covalence_sequential <- function(palette = "darkblues",
 #' @rdname scale_colour_covalence_sequential
 #' @export
 scale_color_covalence_sequential <- scale_colour_covalence_sequential
+
+#' @rdname scale_colour_covalence_sequential
+#' @export
+scale_fill_covalence_sequential <- function(palette = "darkblues",
+                                              reverse = FALSE,
+                                              na_colour = "#cccccc") {
+    # Check arguments - only sequential palettes
+    if (!is.logical(reverse)) {
+        cli::cli_abort("{.var reverse} must be TRUE or FALSE.")
+    }
+
+    arg_pal <-
+        rlang::arg_match(palette,
+                         values = c("darkblues",
+                                    "teals",
+                                    "purples"))
+
+    if (reverse) {
+        pal_colours <- rev(covalence_palette(palette = arg_pal))
+    } else {
+        pal_colours <- covalence_palette(palette = arg_pal)
+    }
+
+    ggplot2::scale_fill_gradient(
+        low = pal_colours[1],
+        high = pal_colours[2],
+        space = "Lab",
+        na.value = na_colour,
+        guide = "colourbar",
+        aesthetics = "fill"
+    )
+}
