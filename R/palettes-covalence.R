@@ -279,3 +279,7 @@ scale_colour_covalence_diverging <- function(palette = "orange_teal",
         aesthetics = "colour"
     )
 }
+
+#' @rdname scale_colour_covalence_discrete
+#' @export
+scale_color_covalence_diverging <- scale_colour_covalence_diverging

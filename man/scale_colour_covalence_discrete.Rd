@@ -7,6 +7,7 @@
 \alias{scale_colour_covalence_c}
 \alias{scale_color_covalence_c}
 \alias{scale_fill_covalence_c}
+\alias{scale_colour_covalence_diverging}
 \alias{scale_color_covalence_diverging}
 \title{Covalence color and fill scales for ggplot2}
 \usage{
@@ -22,10 +23,18 @@ scale_color_covalence_c(palette = "discrete_complete", reverse = FALSE)
 
 scale_fill_covalence_c(palette = "discrete_complete", reverse = FALSE)
 
+scale_colour_covalence_diverging(
+  palette = "orange_teal",
+  reverse = FALSE,
+  midpoint = 0,
+  na_colour = "#cccccc"
+)
+
 scale_color_covalence_diverging(
   palette = "orange_teal",
   reverse = FALSE,
-  midpoint = 0
+  midpoint = 0,
+  na_colour = "#cccccc"
 )
 }
 \arguments{
@@ -34,6 +43,8 @@ scale_color_covalence_diverging(
 \item{reverse}{Should the palette be reversed? Either 'TRUE' or 'FALSE'.}
 
 \item{midpoint}{Numeric midpoint value. Default is 0.}
+
+\item{na_colour}{Colour for missing values. Defaults to "#cccccc" (grey80).}
 }
 \value{
 Discrete/continuous color/fill scales for ggplot2.
