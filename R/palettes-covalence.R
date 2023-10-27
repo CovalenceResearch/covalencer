@@ -1,22 +1,22 @@
-#' Covalence colors
+#' Covalence colours
 #'
 #' @description
-#' The Covalence brand colors, including the primary colors
-#' ('lightblue', 'darkblue', 'teal', and 'grey') and the accent colors
-#' ('red', 'green', 'purple', and 'orange'). Each color name is prefixed with
-#' "cov_" to avoid confusion with the default R color names.
+#' The Covalence brand colours, including the primary colours
+#' ('lightblue', 'darkblue', 'teal', and 'grey') and the accent colours
+#' ('red', 'green', 'purple', and 'orange'). Each colour name is prefixed with
+#' "cov_" to avoid confusion with the default R colour names.
 #'
 #' @details
 #' This function is taken from a 2022 [blog post](https://meghan.rbind.io/blog/2022-10-11-creating-custom-color-palettes-with-ggplot2/#defining-custom-colors-and-palettes) by Meghan Hall.
 #'
-#' @param ... Access specific colors
+#' @param ... Access specific colours
 #'
-#' @return A named vector of brand colors
+#' @return A named vector of brand colours
 #' @export
 #'
 #' @examples
-#' covalence_colors("darkblue")
-covalence_colors <- function(...) {
+#' covalence_colours("darkblue")
+covalence_colours <- function(...) {
     covalence_cols <- c(
         `cov_lightblue` = "#0099cc",
         `cov_darkblue`  = "#326aa0",
@@ -43,9 +43,9 @@ covalence_colors <- function(...) {
 #'
 #' @description
 #' The various Covalence palettes:
-#'   * The _complete_ palette that contains all brand colors.
-#'   * The _main_ palette that contains the main, mostly blue-ish, brand colors.
-#'   * The _accent_ palette that contains additional, more prominent colors.
+#'   * The _complete_ palette that contains all brand colours.
+#'   * The _main_ palette that contains the main, mostly blue-ish, brand colours.
+#'   * The _accent_ palette that contains additional, more prominent colours.
 #'
 #' @details
 #' This function is slightly modified from a 2022 [blog post](https://meghan.rbind.io/blog/2022-10-11-creating-custom-color-palettes-with-ggplot2/#defining-custom-colors-and-palettes) by Meghan Hall.
@@ -54,7 +54,7 @@ covalence_colors <- function(...) {
 #' @param ... Arguments to be passed on.
 #' @param palette Palette to use. One of 'complete', 'main', 'accent', or 'rainbow_12_bit'.
 #'
-#' @return A named vector of brand colors.
+#' @return A named vector of brand colours.
 #' @export
 #'
 #' @examples
@@ -88,12 +88,12 @@ covalence_palette <-
 
         # Palette
         covalence_pals <- list(
-            `discrete_complete` = covalence_colors(),
-            `discrete_main` = covalence_colors("cov_lightblue",
+            `discrete_complete` = covalence_colours(),
+            `discrete_main` = covalence_colours("cov_lightblue",
                                                "cov_darkblue",
                                                "cov_teal",
                                                "cov_gray"),
-            `discrete_accent` = covalence_colors("cov_red",
+            `discrete_accent` = covalence_colours("cov_red",
                                                  "cov_green",
                                                  "cov_orange",
                                                  "cov_purple"),
@@ -112,19 +112,19 @@ covalence_palette <-
                 "#663399"
             ),
             `orange_teal` = c(
-                covalence_colors("cov_orange"),
+                covalence_colours("cov_orange"),
                 "#A18721",
-                covalence_colors("cov_teal")
+                covalence_colours("cov_teal")
             ),
             `orange_purple` = c(
-                covalence_colors("cov_orange"),
+                covalence_colours("cov_orange"),
                 "#AF4F3D",
-                covalence_colors("cov_purple")
+                covalence_colours("cov_purple")
             ),
             `orange_darkblue` = c(
-                covalence_colors("cov_orange"),
+                covalence_colours("cov_orange"),
                 "#AD9540",
-                covalence_colors("cov_darkblue")
+                covalence_colours("cov_darkblue")
             )
         )
 
@@ -138,7 +138,7 @@ covalence_palette <-
 #'
 #' @details
 #' This function is slightly modified from a 2022 [blog post](https://www.jumpingrivers.com/blog/custom-colour-palettes-for-ggplot2/) by Nicola Rennie.
-#' @param n Number of colors wanted from palette.
+#' @param n Number of colours wanted from palette.
 #' @param type Type of palette. Either 'discrete' or 'continuous'.
 #' @param reverse Should the palette be reversed? Either 'TRUE' or 'FALSE'.
 #' @inheritParams covalence_palette
@@ -177,30 +177,30 @@ generate_pal <- function(palette,
     structure(out, name = arg_pal, class = "palette")
 }
 
-#' Covalence color and fill scales for ggplot2
+#' Covalence colour and fill scales for ggplot2
 #'
 #' @description
 #' The `scale_*_covalence_*` functions provide discrete (`_discrete`) and continuous
-#' (`_c`) scales of Covalence colors for use in [ggplot2] plots.
+#' (`_c`) scales of Covalence colours for use in [ggplot2] plots.
 #'
 #' @details
 #' These functions are inspired by a 2022 [blog post](https://www.jumpingrivers.com/blog/custom-colour-palettes-for-ggplot2/) by Nicola Rennie.
 #'
 #' @inheritParams generate_pal
 #'
-#' @return Discrete/continuous color/fill scales for ggplot2.
+#' @return Discrete/continuous colour/fill scales for ggplot2.
 #' @export
 #'
 #' @examples
 #' library(ggplot2)
 #'
 #' ggplot(data = diamonds, aes(x = carat, y = price)) +
-#'   geom_point(aes(color = cut), alpha = 0.4) +
-#'   scale_color_covalence_discrete(palette = "discrete_complete") +
+#'   geom_point(aes(colour = cut), alpha = 0.4) +
+#'   scale_colour_covalence_discrete(palette = "discrete_complete") +
 #'   theme_covalence()
 #'
 #' ggplot(data = diamonds, aes(x = carat, y = price)) +
-#'   geom_point(aes(color = x), alpha = 0.4) +
+#'   geom_point(aes(colour = x), alpha = 0.4) +
 #'   scale_colour_covalence_c(palette = "discrete_complete") +
 #'   theme_covalence()
 #'
@@ -213,8 +213,8 @@ generate_pal <- function(palette,
 #'   theme_covalence()
 #'
 #' ggplot(data = diamonds, aes(x = carat, y = price)) +
-#'   geom_point(aes(color = x), alpha = 0.4) +
-#'   scale_color_covalence_diverging(palette = "orange_purple",
+#'   geom_point(aes(colour = x), alpha = 0.4) +
+#'   scale_colour_covalence_diverging(palette = "orange_purple",
 #'                                   midpoint = 2.5) +
 #'   theme_covalence()
 scale_colour_covalence_discrete <-
@@ -247,7 +247,7 @@ scale_fill_covalence_discrete <-
 #' @export
 scale_colour_covalence_c <- function(palette = "discrete_complete",
                                      reverse = FALSE) {
-    ggplot2::scale_colour_gradientn(colors = generate_pal(
+    ggplot2::scale_colour_gradientn(colours = generate_pal(
         palette = palette,
         reverse = reverse,
         type = "continuous"
@@ -262,7 +262,7 @@ scale_color_covalence_c <- scale_colour_covalence_c
 #' @export
 scale_fill_covalence_c <- function(palette = "discrete_complete",
                                    reverse = FALSE) {
-    ggplot2::scale_fill_gradientn(colors = generate_pal(
+    ggplot2::scale_fill_gradientn(colours = generate_pal(
         palette = palette,
         reverse = reverse,
         type = "continuous"
@@ -285,7 +285,7 @@ scale_colour_covalence_diverging <-
         }
         pal_colours <- covalence_palette(palette = palette)
 
-        ggplot2::scale_color_gradient2(
+        ggplot2::scale_colour_gradient2(
             low = pal_colours[1],
             mid = pal_colours[2],
             high = pal_colours[3],
