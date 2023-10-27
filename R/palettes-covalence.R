@@ -198,7 +198,7 @@ generate_pal <- function(palette,
 #'   ) +
 #'   theme_covalence()
 #'
-scale_colour_covalence_d <- function(palette = "discrete_complete",
+scale_colour_covalence_discrete <- function(palette = "discrete_complete",
                                      reverse = FALSE) {
     ggplot2::scale_colour_manual(values = generate_pal(
         palette = palette,
@@ -207,13 +207,13 @@ scale_colour_covalence_d <- function(palette = "discrete_complete",
     ))
 }
 
-#' @rdname scale_colour_covalence_d
+#' @rdname scale_colour_covalence_discrete
 #' @export
-scale_color_covalence_d <- scale_colour_covalence_d
+scale_color_covalence_discrete <- scale_colour_covalence_discrete
 
-#' @rdname scale_colour_covalence_d
+#' @rdname scale_colour_covalence_discrete
 #' @export
-scale_fill_covalence_d <- function(palette = "discrete_complete",
+scale_fill_covalence_discrete <- function(palette = "discrete_complete",
                                    reverse = FALSE) {
     ggplot2::scale_fill_manual(values = generate_pal(
         palette = palette,
@@ -222,7 +222,7 @@ scale_fill_covalence_d <- function(palette = "discrete_complete",
     ))
 }
 
-#' @rdname scale_colour_covalence_d
+#' @rdname scale_colour_covalence_discrete
 #' @export
 scale_colour_covalence_c <- function(palette = "discrete_complete",
                                      reverse = FALSE) {
@@ -233,11 +233,11 @@ scale_colour_covalence_c <- function(palette = "discrete_complete",
     ))
 }
 
-#' @rdname scale_colour_covalence_d
+#' @rdname scale_colour_covalence_discrete
 #' @export
 scale_color_covalence_c <- scale_colour_covalence_c
 
-#' @rdname scale_colour_covalence_d
+#' @rdname scale_colour_covalence_discrete
 #' @export
 scale_fill_covalence_c <- function(palette = "discrete_complete",
                                    reverse = FALSE) {
