@@ -146,7 +146,7 @@ covalence_palette <-
 generate_pal <- function(palette,
                          n,
                          reverse = FALSE) {
-    # Check arguments
+    # Check arguments - only discrete palettes
     arg_pal  <- rlang::arg_match(
         palette,
         values = c(
