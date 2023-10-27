@@ -212,8 +212,9 @@ generate_pal <- function(palette,
 #'   theme_covalence()
 #'
 #' ggplot(data = diamonds, aes(x = carat, y = price)) +
-#'   geom_point(aes(x= cut), alpha = 0.4) +
-#'   scale_color_covalence_diverging(palette = "orange_purple") +
+#'   geom_point(aes(color = x), alpha = 0.4) +
+#'   scale_color_covalence_diverging(palette = "orange_purple",
+#'                                   midpoint = 2.5) +
 #'   theme_covalence()
 scale_colour_covalence_discrete <-
     function(palette = "discrete_complete",
