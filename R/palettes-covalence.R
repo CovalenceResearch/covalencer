@@ -100,6 +100,11 @@ covalence_palette <-
                 "#0099cc",
                 "#3366bb",
                 "#663399"
+            ),
+            `diverging_OrTe` = c(
+                covalence_colors("cov_orange"),
+                "A18721",
+                covalence_colors("cov_teal")
             )
         )
 
