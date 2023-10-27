@@ -4,9 +4,6 @@
 \alias{scale_colour_covalence_discrete}
 \alias{scale_color_covalence_discrete}
 \alias{scale_fill_covalence_discrete}
-\alias{scale_colour_covalence_c}
-\alias{scale_color_covalence_c}
-\alias{scale_fill_covalence_c}
 \title{Discrete colour and fill scales for ggplot2}
 \usage{
 scale_colour_covalence_discrete(palette = "complete", reverse = FALSE)
@@ -14,12 +11,6 @@ scale_colour_covalence_discrete(palette = "complete", reverse = FALSE)
 scale_color_covalence_discrete(palette = "complete", reverse = FALSE)
 
 scale_fill_covalence_discrete(palette = "complete", reverse = FALSE)
-
-scale_colour_covalence_c(palette = "complete", reverse = FALSE)
-
-scale_color_covalence_c(palette = "complete", reverse = FALSE)
-
-scale_fill_covalence_c(palette = "complete", reverse = FALSE)
 }
 \arguments{
 \item{palette}{Palette to use. One of 'complete', 'main', 'accent', or 'rainbow_12_bit'.}
@@ -42,11 +33,6 @@ library(ggplot2)
 ggplot(data = diamonds, aes(x = carat, y = price)) +
   geom_point(aes(colour = cut), alpha = 0.4) +
   scale_colour_covalence_discrete(palette = "complete") +
-  theme_covalence()
-
-ggplot(data = diamonds, aes(x = carat, y = price)) +
-  geom_point(aes(colour = x), alpha = 0.4) +
-  scale_colour_covalence_c(palette = "complete") +
   theme_covalence()
 
 ggplot(data = diamonds, aes(x = price)) +

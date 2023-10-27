@@ -201,11 +201,6 @@ generate_pal <- function(palette,
 #'   scale_colour_covalence_discrete(palette = "complete") +
 #'   theme_covalence()
 #'
-#' ggplot(data = diamonds, aes(x = carat, y = price)) +
-#'   geom_point(aes(colour = x), alpha = 0.4) +
-#'   scale_colour_covalence_c(palette = "complete") +
-#'   theme_covalence()
-#'
 #' ggplot(data = diamonds, aes(x = price)) +
 #'   geom_histogram(aes(fill = cut)) +
 #'   scale_fill_covalence_discrete(
@@ -232,26 +227,6 @@ scale_fill_covalence_discrete <-
         ggplot2::scale_fill_manual(values = generate_pal(palette = palette,
                                                          reverse = reverse))
     }
-
-#' @rdname scale_colour_covalence_discrete
-#' @export
-scale_colour_covalence_c <- function(palette = "complete",
-                                     reverse = FALSE) {
-    ggplot2::scale_colour_gradientn(colours = generate_pal(palette = palette,
-                                                           reverse = reverse))
-}
-
-#' @rdname scale_colour_covalence_discrete
-#' @export
-scale_color_covalence_c <- scale_colour_covalence_c
-
-#' @rdname scale_colour_covalence_discrete
-#' @export
-scale_fill_covalence_c <- function(palette = "complete",
-                                   reverse = FALSE) {
-    ggplot2::scale_fill_gradientn(colours = generate_pal(palette = palette,
-                                                         reverse = reverse))
-}
 
 #' Diverging colour and fill scales for ggplot2
 #'
@@ -420,13 +395,14 @@ scale_colour_covalence_sequential <- function(palette = "darkblues",
 
 #' @rdname scale_colour_covalence_sequential
 #' @export
-scale_color_covalence_sequential <- scale_colour_covalence_sequential
+scale_color_covalence_sequential <-
+    scale_colour_covalence_sequential
 
 #' @rdname scale_colour_covalence_sequential
 #' @export
 scale_fill_covalence_sequential <- function(palette = "darkblues",
-                                              reverse = FALSE,
-                                              na_colour = "#cccccc") {
+                                            reverse = FALSE,
+                                            na_colour = "#cccccc") {
     # Check arguments - only sequential palettes
     if (!is.logical(reverse)) {
         cli::cli_abort("{.var reverse} must be TRUE or FALSE.")

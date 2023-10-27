@@ -45,7 +45,7 @@ library(ggplot2)
 ggplot(data = diamonds, aes(x = cut, y = carat)) +
   geom_point(aes(colour = price)) +
   scale_colour_covalence_sequential() +
- theme_covalence()
+  theme_covalence()
 
 ggplot(data = diamonds, aes(x = cut, y = color)) +
   geom_tile(aes(fill = depth)) +
