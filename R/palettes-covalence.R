@@ -90,13 +90,13 @@ covalence_palette <-
         covalence_pals <- list(
             `discrete_complete` = covalence_colours(),
             `discrete_main` = covalence_colours("cov_lightblue",
-                                               "cov_darkblue",
-                                               "cov_teal",
-                                               "cov_gray"),
+                                                "cov_darkblue",
+                                                "cov_teal",
+                                                "cov_gray"),
             `discrete_accent` = covalence_colours("cov_red",
-                                                 "cov_green",
-                                                 "cov_orange",
-                                                 "cov_purple"),
+                                                  "cov_green",
+                                                  "cov_orange",
+                                                  "cov_purple"),
             `discrete_rainbow_12_bit` = c(
                 "#881177",
                 "#aa3355",
@@ -278,12 +278,27 @@ scale_colour_covalence_diverging <-
              reverse = FALSE,
              midpoint = 0,
              na_colour = "#cccccc") {
+        if (!is.logical(reverse)) {
+            cli::cli_abort("{.var reverse} must be TRUE or FALSE.")
+        }
+
+        if (!is.numeric(midpoint)) {
+            cli::cli_abort("{.var midpoint} must be numeric.")
+        }
+
+        palette <-
+            rlang::arg_match(palette,
+                             values = c("orange_teal",
+                                        "orange_purple",
+                                        "orange_darkblue"))
+
+
         if (reverse) {
             pal <- rev(covalence_palette(palette = palette))
         } else {
             pal <- covalence_palette(palette = palette)
         }
-        pal_colours <- covalence_palette(palette = palette)
+        pal_colours <- covalence_palette(palette = pal)
 
         ggplot2::scale_colour_gradient2(
             low = pal_colours[1],
