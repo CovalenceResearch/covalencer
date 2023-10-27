@@ -7,7 +7,7 @@
 covalence_palette(
   ...,
   palette = c("complete", "main", "accent", "rainbow_12_bit", "orange_teal",
-    "orange_purple", "orange_darkblue")
+    "orange_purple", "orange_darkblue", "darkblues", "teals", "purples")
 )
 }
 \arguments{

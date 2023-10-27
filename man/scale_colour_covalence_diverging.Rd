@@ -4,7 +4,7 @@
 \alias{scale_colour_covalence_diverging}
 \alias{scale_color_covalence_diverging}
 \alias{scale_fill_covalence_diverging}
-\title{Covalence diverging colour and fill scales for ggplot2}
+\title{Diverging colour and fill scales for ggplot2}
 \usage{
 scale_colour_covalence_diverging(
   palette = "orange_teal",

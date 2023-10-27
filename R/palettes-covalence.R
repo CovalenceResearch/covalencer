@@ -69,7 +69,10 @@ covalence_palette <-
                  "rainbow_12_bit",
                  "orange_teal",
                  "orange_purple",
-                 "orange_darkblue"
+                 "orange_darkblue",
+                 "darkblues",
+                 "teals",
+                 "purples"
              )) {
         # Check arguments
         pal <-
@@ -82,7 +85,10 @@ covalence_palette <-
                     "rainbow_12_bit",
                     "orange_teal",
                     "orange_purple",
-                    "orange_darkblue"
+                    "orange_darkblue",
+                    "darkblues",
+                    "teals",
+                    "purples"
                 )
             )
 
@@ -354,3 +360,58 @@ scale_fill_covalence_diverging <-
             aesthetics = "fill"
         )
     }
+
+#' Sequential colour and fill scales for ggplot2
+#'
+#' @description
+#' The `scale_*_covalence_sequential` functions provide sequential
+#' scales of Covalence colours for use in [ggplot2] plots.
+#'
+#' @param palette One of the sequential colour palettes (`darkblues`,
+#'   `teals`, or `purples`). Default is `darkblues`).
+#' @param na_colour Colour for missing values. Default is "#cccccc" (grey80).
+#' @inheritParams generate_pal
+#'
+#' @return Sequential colour/fill scales for ggplot2.
+#' @export
+#'
+#' @examples
+#' library(ggplot2)
+#'
+#' ggplot(data = diamonds, aes(x = cut, y = carat)) +
+#'   geom_point(aes(colour = price)) +
+#'   scale_colour_covalence_sequential() +
+#'  theme_covalence()
+scale_colour_covalence_sequential <- function(palette = "darkblues",
+                                              reverse = FALSE,
+                                              na_colour = "#cccccc") {
+    # Check arguments - only sequential palettes
+    if (!is.logical(reverse)) {
+        cli::cli_abort("{.var reverse} must be TRUE or FALSE.")
+    }
+
+    arg_pal <-
+        rlang::arg_match(palette,
+                         values = c("darkblues",
+                                    "teals",
+                                    "purples"))
+
+    if (reverse) {
+        pal_colours <- rev(covalence_palette(palette = arg_pal))
+    } else {
+        pal_colours <- covalence_palette(palette = arg_pal)
+    }
+
+    ggplot2::scale_color_gradient(
+        low = pal_colours[1],
+        high = pal_colours[2],
+        space = "Lab",
+        na.value = na_colour,
+        guide = "colourbar",
+        aesthetics = "colour"
+    )
+}
+
+#' @rdname scale_colour_covalence_sequential
+#' @export
+scale_color_covalence_sequential <- scale_colour_covalence_sequential
