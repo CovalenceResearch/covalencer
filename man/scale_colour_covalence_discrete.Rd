@@ -23,7 +23,7 @@ scale_color_covalence_c(palette = "discrete_complete", reverse = FALSE)
 scale_fill_covalence_c(palette = "discrete_complete", reverse = FALSE)
 
 scale_color_covalence_diverging(
-  palette = "diverging_OrTe",
+  palette = "orange_teal",
   reverse = FALSE,
   midpoint = 0
 )
@@ -68,6 +68,6 @@ ggplot(data = diamonds, aes(x = price)) +
 
 ggplot(data = diamonds, aes(x = carat, y = price)) +
   geom_point(aes(x= cut), alpha = 0.4) +
-  scale_color_covalence_diverging(palette = "diverging_OrTe") +
+  scale_color_covalence_diverging(palette = "orange_teal") +
   theme_covalence()
 }

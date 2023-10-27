@@ -66,7 +66,7 @@ covalence_palette <-
                  "discrete_main",
                  "discrete_accent",
                  "discrete_rainbow_12_bit",
-                 "diverging_OrTe"
+                 "orange_teal"
              )) {
         # Check arguments
         pal <-
@@ -77,7 +77,7 @@ covalence_palette <-
                     "discrete_main",
                     "discrete_accent",
                     "discrete_rainbow_12_bit",
-                    "diverging_OrTe"
+                    "orange_teal"
                 )
             )
 
@@ -106,7 +106,7 @@ covalence_palette <-
                 "#3366bb",
                 "#663399"
             ),
-            `diverging_OrTe` = c(
+            `orange_teal` = c(
                 covalence_colors("cov_orange"),
                 "#A18721",
                 covalence_colors("cov_teal")
@@ -141,7 +141,7 @@ generate_pal <- function(palette,
             "discrete_main",
             "discrete_accent",
             "discrete_rainbow_12_bit",
-            "diverging_OrTe"
+            "orange_teal"
         )
     )
     arg_type  <- rlang::arg_match(type,
@@ -200,7 +200,7 @@ generate_pal <- function(palette,
 #'
 #' ggplot(data = diamonds, aes(x = carat, y = price)) +
 #'   geom_point(aes(x= cut), alpha = 0.4) +
-#'   scale_color_covalence_diverging(palette = "diverging_OrTe") +
+#'   scale_color_covalence_diverging(palette = "orange_teal") +
 #'   theme_covalence()
 scale_colour_covalence_discrete <- function(palette = "discrete_complete",
                                      reverse = FALSE) {
@@ -255,7 +255,7 @@ scale_fill_covalence_c <- function(palette = "discrete_complete",
 #' @param midpoint Numeric midpoint value. Default is 0.
 #' @rdname scale_colour_covalence_discrete
 #' @export
-scale_color_covalence_diverging <- function(palette = "diverging_OrTe",
+scale_color_covalence_diverging <- function(palette = "orange_teal",
                                       reverse = FALSE,
                                       midpoint = 0) {
     if (reverse) {
