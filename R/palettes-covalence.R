@@ -110,6 +110,16 @@ covalence_palette <-
                 covalence_colors("cov_orange"),
                 "#A18721",
                 covalence_colors("cov_teal")
+            ),
+            `orange_purple` = c(
+                covalence_colors("cov_orange"),
+                "#AF4F3D",
+                covalence_colors("cov_purple")
+            ),
+            `orange_darkblue` = c(
+                covalence_colors("cov_orange"),
+                "#AD9540",
+                covalence_colors("cov_darkblue")
             )
         )
 
