@@ -166,7 +166,7 @@ generate_pal <- function(palette,
 #' Covalence color and fill scales for ggplot2
 #'
 #' @description
-#' The `scale_*_covalence_*` functions provide discrete (`_d`) and continuous
+#' The `scale_*_covalence_*` functions provide discrete (`_discrete`) and continuous
 #' (`_c`) scales of Covalence colors for use in [ggplot2] plots.
 #'
 #' @details
@@ -182,7 +182,7 @@ generate_pal <- function(palette,
 #'
 #' ggplot(data = diamonds, aes(x = carat, y = price)) +
 #'   geom_point(aes(color = cut), alpha = 0.4) +
-#'   scale_color_covalence_d(palette = "discrete_complete") +
+#'   scale_color_covalence_discrete(palette = "discrete_complete") +
 #'   theme_covalence()
 #'
 #' ggplot(data = diamonds, aes(x = carat, y = price)) +
@@ -192,7 +192,7 @@ generate_pal <- function(palette,
 #'
 #' ggplot(data = diamonds, aes(x = price)) +
 #'   geom_histogram(aes(fill = cut)) +
-#'   scale_fill_covalence_d(
+#'   scale_fill_covalence_discrete(
 #'     palette = "discrete_rainbow_12_bit",
 #'     reverse = TRUE
 #'   ) +
