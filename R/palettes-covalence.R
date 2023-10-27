@@ -66,7 +66,9 @@ covalence_palette <-
                  "discrete_main",
                  "discrete_accent",
                  "discrete_rainbow_12_bit",
-                 "orange_teal"
+                 "orange_teal",
+                 "orange_purple",
+                 "orange_darkblue"
              )) {
         # Check arguments
         pal <-
@@ -77,7 +79,9 @@ covalence_palette <-
                     "discrete_main",
                     "discrete_accent",
                     "discrete_rainbow_12_bit",
-                    "orange_teal"
+                    "orange_teal",
+                    "orange_purple",
+                    "orange_darkblue"
                 )
             )
 
@@ -150,8 +154,7 @@ generate_pal <- function(palette,
             "discrete_complete",
             "discrete_main",
             "discrete_accent",
-            "discrete_rainbow_12_bit",
-            "orange_teal"
+            "discrete_rainbow_12_bit"
         )
     )
     arg_type  <- rlang::arg_match(type,
@@ -210,7 +213,7 @@ generate_pal <- function(palette,
 #'
 #' ggplot(data = diamonds, aes(x = carat, y = price)) +
 #'   geom_point(aes(x= cut), alpha = 0.4) +
-#'   scale_color_covalence_diverging(palette = "orange_teal") +
+#'   scale_color_covalence_diverging(palette = "orange_purple") +
 #'   theme_covalence()
 scale_colour_covalence_discrete <-
     function(palette = "discrete_complete",
