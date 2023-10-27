@@ -253,25 +253,27 @@ scale_fill_covalence_c <- function(palette = "discrete_complete",
 }
 
 #' @param midpoint Numeric midpoint value. Default is 0.
+#' @param na_colour Colour for missing values. Defaults to "#cccccc" (grey80).
 #' @rdname scale_colour_covalence_discrete
 #' @export
-scale_color_covalence_diverging <- function(palette = "orange_teal",
+scale_colour_covalence_diverging <- function(palette = "orange_teal",
                                       reverse = FALSE,
-                                      midpoint = 0) {
+                                      midpoint = 0,
+                                      na_colour = "#cccccc") {
     if (reverse) {
         pal <- rev(covalence_palette(palette = palette))
     } else {
         pal <- covalence_palette(palette = palette)
     }
-    pal_colors <- covalence_palette(palette = palette)
+    pal_colours <- covalence_palette(palette = palette)
 
     ggplot2::scale_color_gradient2(
-        low = pal_colors[1],
-        mid = pal_colors[2],
-        high = pal_colors[3],
+        low = pal_colours[1],
+        mid = pal_colours[2],
+        high = pal_colours[3],
         midpoint = midpoint,
         space = "Lab",
-        na.value = "#cccccc",
+        na.value = na_colour,
         #grey80
         guide = "colourbar",
         aesthetics = "colour"
