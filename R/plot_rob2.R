@@ -45,6 +45,6 @@ plot_rob2_summary <- function(data,
                                        domain_values))]
 
     if (length(domain_missing) > 0) {
-        cli::cli_alert_warning("N domain labels contain: {domain_missing}.")
+        cli::cli_alert_warning("No domain labels contain: {domain_missing}.")
     }
 }
