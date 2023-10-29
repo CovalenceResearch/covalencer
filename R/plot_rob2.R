@@ -37,13 +37,14 @@ plot_rob2_summary <- function(data,
 
     ## Domain checks
     domain_values <-
-        tolower(unique(data[, deparse(substitute(domain)),
+        tolower(unique(data[,
+                            deparse(substitute(domain)),
                             drop = TRUE]))
     domain_missing <-
         domain_check_words[which(!(tolower(domain_check_words) %in%
                                        domain_values))]
 
     if (length(domain_missing) > 0) {
-        cli::cli_alert_warning("There are no domain labels containing the words: {domain_missing}.")
+        cli::cli_alert_warning("N domain labels contain: {domain_missing}.")
     }
 }
