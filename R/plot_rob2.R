@@ -31,7 +31,7 @@ plot_rob2_summary <- function(data,
     }
 
     ## Input types
-    if (!is.numeric(data[, deparse(substitute(study_share))])) {
+    if (!is.numeric(data[[deparse(substitute(study_share))]])) {
         cli::cli_abort("{.var study_share} must be numeric.")
     }
 
