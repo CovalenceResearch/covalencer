@@ -47,4 +47,37 @@ plot_rob2_summary <- function(data,
     if (length(domain_missing) > 0) {
         cli::cli_alert_warning("No domain labels contain: {domain_missing}.")
     }
+
+    # Use consistent terminology for domains
+    data <- data |>
+        dplyr::mutate(domain = stringr::str_to_lower(domain)) |>
+        dplyr::mutate(
+            plot_domain = dplyr::case_when(
+                stringr::str_detect(.data$domain, "overall") ~
+                    "Overall risk of bias",
+                stringr::str_detect(.data$domain, "allocation|random") ~
+                    "Bias arising from randomisation process",
+                stringr::str_detect(.data$domain, "deviation|intended") ~ "
+            Bias due to deviations from intended interventions",
+            stringr::str_detect(.data$domain, "measure") ~
+                "Bias in outcome measurement",
+            stringr::str_detect(.data$domain, "miss") ~
+                "Bias due to missing outcome data",
+            stringr::str_detect(.data$domain, "report|select") ~
+                "Bias in selection of reported results"
+            )
+        )
+
+    # Plot
+    p <- ggplot2::ggplot(data = data,
+                         mapping = ggplot2::aes(
+                             x = study_share,
+                             y = plot_domain,
+                             fill = judgement)) +
+        ggplot2::geom_bar(position = "stack",
+                         stat = "identity",
+                         color = "#FFFFFF") +
+        theme_covalence()
+
+    p
 }

@@ -25,7 +25,8 @@ Imports:
     ggplot2,
     grDevices,
     rlang,
-    scales
+    scales,
+    stringr
 URL: https://covalenceresearch.github.io/covalencer/
 Suggests: 
     testthat (>= 3.0.0),
