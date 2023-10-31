@@ -102,7 +102,11 @@ plot_rob2_summary <- function(data,
         )
     }
 
-    plotting_scale <- ifelse(any(check_sum$total > 1), 1, 100)
+    if (any(check_sum$total > 1, na.rm = TRUE)) {
+        plotting_scale <- 1
+    } else {
+        plotting_scale <- 100
+    }
 
     ## Input types
     if (!is.numeric(data[[deparse(substitute(study_share))]])) {
