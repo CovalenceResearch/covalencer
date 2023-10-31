@@ -134,6 +134,14 @@ plot_rob2_summary <- function(data,
                 stringr::str_detect(.data$judgement, stringr::coll("some")) ~
                     "Some concerns"
             )
+        ) |>
+        dplyr::mutate(
+            plot_judgement = forcats::fct_relevel(
+                .data$plot_judgement,
+                "High risk of bias",
+                "Some concerns",
+                "Low risk of bias"
+            )
         )
 
     # Plot
@@ -168,6 +176,10 @@ plot_rob2_summary <- function(data,
             expand = expansion(add = 0)
         ) +
         ggplot2::scale_fill_manual(NULL,
+                                   breaks =
+                                       c("Low risk of bias",
+                                         "Some concerns",
+                                         "High risk of bias"),
                                    values = pal_fill) +
         coord_cartesian(clip = "off") +
         theme_covalence() +
