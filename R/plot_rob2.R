@@ -67,6 +67,23 @@ plot_rob2_summary <- function(data,
         )
     }
 
+    ## Study shares sum to 1
+    check_sum <- data |>
+        dplyr::group_by(domain) |>
+        dplyr::summarize(total = sum(study_share, na.rm = FALSE)) |>
+        dplyr::ungroup()
+
+    wrong_sum <- sort(check_sum$domain[which(!(check_sum$total == 1 |
+                                                   check_sum$total == 100))])
+
+    if (length(wrong_sum) > 0) {
+        cli::cli_alert_warning(
+            c(
+                "Study shares for the {wrong_sum} domain(s) don't sum to a sensible value."
+            )
+        )
+    }
+
     ## Input types
     if (!is.numeric(data[[deparse(substitute(study_share))]])) {
         cli::cli_abort("{.var study_share} must be numeric.")
