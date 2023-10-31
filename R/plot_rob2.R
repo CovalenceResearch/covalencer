@@ -94,6 +94,8 @@ plot_rob2_summary <- function(data,
         )
     }
 
+    plotting_scale <- ifelse(any(check_sum$total > 1), 10, 100)
+
     ## Input types
     if (!is.numeric(data[[deparse(substitute(study_share))]])) {
         cli::cli_abort("{.var study_share} must be numeric.")
@@ -101,9 +103,11 @@ plot_rob2_summary <- function(data,
 
     ## Domain checks
     domain_values <-
-        tolower(unique(data[,
-                            deparse(substitute(domain)),
-                            drop = TRUE]))
+        unlist(strsplit(stringr::str_to_lower((unique(
+            data[,
+                 deparse(substitute(domain)),
+                 drop = TRUE]
+        ))), split = "\\s"))
     domain_missing <-
         domain_check_words[which(!(tolower(domain_check_words) %in%
                                        domain_values))]
@@ -151,17 +155,6 @@ plot_rob2_summary <- function(data,
                 "Some concerns",
                 "Low risk of bias"
             )
-        ) |>
-        dplyr::mutate(
-            plot_domain = forcats::fct_relevel(
-                .data$plot_domain,
-                "Overall risk of bias",
-                "Bias in selection of reported results",
-                "Bias due to missing outcome data",
-                "Bias in outcome measurement",
-                "Bias due to deviations from intended interventions",
-                "Bias arising from randomisation process"
-            )
         )
 
     # Plot
@@ -186,8 +179,7 @@ plot_rob2_summary <- function(data,
                           color = "#FFFFFF") +
         ggplot2::scale_x_continuous(
             name = "Studies",
-            limits = c(0, 1),
-            labels = scales::label_percent(),
+            labels = scales::label_percent(scale = plotting_scale),
             expand = ggplot2::expansion(add = c(0, 0.02))
         ) +
         ggplot2::scale_y_discrete(
