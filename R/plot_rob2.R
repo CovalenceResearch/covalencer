@@ -118,9 +118,11 @@ plot_rob2_summary <- function(data,
     # Plot
     p <- ggplot2::ggplot(
         data = data,
-        mapping = ggplot2::aes(x = .data$study_share,
-                               y = .data$plot_domain,
-                               fill = .data$plot_judgement)
+        mapping = ggplot2::aes(
+            x = .data$study_share,
+            y = .data$plot_domain,
+            fill = .data$plot_judgement
+        )
     ) +
         ggplot2::geom_bar(position = "stack",
                           stat = "identity",
