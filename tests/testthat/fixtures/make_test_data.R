@@ -1,3 +1,5 @@
+
+# PSA test data
 test_psa <- data.frame(
     delta_qalys = rnorm(2000, 2, 2),
     delta_costs = rnorm(2000, 10000, 1000),
