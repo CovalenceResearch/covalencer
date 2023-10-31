@@ -25,16 +25,25 @@
 #' @examples
 #' library(ggplot2)
 #'
-#' # These data are certainly not reflective of best practice!
 #' data_rob2 <- data.frame(
-#'  domain = rep(c("Overall bias",
-#'    "Bias due to deviations from intended interventions", "Missing data"),
-#'    each = 3),
-#'  judgement = rep(c("Low", "Some concerns", "High risk of bias"), times = 3),
-#'  study_share = c(0.4, 0.4, 0.2, 0.1, 0.85, 0.05, 0.2, 0.5, 0.3))
+#'    domain = rep(
+#'        c(
+#'            "Overall bias",
+#'            "Bias due to deviations from intended interventions",
+#'            "Missing data"
+#'        ),
+#'        each = 3
+#'    ),
+#'    judgement = rep(c("Low", "Some concerns", "High risk of bias"), times = 3),
+#'    study_share = c(0.4, 0.4, 0.2, 0.1, 0.85, 0.05, 0.2, 0.5, 0.3)
+#')
 #'
-#'  plot_rob2_summary(data_rob2, domain = domain, judgement = judgement,
-#'    study_share = study_share)
+#'plot_rob2_summary(
+#'    data_rob2,
+#'    domain = domain,
+#'    judgement = judgement,
+#'    study_share = study_share
+#')
 plot_rob2_summary <- function(data,
                               domain = domain,
                               judgement = judgement,
@@ -142,6 +151,17 @@ plot_rob2_summary <- function(data,
                 "Some concerns",
                 "Low risk of bias"
             )
+        ) |>
+        dplyr::mutate(
+            plot_domain = forcats::fct_relevel(
+                .data$plot_domain,
+                "Bias in selection of reported results",
+                "Bias due to missing outcome data",
+                "Bias in outcome measurement",
+                "Bias due to deviations from intended interventions",
+                "Bias arising from randomisation process",
+                "Overall risk of bias"
+            )
         )
 
     # Plot
@@ -168,22 +188,24 @@ plot_rob2_summary <- function(data,
             name = "Studies",
             limits = c(0, 1),
             labels = scales::label_percent(),
-            expand = expansion(add = c(0, 0.02))
+            expand = ggplot2::expansion(add = c(0, 0.02))
         ) +
         ggplot2::scale_y_discrete(
             name = NULL,
             labels = scales::wrap_format(width = 25),
-            expand = expansion(add = 0)
+            expand = ggplot2::expansion(add = 0)
         ) +
-        ggplot2::scale_fill_manual(NULL,
-                                   breaks =
-                                       c("Low risk of bias",
-                                         "Some concerns",
-                                         "High risk of bias"),
-                                   values = pal_fill) +
-        coord_cartesian(clip = "off") +
+        ggplot2::scale_fill_manual(
+            NULL,
+            breaks =
+                c("Low risk of bias",
+                  "Some concerns",
+                  "High risk of bias"),
+            values = pal_fill
+        ) +
+        ggplot2::coord_cartesian(clip = "off") +
         theme_covalence() +
-        theme(
+        ggplot2::theme(
             panel.grid.major = ggplot2::element_blank(),
             axis.title.y = ggplot2::element_blank(),
             legend.title = ggplot2::element_blank()
