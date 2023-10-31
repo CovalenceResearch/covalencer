@@ -148,6 +148,18 @@ plot_rob2_summary <- function(data,
         ggplot2::geom_bar(position = "stack",
                           stat = "identity",
                           color = "#FFFFFF") +
+        ggplot2::scale_x_continuous(
+            name = "Studies",
+            limits = c(0, 1),
+            labels = scales::label_percent(),
+            expand = expansion(add = c(0, 0.02))
+        ) +
+        ggplot2::scale_y_discrete(
+            name = NULL,
+            labels = scales::wrap_format(width = 25),
+            expand = expansion(add = 0)
+        ) +
+        coord_cartesian(clip = "off") +
         theme_covalence() +
         theme(
             panel.grid.major = ggplot2::element_blank(),
