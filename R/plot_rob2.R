@@ -1,3 +1,37 @@
+#' Plot summary of RoB2 assessments
+#'
+#' @description
+#' The [RoB2 tool](https://www.riskofbias.info/welcome/rob-2-0-tool),
+#' developed by the Cochrane Collaboration, allows assessing the
+#' risk of bias in randomized trials. In addition to a study-level traffic light
+#' plot, a typical output of RoB2 assessments is a summary of the proportion
+#' of studies with a specific bias risk, per domain. This latter type of plot is
+#' created by `plot_rob2_summary`, which requires summarized data (i.e., no
+#' data synthesis or calculations are performed by the function).
+#'
+#' @param data A data.frame.
+#' @param domain Unquoted column name for the bias domains.
+#' @param judgement Unquoted column name for the risk of bias judgement.
+#' @param study_share Unquoted column name for proportion [0, 1] of studies with
+#'  a specific bias risk per domain. Values in this column must all be numeric.
+#' @param domain_check_words A character vector of check words the presence of
+#'  which is checked by the function, and a warning displayed if they're missing.
+#'  This is useful to see if perhaps a domain had been missed.
+#'
+#' @return A ggplot2 object
+#' @importFrom rlang .data
+#' @export
+#'
+#' @examples
+#' library(ggplot2)
+#'
+#' # These data are certainly not reflective of best practice!
+#' data_rob2 <- data.frame(
+#'  domain = rep(c("Overall bias",
+#'    "Bias due to deviations from intended interventions", "Missing data"),
+#'    each = 3),
+#'  judgement = rep(c("Low", "Some concerns", "High risk of bias"), times = 3),
+#'  study_share = c(0.4, 0.4, 0.2, 0.1, 0.85, 0.05, 0.2, 0.5, 0.3))
 plot_rob2_summary <- function(data,
                               domain = domain,
                               judgement = judgement,
