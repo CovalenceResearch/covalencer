@@ -12,7 +12,7 @@
 #' @param data A data.frame.
 #' @param domain Unquoted column name for the bias domains.
 #' @param judgement Unquoted column name for the risk of bias judgement.
-#' @param study_share Unquoted column name for proportion [0, 1] of studies with
+#' @param study_share Unquoted column name for proportion \[0, 1\] of studies with
 #'  a specific bias risk per domain. Values in this column must all be numeric.
 #' @param domain_check_words A character vector of check words the presence of
 #'  which is checked by the function, and a warning displayed if they're missing.
@@ -118,9 +118,9 @@ plot_rob2_summary <- function(data,
     # Plot
     p <- ggplot2::ggplot(
         data = data,
-        mapping = ggplot2::aes(x = study_share,
-                               y = plot_domain,
-                               fill = plot_judgement)
+        mapping = ggplot2::aes(x = .data$study_share,
+                               y = .data$plot_domain,
+                               fill = .data$plot_judgement)
     ) +
         ggplot2::geom_bar(position = "stack",
                           stat = "identity",
