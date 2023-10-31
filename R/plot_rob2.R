@@ -137,6 +137,14 @@ plot_rob2_summary <- function(data,
         )
 
     # Plot
+    ## Fill palette
+    pal_fill <-
+        c(covalence_colours("cov_red", "cov_orange", "cov_green"))
+    names(pal_fill) <- c("High risk of bias",
+                         "Some concerns",
+                         "Low risk of bias")
+
+    ## Create plot
     p <- ggplot2::ggplot(
         data = data,
         mapping = ggplot2::aes(
@@ -159,6 +167,8 @@ plot_rob2_summary <- function(data,
             labels = scales::wrap_format(width = 25),
             expand = expansion(add = 0)
         ) +
+        ggplot2::scale_fill_manual(NULL,
+                                   values = pal_fill) +
         coord_cartesian(clip = "off") +
         theme_covalence() +
         theme(
