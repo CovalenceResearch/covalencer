@@ -247,6 +247,7 @@ plot_rob2_summary <- function(data,
         ggplot2::coord_cartesian(clip = "off") +
         theme_covalence() +
         ggplot2::theme(
+            axis.text = ggplot2::element_text(family = "bold"),
             axis.title.y = ggplot2::element_blank(),
             legend.title = ggplot2::element_blank(),
             panel.grid.major = ggplot2::element_blank()
