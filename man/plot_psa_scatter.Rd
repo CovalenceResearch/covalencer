@@ -67,7 +67,7 @@ plot_psa_scatter(
 \item{mean_size}{Numeric value for point size. Default is \code{3}.}
 }
 \value{
-A ggplot object
+A ggplot object.
 }
 \description{
 \code{plot_psa_scatter} takes a data.frame of incremental quality-adjusted life-years (QALYs) and incremental costs, as might be obtained from a probabilistic sensitivity analysis, and plots these data on the incremental cost-effectiveness plane.

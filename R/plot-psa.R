@@ -26,7 +26,7 @@
 #' @param mean_shape Integer value for mean point shape. Default is `18`. See `?pch` for available shapes.
 #' @param mean_size Numeric value for point size. Default is `3`.
 #'
-#' @return A ggplot object
+#' @return A ggplot object.
 #' @export
 #'
 #' @examples
