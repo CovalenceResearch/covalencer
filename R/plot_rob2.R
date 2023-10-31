@@ -155,12 +155,12 @@ plot_rob2_summary <- function(data,
         dplyr::mutate(
             plot_domain = forcats::fct_relevel(
                 .data$plot_domain,
+                "Overall risk of bias",
                 "Bias in selection of reported results",
                 "Bias due to missing outcome data",
                 "Bias in outcome measurement",
                 "Bias due to deviations from intended interventions",
-                "Bias arising from randomisation process",
-                "Overall risk of bias"
+                "Bias arising from randomisation process"
             )
         )
 
