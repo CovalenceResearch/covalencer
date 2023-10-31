@@ -50,7 +50,10 @@ plot_rob2_summary <- function(data,
 
     # Use consistent terminology for domains
     data <- data |>
-        dplyr::mutate(domain = stringr::str_to_lower(domain)) |>
+        dplyr::mutate(
+            domain = stringr::str_to_lower(domain),
+            judgement = stringr::str_to_lower(judgement)
+        ) |>
         dplyr::mutate(
             plot_domain = dplyr::case_when(
                 stringr::str_detect(.data$domain, "overall") ~
@@ -66,17 +69,28 @@ plot_rob2_summary <- function(data,
             stringr::str_detect(.data$domain, "report|select") ~
                 "Bias in selection of reported results"
             )
+        ) |>
+        dplyr::mutate(
+            plot_judgement = dplyr::case_when(
+                stringr::str_detect(.data$judgement, stringr::coll("high")) ~
+                    "High risk of bias",
+                stringr::str_detect(.data$judgement, stringr::coll("low")) ~
+                    "Low risk of bias",
+                stringr::str_detect(.data$judgement, stringr::coll("some")) ~
+                    "Some concerns"
+            )
         )
 
     # Plot
-    p <- ggplot2::ggplot(data = data,
-                         mapping = ggplot2::aes(
-                             x = study_share,
-                             y = plot_domain,
-                             fill = judgement)) +
+    p <- ggplot2::ggplot(
+        data = data,
+        mapping = ggplot2::aes(x = study_share,
+                               y = plot_domain,
+                               fill = plot_judgement)
+    ) +
         ggplot2::geom_bar(position = "stack",
-                         stat = "identity",
-                         color = "#FFFFFF") +
+                          stat = "identity",
+                          color = "#FFFFFF") +
         theme_covalence()
 
     p
