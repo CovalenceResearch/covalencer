@@ -45,9 +45,9 @@
 #'    study_share = study_share
 #')
 plot_rob2_summary <- function(data,
-                              domain = domain,
-                              judgement = judgement,
-                              study_share = study_share,
+                              domain,
+                              judgement,
+                              study_share,
                               domain_check_words = c("overall",
                                                      "random",
                                                      "deviation",
@@ -78,8 +78,16 @@ plot_rob2_summary <- function(data,
 
     ## Study shares sum to 1
     check_sum <- data |>
-        dplyr::group_by(domain) |>
-        dplyr::summarize(total = sum(study_share, na.rm = FALSE)) |>
+        dplyr::group_by({
+            {
+                domain
+            }
+        }) |>
+        dplyr::summarize(total = sum({
+            {
+                study_share
+            }
+        }, na.rm = FALSE)) |>
         dplyr::ungroup()
 
     wrong_sum <-
@@ -108,6 +116,7 @@ plot_rob2_summary <- function(data,
                  deparse(substitute(domain)),
                  drop = TRUE]
         ))), split = "\\s"))
+
     domain_missing <-
         domain_check_words[which(!(tolower(domain_check_words) %in%
                                        domain_values))]
@@ -119,32 +128,64 @@ plot_rob2_summary <- function(data,
     # Use consistent terminology for domains
     data <- data |>
         dplyr::mutate(
-            domain = stringr::str_to_lower(domain),
-            judgement = stringr::str_to_lower(judgement)
-        ) |>
-        dplyr::mutate(
             plot_domain = dplyr::case_when(
-                stringr::str_detect(.data$domain, "overall") ~
+                stringr::str_detect(stringr::str_to_lower({
+                    {
+                        domain
+                    }
+                }), "overall") ~
                     "Overall risk of bias",
-                stringr::str_detect(.data$domain, "allocation|random") ~
+                stringr::str_detect(stringr::str_to_lower({
+                    {
+                        domain
+                    }
+                }), "allocation|random") ~
                     "Bias arising from randomisation process",
-                stringr::str_detect(.data$domain, "deviation|intended") ~ "
+                stringr::str_detect({
+                    {
+                        domain
+                    }
+                }, "deviation|intended") ~ "
             Bias due to deviations from intended interventions",
-            stringr::str_detect(.data$domain, "measure") ~
+            stringr::str_detect(stringr::str_to_lower({
+                {
+                    domain
+                }
+            }), "measure") ~
                 "Bias in outcome measurement",
-            stringr::str_detect(.data$domain, "miss") ~
+            stringr::str_detect(stringr::str_to_lower({
+                {
+                    domain
+                }
+            }), "miss") ~
                 "Bias due to missing outcome data",
-            stringr::str_detect(.data$domain, "report|select") ~
+            stringr::str_detect(stringr::str_to_lower({
+                {
+                    domain
+                }
+            }), "report|select") ~
                 "Bias in selection of reported results"
             )
         ) |>
         dplyr::mutate(
             plot_judgement = dplyr::case_when(
-                stringr::str_detect(.data$judgement, stringr::coll("high")) ~
+                stringr::str_detect(stringr::str_to_lower({
+                    {
+                        judgement
+                    }
+                }), stringr::coll("high")) ~
                     "High risk of bias",
-                stringr::str_detect(.data$judgement, stringr::coll("low")) ~
+                stringr::str_detect(stringr::str_to_lower({
+                    {
+                        judgement
+                    }
+                }), stringr::coll("low")) ~
                     "Low risk of bias",
-                stringr::str_detect(.data$judgement, stringr::coll("some")) ~
+                stringr::str_detect(stringr::str_to_lower({
+                    {
+                        judgement
+                    }
+                }), stringr::coll("some")) ~
                     "Some concerns"
             )
         ) |>
@@ -169,7 +210,11 @@ plot_rob2_summary <- function(data,
     p <- ggplot2::ggplot(
         data = data,
         mapping = ggplot2::aes(
-            x = .data$study_share,
+            x = {
+                {
+                    study_share
+                }
+            },
             y = .data$plot_domain,
             fill = .data$plot_judgement
         )
