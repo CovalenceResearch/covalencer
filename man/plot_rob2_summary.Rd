@@ -20,7 +20,7 @@ plot_rob2_summary(
 
 \item{judgement}{Unquoted column name for the risk of bias judgement.}
 
-\item{study_share}{Unquoted column name for proportion \link{0, 1} of studies with
+\item{study_share}{Unquoted column name for proportion [0, 1] of studies with
 a specific bias risk per domain. Values in this column must all be numeric.}
 
 \item{domain_check_words}{A character vector of check words the presence of
@@ -49,5 +49,4 @@ data_rob2 <- data.frame(
    each = 3),
  judgement = rep(c("Low", "Some concerns", "High risk of bias"), times = 3),
  study_share = c(0.4, 0.4, 0.2, 0.1, 0.85, 0.05, 0.2, 0.5, 0.3))
-
 }
