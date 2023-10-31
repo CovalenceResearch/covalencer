@@ -148,7 +148,12 @@ plot_rob2_summary <- function(data,
         ggplot2::geom_bar(position = "stack",
                           stat = "identity",
                           color = "#FFFFFF") +
-        theme_covalence()
+        theme_covalence() +
+        theme(
+            panel.grid.major = ggplot2::element_blank(),
+            axis.title.y = ggplot2::element_blank(),
+            legend.title = ggplot2::element_blank()
+        )
 
     p
 }
