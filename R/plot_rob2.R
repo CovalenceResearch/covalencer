@@ -78,9 +78,11 @@ plot_rob2_summary <- function(data,
                                           check_sum$total == 100))])
 
     if (length(wrong_sum) > 0) {
-        cli::cli_alert_warning(cli::pluralize(
-            "Study shares for the {wrong_sum} domain{?s} don't sum to a sensible value."
-        ))
+        cli::cli_alert_warning(
+            cli::pluralize(
+                "Study shares for the {wrong_sum} domain{?s} don't sum to a sensible value."
+            )
+        )
     }
 
     ## Input types
