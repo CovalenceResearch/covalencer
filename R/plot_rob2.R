@@ -12,7 +12,7 @@ plot_rob2_summary <- function(data,
     col_judgement   <- rlang::as_string(rlang::ensym(judgement))
     col_study_share <- rlang::as_string(rlang::ensym(study_share))
 
-    col_names <- c(col_domain, col_judgement, col_study_share)
+    col_names   <- c(col_domain, col_judgement, col_study_share)
     col_missing <- setdiff(col_names, names(data))
 
     # Argument checks
