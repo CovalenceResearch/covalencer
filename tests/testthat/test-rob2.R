@@ -15,7 +15,17 @@ test_that("rob2 summary plot works", {
     # One domain missing - warning
     expect_warning(
         plot_rob2_summary(
-            data = data_rob2_summary[-(1:3),],
+            data = data_rob2_summary[-(1:3), ],
+            domain = bias,
+            judgement = assess,
+            study_share = percentage
+        )
+    )
+
+    # Percentages not summing
+    expect_warning(
+        plot_rob2_summary(
+            data = data_rob2_summary[-2, ],
             domain = bias,
             judgement = assess,
             study_share = percentage
