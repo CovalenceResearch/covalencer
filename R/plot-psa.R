@@ -101,11 +101,11 @@ plot_psa_scatter <- function(data,
     }
 
     if (is.null(plot_wtp_at)) {
-        cli::cli_alert_info("No WTP threshold is plotted.")
+        cli::cli_inform("No WTP threshold is plotted.")
     } else if (plot_wtp_at < 0) {
-        cli::cli_alert_warning("The WTP threshold is negative.")
+        cli::cli_warn("The WTP threshold is negative.")
     } else {
-        cli::cli_alert_info(c("The WTP threshold is plotted at ",
+        cli::cli_inform(c("The WTP threshold is plotted at ",
                               "{currency}{plot_wtp_at} per QALY gained."))
     }
 
