@@ -79,14 +79,19 @@ plot_rob2_summary <- function(data,
                 study_share
             }
         }, na.rm = FALSE)) |>
-        dplyr::ungroup()
+        dplyr::ungroup() |>
+        dplyr::filter(!(total == 1 | total == 100))
 
-    wrong_sum <-
-        sort(check_sum$domain[which(!(check_sum$total == 1 |
-                                          check_sum$total == 100))])
+    wrong_sum <- check_sum |>
+        dplyr::pull({
+            {
+                domain
+            }
+        }) |>
+        unique()
 
     if (length(wrong_sum) > 0) {
-        cli::cli_alert_warning(
+        cli::cli_warn(
             cli::pluralize(
                 "Study shares for the {wrong_sum} domain{?s} don't sum to a sensible value."
             )
@@ -124,24 +129,24 @@ plot_rob2_summary <- function(data,
                         domain
                     }
                 }, "deviation|intended") ~ "Bias due to deviations from intended interventions",
-            stringr::str_detect(stringr::str_to_lower({
-                {
-                    domain
-                }
-            }), "measure") ~
-                "Bias in outcome measurement",
-            stringr::str_detect(stringr::str_to_lower({
-                {
-                    domain
-                }
-            }), "miss") ~
-                "Bias due to missing outcome data",
-            stringr::str_detect(stringr::str_to_lower({
-                {
-                    domain
-                }
-            }), "report|select") ~
-                "Bias in selection of reported results"
+                stringr::str_detect(stringr::str_to_lower({
+                    {
+                        domain
+                    }
+                }), "measure") ~
+                    "Bias in outcome measurement",
+                stringr::str_detect(stringr::str_to_lower({
+                    {
+                        domain
+                    }
+                }), "miss") ~
+                    "Bias due to missing outcome data",
+                stringr::str_detect(stringr::str_to_lower({
+                    {
+                        domain
+                    }
+                }), "report|select") ~
+                    "Bias in selection of reported results"
             )
         ) |>
         dplyr::mutate(
