@@ -112,8 +112,7 @@ plot_rob2_summary <- function(data,
                     {
                         domain
                     }
-                }), "overall") ~
-                    "Overall risk of bias",
+                }), "overall") ~ "Overall risk of bias",
                 stringr::str_detect(stringr::str_to_lower({
                     {
                         domain
@@ -124,8 +123,7 @@ plot_rob2_summary <- function(data,
                     {
                         domain
                     }
-                }, "deviation|intended") ~ "
-            Bias due to deviations from intended interventions",
+                }, "deviation|intended") ~ "Bias due to deviations from intended interventions",
             stringr::str_detect(stringr::str_to_lower({
                 {
                     domain
@@ -174,6 +172,15 @@ plot_rob2_summary <- function(data,
                 "High risk of bias",
                 "Some concerns",
                 "Low risk of bias"
+            ),
+            plot_domain = forcats::fct_relevel(
+                .data$plot_domain,
+                "Overall risk of bias",
+                "Bias in selection of reported results",
+                "Bias due to missing outcome data",
+                "Bias in outcome measurement",
+                "Bias due to deviations from intended interventions",
+                "Bias arising from randomisation process"
             )
         )
 
@@ -222,7 +229,7 @@ plot_rob2_summary <- function(data,
         ggplot2::coord_cartesian(clip = "off") +
         theme_covalence() +
         ggplot2::theme(
-            axis.text = ggplot2::element_text(family = "bold"),
+            axis.text = ggplot2::element_text(face = "bold"),
             axis.title.y = ggplot2::element_blank(),
             legend.title = ggplot2::element_blank(),
             panel.grid.major = ggplot2::element_blank()
