@@ -80,7 +80,7 @@ plot_rob2_summary <- function(data,
             }
         }, na.rm = FALSE)) |>
         dplyr::ungroup() |>
-        dplyr::filter(!(total == 1 | total == 100))
+        dplyr::filter(!(.data$total == 1 | .data$total == 100))
 
     wrong_sum <- check_sum |>
         dplyr::pull({
