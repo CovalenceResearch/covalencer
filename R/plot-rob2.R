@@ -14,9 +14,6 @@
 #' @param judgement Unquoted column name for the risk of bias judgement.
 #' @param study_share Unquoted column name for proportion \[0, 1\] of studies with
 #'  a specific bias risk per domain. Values in this column must all be numeric.
-#' @param domain_check_words A character vector of check words the presence of
-#'  which is checked by the function, and a warning displayed if they're missing.
-#'  This is useful to see if perhaps a domain had been missed.
 #'
 #' @return A ggplot2 object
 #' @importFrom rlang .data
@@ -47,13 +44,7 @@
 plot_rob2_summary <- function(data,
                               domain,
                               judgement,
-                              study_share,
-                              domain_check_words = c("overall",
-                                                     "random",
-                                                     "deviation",
-                                                     "missing",
-                                                     "measure",
-                                                     "select")) {
+                              study_share) {
     col_domain      <- rlang::as_string(rlang::ensym(domain))
     col_judgement   <- rlang::as_string(rlang::ensym(judgement))
     col_study_share <- rlang::as_string(rlang::ensym(study_share))
@@ -111,22 +102,6 @@ plot_rob2_summary <- function(data,
     ## Input types
     if (!is.numeric(data[[deparse(substitute(study_share))]])) {
         cli::cli_abort("{.var study_share} must be numeric.")
-    }
-
-    ## Domain checks
-    domain_values <-
-        unlist(strsplit(stringr::str_to_lower((unique(
-            data[,
-                 deparse(substitute(domain)),
-                 drop = TRUE]
-        ))), split = "\\s"))
-
-    domain_missing <-
-        domain_check_words[which(!(tolower(domain_check_words) %in%
-                                       domain_values))]
-
-    if (length(domain_missing) > 0) {
-        cli::cli_alert_warning("No domain labels contain: {domain_missing}.")
     }
 
     # Use consistent terminology for domains
