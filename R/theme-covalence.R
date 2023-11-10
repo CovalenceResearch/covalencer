@@ -61,7 +61,7 @@ theme_covalence <- function(base_size = 12,
             axis.text.x = ggplot2::element_text(margin = ggplot2::margin(t = 2, unit = "pt")),
             axis.text.y = ggplot2::element_text(
                 hjust = 1,
-                margin = ggplot2::margin(r = 0, unit = "pt")),
+                margin = ggplot2::margin(r = 2, unit = "pt")),
             legend.background = ggplot2::element_blank(),
             legend.direction = "horizontal",
             legend.justification = "right",
