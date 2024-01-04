@@ -19,45 +19,45 @@
 </defs>
 <g clip-path='url(#cpMC4wMHw3MjAuMDB8MC4wMHw1NzYuMDA=)'>
 <rect x='0.00' y='0.00' width='720.00' height='576.00' style='stroke-width: 1.16; stroke: #FFFFFF; fill: #FFFFFF;' />
-<rect x='104.57' y='57.31' width='609.45' height='488.38' style='stroke-width: 1.16; stroke: none; fill: #FFFFFF;' />
-<rect x='104.57' y='471.19' width='59.75' height='74.50' style='stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #008040;' />
-<rect x='164.32' y='471.19' width='59.75' height='74.50' style='stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFB300;' />
-<rect x='224.07' y='471.19' width='478.00' height='74.50' style='stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #C30026;' />
-<rect x='104.57' y='57.31' width='298.75' height='74.50' style='stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #008040;' />
-<rect x='403.32' y='57.31' width='239.00' height='74.50' style='stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFB300;' />
-<rect x='642.32' y='57.31' width='59.75' height='74.50' style='stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #C30026;' />
-<rect x='104.57' y='140.09' width='239.00' height='74.50' style='stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #008040;' />
-<rect x='343.57' y='140.09' width='179.25' height='74.50' style='stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFB300;' />
-<rect x='522.82' y='140.09' width='179.25' height='74.50' style='stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #C30026;' />
-<rect x='104.57' y='305.64' width='537.75' height='74.50' style='stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #008040;' />
-<rect x='642.32' y='305.64' width='29.88' height='74.50' style='stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFB300;' />
-<rect x='672.20' y='305.64' width='29.88' height='74.50' style='stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #C30026;' />
-<rect x='104.57' y='222.87' width='418.25' height='74.50' style='stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #008040;' />
-<rect x='522.82' y='222.87' width='149.38' height='74.50' style='stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFB300;' />
-<rect x='672.20' y='222.87' width='29.88' height='74.50' style='stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #C30026;' />
-<rect x='104.57' y='388.42' width='119.50' height='74.50' style='stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #008040;' />
-<rect x='224.07' y='388.42' width='119.50' height='74.50' style='stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFB300;' />
-<rect x='343.57' y='388.42' width='358.50' height='74.50' style='stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #C30026;' />
-<polyline points='104.57,545.69 104.57,57.31 ' style='stroke-width: 1.16; stroke-linecap: butt;' />
-<text x='102.58' y='511.75' text-anchor='end' style='font-size: 9.60px; font-family: sans;' textLength='78.97px' lengthAdjust='spacingAndGlyphs'>Overall risk of bias</text>
-<text x='102.58' y='422.63' text-anchor='end' style='font-size: 9.60px; font-family: sans;' textLength='80.05px' lengthAdjust='spacingAndGlyphs'>Bias in selection of</text>
-<text x='102.58' y='435.31' text-anchor='end' style='font-size: 9.60px; font-family: sans;' textLength='66.71px' lengthAdjust='spacingAndGlyphs'>reported results</text>
-<text x='102.58' y='339.86' text-anchor='end' style='font-size: 9.60px; font-family: sans;' textLength='83.26px' lengthAdjust='spacingAndGlyphs'>Bias due to missing</text>
-<text x='102.58' y='352.53' text-anchor='end' style='font-size: 9.60px; font-family: sans;' textLength='58.18px' lengthAdjust='spacingAndGlyphs'>outcome data</text>
-<text x='102.58' y='257.08' text-anchor='end' style='font-size: 9.60px; font-family: sans;' textLength='68.31px' lengthAdjust='spacingAndGlyphs'>Bias in outcome</text>
-<text x='102.58' y='269.75' text-anchor='end' style='font-size: 9.60px; font-family: sans;' textLength='58.71px' lengthAdjust='spacingAndGlyphs'>measurement</text>
-<text x='102.58' y='167.97' text-anchor='end' style='font-size: 9.60px; font-family: sans;' textLength='93.94px' lengthAdjust='spacingAndGlyphs'>Bias due to deviations</text>
-<text x='102.58' y='180.64' text-anchor='end' style='font-size: 9.60px; font-family: sans;' textLength='58.71px' lengthAdjust='spacingAndGlyphs'>from intended</text>
-<text x='102.58' y='193.31' text-anchor='end' style='font-size: 9.60px; font-family: sans;' textLength='54.44px' lengthAdjust='spacingAndGlyphs'>interventions</text>
-<text x='102.58' y='91.53' text-anchor='end' style='font-size: 9.60px; font-family: sans;' textLength='71.50px' lengthAdjust='spacingAndGlyphs'>Bias arising from</text>
-<text x='102.58' y='104.20' text-anchor='end' style='font-size: 9.60px; font-family: sans;' textLength='96.60px' lengthAdjust='spacingAndGlyphs'>randomisation process</text>
-<polyline points='104.57,545.69 714.02,545.69 ' style='stroke-width: 1.16; stroke-linecap: butt;' />
-<text x='104.57' y='554.29' text-anchor='middle' style='font-size: 9.60px; font-family: sans;' textLength='13.88px' lengthAdjust='spacingAndGlyphs'>0%</text>
-<text x='253.95' y='554.29' text-anchor='middle' style='font-size: 9.60px; font-family: sans;' textLength='19.22px' lengthAdjust='spacingAndGlyphs'>25%</text>
-<text x='403.32' y='554.29' text-anchor='middle' style='font-size: 9.60px; font-family: sans;' textLength='19.22px' lengthAdjust='spacingAndGlyphs'>50%</text>
-<text x='552.70' y='554.29' text-anchor='middle' style='font-size: 9.60px; font-family: sans;' textLength='19.22px' lengthAdjust='spacingAndGlyphs'>75%</text>
-<text x='702.07' y='554.29' text-anchor='middle' style='font-size: 9.60px; font-family: sans;' textLength='24.55px' lengthAdjust='spacingAndGlyphs'>100%</text>
-<text x='409.30' y='567.53' text-anchor='middle' style='font-size: 12.00px; font-weight: bold; font-family: sans;' textLength='40.03px' lengthAdjust='spacingAndGlyphs'>Studies</text>
+<rect x='131.71' y='57.31' width='582.31' height='483.24' style='stroke-width: 1.16; stroke: none; fill: #FFFFFF;' />
+<rect x='131.71' y='466.84' width='57.09' height='73.71' style='stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #008040;' />
+<rect x='188.80' y='466.84' width='57.09' height='73.71' style='stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFB300;' />
+<rect x='245.89' y='466.84' width='456.72' height='73.71' style='stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #C30026;' />
+<rect x='131.71' y='57.31' width='285.45' height='73.71' style='stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #008040;' />
+<rect x='417.16' y='57.31' width='228.36' height='73.71' style='stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFB300;' />
+<rect x='645.52' y='57.31' width='57.09' height='73.71' style='stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #C30026;' />
+<rect x='131.71' y='139.22' width='228.36' height='73.71' style='stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #008040;' />
+<rect x='360.07' y='139.22' width='171.27' height='73.71' style='stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFB300;' />
+<rect x='531.34' y='139.22' width='171.27' height='73.71' style='stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #C30026;' />
+<rect x='131.71' y='303.03' width='513.80' height='73.71' style='stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #008040;' />
+<rect x='645.52' y='303.03' width='28.54' height='73.71' style='stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFB300;' />
+<rect x='674.06' y='303.03' width='28.54' height='73.71' style='stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #C30026;' />
+<rect x='131.71' y='221.12' width='399.63' height='73.71' style='stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #008040;' />
+<rect x='531.34' y='221.12' width='142.72' height='73.71' style='stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFB300;' />
+<rect x='674.06' y='221.12' width='28.54' height='73.71' style='stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #C30026;' />
+<rect x='131.71' y='384.93' width='114.18' height='73.71' style='stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #008040;' />
+<rect x='245.89' y='384.93' width='114.18' height='73.71' style='stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFB300;' />
+<rect x='360.07' y='384.93' width='342.54' height='73.71' style='stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #C30026;' />
+<polyline points='131.71,540.55 131.71,57.31 ' style='stroke-width: 1.16; stroke-linecap: butt;' />
+<text x='126.73' y='507.83' text-anchor='end' style='font-size: 12.00px; font-family: sans;' textLength='98.71px' lengthAdjust='spacingAndGlyphs'>Overall risk of bias</text>
+<text x='126.73' y='418.00' text-anchor='end' style='font-size: 12.00px; font-family: sans;' textLength='100.07px' lengthAdjust='spacingAndGlyphs'>Bias in selection of</text>
+<text x='126.73' y='433.84' text-anchor='end' style='font-size: 12.00px; font-family: sans;' textLength='83.38px' lengthAdjust='spacingAndGlyphs'>reported results</text>
+<text x='126.73' y='336.10' text-anchor='end' style='font-size: 12.00px; font-family: sans;' textLength='104.07px' lengthAdjust='spacingAndGlyphs'>Bias due to missing</text>
+<text x='126.73' y='351.94' text-anchor='end' style='font-size: 12.00px; font-family: sans;' textLength='72.73px' lengthAdjust='spacingAndGlyphs'>outcome data</text>
+<text x='126.73' y='254.19' text-anchor='end' style='font-size: 12.00px; font-family: sans;' textLength='85.39px' lengthAdjust='spacingAndGlyphs'>Bias in outcome</text>
+<text x='126.73' y='270.03' text-anchor='end' style='font-size: 12.00px; font-family: sans;' textLength='73.38px' lengthAdjust='spacingAndGlyphs'>measurement</text>
+<text x='126.73' y='164.37' text-anchor='end' style='font-size: 12.00px; font-family: sans;' textLength='117.42px' lengthAdjust='spacingAndGlyphs'>Bias due to deviations</text>
+<text x='126.73' y='180.21' text-anchor='end' style='font-size: 12.00px; font-family: sans;' textLength='73.38px' lengthAdjust='spacingAndGlyphs'>from intended</text>
+<text x='126.73' y='196.05' text-anchor='end' style='font-size: 12.00px; font-family: sans;' textLength='68.05px' lengthAdjust='spacingAndGlyphs'>interventions</text>
+<text x='126.73' y='90.38' text-anchor='end' style='font-size: 12.00px; font-family: sans;' textLength='89.37px' lengthAdjust='spacingAndGlyphs'>Bias arising from</text>
+<text x='126.73' y='106.22' text-anchor='end' style='font-size: 12.00px; font-family: sans;' textLength='120.75px' lengthAdjust='spacingAndGlyphs'>randomisation process</text>
+<polyline points='131.71,540.55 714.02,540.55 ' style='stroke-width: 1.16; stroke-linecap: butt;' />
+<text x='131.71' y='553.79' text-anchor='middle' style='font-size: 12.00px; font-family: sans;' textLength='17.34px' lengthAdjust='spacingAndGlyphs'>0%</text>
+<text x='274.43' y='553.79' text-anchor='middle' style='font-size: 12.00px; font-family: sans;' textLength='24.02px' lengthAdjust='spacingAndGlyphs'>25%</text>
+<text x='417.16' y='553.79' text-anchor='middle' style='font-size: 12.00px; font-family: sans;' textLength='24.02px' lengthAdjust='spacingAndGlyphs'>50%</text>
+<text x='559.88' y='553.79' text-anchor='middle' style='font-size: 12.00px; font-family: sans;' textLength='24.02px' lengthAdjust='spacingAndGlyphs'>75%</text>
+<text x='702.60' y='553.79' text-anchor='middle' style='font-size: 12.00px; font-family: sans;' textLength='30.69px' lengthAdjust='spacingAndGlyphs'>100%</text>
+<text x='422.87' y='567.53' text-anchor='middle' style='font-size: 12.00px; font-weight: bold; font-family: sans;' textLength='40.03px' lengthAdjust='spacingAndGlyphs'>Studies</text>
 <rect x='380.81' y='28.08' width='17.28' height='17.28' style='stroke-width: 1.16; stroke: none; fill: #FFFFFF;' />
 <rect x='381.51' y='28.79' width='15.86' height='15.86' style='stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #008040;' />
 <rect x='492.75' y='28.08' width='17.28' height='17.28' style='stroke-width: 1.16; stroke: none; fill: #FFFFFF;' />
