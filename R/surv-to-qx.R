@@ -13,7 +13,7 @@
 #' person-years (`py`), mortality rates (`mx`), and the probability of death
 #' (`qx`).
 #' @export
-calc_qx_from_surv <- function(obj_survfit) {
+calc_qx_from_surv <- function(obj_survfit, ...) {
   # Argument checks -----------------------------------------------------------
   rlang::check_required(obj_survfit)
 
@@ -29,13 +29,13 @@ calc_qx_from_surv <- function(obj_survfit) {
   names_strata <- names(obj_survfit$strata)
 
   if (base::is.null(names_strata)) {
-    make_lt(convert_survfit2tibble(obj_survfit)) |>
+    make_lt(convert_survfit2tibble(obj_survfit, ...)) |>
       dplyr::mutate(stratum = "all")
   } else {
-    # Calculate life table for each stratum -------------------------------------
+    # Calculate life table for each stratum -----------------------------------
     names_strata |>
       purrr::set_names() |>
-      purrr::map(\(i) make_lt(convert_survfit2tibble(obj_survfit[i]))) |>
+      purrr::map(\(i) make_lt(convert_survfit2tibble(obj_survfit[i], ...))) |>
       dplyr::bind_rows(.id = "stratum")
   }
 }
