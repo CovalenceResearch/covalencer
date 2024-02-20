@@ -65,6 +65,7 @@ calc_qx_from_surv <- function(obj_survfit, ...) {
 #' `year`, gives the year, the second, `n_events` the number events (deaths) in
 #' this year, and the third, `n_start`, the number at risk at the start of the
 #' year.
+#' @importFrom rlang .data .env
 #' @export
 convert_survfit2tibble <- function(obj_survfit,
                                    time_in = c("days", "years"),
@@ -87,8 +88,8 @@ convert_survfit2tibble <- function(obj_survfit,
 
   # Projection time -----------------------------------------------------------
   max_time <- dplyr::if_else(
-    time_unit == "days",
-    as.integer(base::ceiling(365.25 * age_max_years)),
+    .env$time_unit == "days",
+    as.integer(base::ceiling(365.25 * .env$age_max_years)),
     age_max_years
   )
 
@@ -99,22 +100,22 @@ convert_survfit2tibble <- function(obj_survfit,
     n_events = obj_survfit0$n.event
   ) |>
     tidyr::complete(
-      time = tidyr::full_seq(c(time, max_time), period = 1),
-      fill = list(n_risk = NA_integer_, n_events = 0)
+      time = tidyr::full_seq(c(.data$time, .data$max_time), period = 1),
+      fill = list(.n_risk = NA_integer_, n_events = 0)
     ) |>
-    tidyr::fill(n_risk, .direction = "updown") |>
+    tidyr::fill(.data$n_risk, .direction = "updown") |>
     dplyr::distinct() |>
     dplyr::mutate(
       time_unit = .env$time_unit,
       year_precise = dplyr::if_else(
-        time_unit == "days", time / 365.25, time
+        .data$time_unit == "days", .data$time / 365.25, .data$time
       ),
-      year = base::floor(year_precise)
+      year = base::floor(.data$year_precise)
     ) |>
     dplyr::group_by(year) |>
     dplyr::summarise(
-      n_events = base::sum(n_events),
-      n_start = base::max(n_risk)
+      n_events = base::sum(.data$n_events),
+      n_start = base::max(.data$n_risk)
     ) |>
     dplyr::filter(year <= .env$age_max_years)
 }
@@ -141,6 +142,7 @@ convert_survfit2tibble <- function(obj_survfit,
 #' `py`, gives the person-years spent in year `x`.The third column, `mx`, gives
 #' the mortality rate in year `x`; the last, `qx`, the probability of dying
 #' between years `x` and `x+1`.
+#' @importFrom rlang .data
 #' @export
 make_lt <- function(data) {
   # Argument checks -----------------------------------------------------------
@@ -153,10 +155,12 @@ make_lt <- function(data) {
   # Create lifetable ----------------------------------------------------------
   data |>
     dplyr::mutate(
-      py = (dplyr::lead(n_start) + n_start) * 0.5,
-      mx = n_events / py,
-      qx = 1 - exp(-1 * mx)
+      py = (dplyr::lead(.data$n_start) + .data$n_start) * 0.5,
+      mx = .data$n_events / .data$py,
+      qx = 1 - exp(-1 * .data$mx)
     ) |>
-    dplyr::mutate(qx = dplyr::if_else(year == base::max(.data$year), 1, qx)) |>
-    dplyr::distinct(year, py, mx, qx)
+    dplyr::mutate(qx = dplyr::if_else(
+        year == base::max(.data$year), 1, .data$qx)
+        ) |>
+    dplyr::distinct(.data$year, data$py, .data$mx, .data$qx)
 }
