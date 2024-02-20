@@ -88,7 +88,7 @@ convert_survfit2tibble <- function(obj_survfit,
     n_events = obj_survfit$n.event
   ) |>
     tidyr::complete(
-      time = full_seq(c(time, max_time), period = 1),
+      time = tidyr::full_seq(c(time, max_time), period = 1),
       fill = list(n_risk = NA_integer_, n_events = 0)
     ) |>
     tidyr::fill(n_risk, .direction = "updown") |>
