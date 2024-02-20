@@ -25,9 +25,12 @@ Imports:
     forcats,
     ggplot2,
     grDevices,
+    purrr,
     rlang,
     scales,
-    stringr
+    stringr,
+    survival,
+    tidyr
 URL: https://covalenceresearch.github.io/covalencer/
 Suggests: 
     testthat (>= 3.0.0),
