@@ -6,12 +6,15 @@
 #'
 #' @param obj_survfit An object returned from a call to `survival::survfit()` or
 #' `survival::survfit0()`.
+#' @param ... Additional arguments passed to `convert_survfit2tibble()`.
+#'
 #' @returns
 #' A `tibble` with five columns - `stratum` first, which reports the stratum
 #' from the `survfit` object to which the estimate belongs. The second, third,
 #' and fourth columns return standard life table estimates, including
 #' person-years (`py`), mortality rates (`mx`), and the probability of death
 #' (`qx`).
+#'
 #' @export
 calc_qx_from_surv <- function(obj_survfit, ...) {
   # Argument checks -----------------------------------------------------------
@@ -60,12 +63,14 @@ calc_qx_from_surv <- function(obj_survfit, ...) {
 #' @param time_in Unit in which time is reported. Either `days` or `years`.
 #' @param age_max_years Maximum age, in years, to which data should be
 #' extrapolated. Defaults to 120.
+#'
 #' @returns
 #' A `tibble` with `age_max_years + 1` rows and three columns. The first column,
 #' `year`, gives the year, the second, `n_events` the number events (deaths) in
 #' this year, and the third, `n_start`, the number at risk at the start of the
 #' year.
 #' @importFrom rlang .data
+#'
 #' @export
 convert_survfit2tibble <- function(obj_survfit,
                                    time_in = c("days", "years"),
@@ -137,12 +142,15 @@ convert_survfit2tibble <- function(obj_survfit,
 #' This implies the assumption of constant mortality in the 1-year interval.
 #'
 #' @param data A tibble produced by `convert_survfit2tibble()`.
+#'
 #' @returns
 #' A `tibble` with four columns, the first being `year`. The second column,
 #' `py`, gives the person-years spent in year `x`.The third column, `mx`, gives
 #' the mortality rate in year `x`; the last, `qx`, the probability of dying
 #' between years `x` and `x+1`.
+#'
 #' @importFrom rlang .data
+#'
 #' @export
 make_lt <- function(data) {
   # Argument checks -----------------------------------------------------------
@@ -160,7 +168,7 @@ make_lt <- function(data) {
       qx = 1 - exp(-1 * .data$mx)
     ) |>
     dplyr::mutate(qx = dplyr::if_else(
-        .data$year == base::max(.data$year), 1, .data$qx)
-        ) |>
+      .data$year == base::max(.data$year), 1, .data$qx
+    )) |>
     dplyr::distinct(.data$year, data$py, .data$mx, .data$qx)
 }

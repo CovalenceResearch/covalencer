@@ -9,6 +9,8 @@ calc_qx_from_surv(obj_survfit, ...)
 \arguments{
 \item{obj_survfit}{An object returned from a call to \code{survival::survfit()} or
 \code{survival::survfit0()}.}
+
+\item{...}{Additional arguments passed to \code{convert_survfit2tibble()}.}
 }
 \value{
 A \code{tibble} with five columns - \code{stratum} first, which reports the stratum
