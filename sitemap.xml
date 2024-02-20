@@ -16,6 +16,12 @@
     <loc>https://covalenceresearch.github.io/covalencer/index.html</loc>
   </url>
   <url>
+    <loc>https://covalenceresearch.github.io/covalencer/reference/calc_qx_from_surv.html</loc>
+  </url>
+  <url>
+    <loc>https://covalenceresearch.github.io/covalencer/reference/convert_survfit2tibble.html</loc>
+  </url>
+  <url>
     <loc>https://covalenceresearch.github.io/covalencer/reference/covalence_colours.html</loc>
   </url>
   <url>
@@ -28,7 +34,13 @@
     <loc>https://covalenceresearch.github.io/covalencer/reference/index.html</loc>
   </url>
   <url>
+    <loc>https://covalenceresearch.github.io/covalencer/reference/make_lt.html</loc>
+  </url>
+  <url>
     <loc>https://covalenceresearch.github.io/covalencer/reference/plot_psa_scatter.html</loc>
+  </url>
+  <url>
+    <loc>https://covalenceresearch.github.io/covalencer/reference/plot_rob2_summary.html</loc>
   </url>
   <url>
     <loc>https://covalenceresearch.github.io/covalencer/reference/scale_colour_covalence_discrete.html</loc>
