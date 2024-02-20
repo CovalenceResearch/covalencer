@@ -32,22 +32,22 @@ data synthesis or calculations are performed by the function).
 library(ggplot2)
 
 data_rob2 <- data.frame(
-   domain = rep(
-       c(
-           "Overall bias",
-           "Bias due to deviations from intended interventions",
-           "Missing data"
-       ),
-       each = 3
-   ),
-   judgement = rep(c("Low", "Some concerns", "High risk of bias"), times = 3),
-   study_share = c(0.4, 0.4, 0.2, 0.1, 0.85, 0.05, 0.2, 0.5, 0.3)
+  domain = rep(
+    c(
+      "Overall bias",
+      "Bias due to deviations from intended interventions",
+      "Missing data"
+    ),
+    each = 3
+  ),
+  judgement = rep(c("Low", "Some concerns", "High risk of bias"), times = 3),
+  study_share = c(0.4, 0.4, 0.2, 0.1, 0.85, 0.05, 0.2, 0.5, 0.3)
 )
 
 plot_rob2_summary(
-   data_rob2,
-   domain = domain,
-   judgement = judgement,
-   study_share = study_share
+  data_rob2,
+  domain = domain,
+  judgement = judgement,
+  study_share = study_share
 )
 }

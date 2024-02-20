@@ -77,9 +77,11 @@ Fore more information on the display of incremental outcomes on the cost-effecti
 }
 \examples{
 library(ggplot2)
-df <- data.frame(d_qalys = runif(1000, -1, 2),
-                 d_costs = runif(1000, -1000, 10000),
-                 country = rep(c("Country A", "Country B"), each = 500))
+df <- data.frame(
+  d_qalys = runif(1000, -1, 2),
+  d_costs = runif(1000, -1000, 10000),
+  country = rep(c("Country A", "Country B"), each = 500)
+)
 
 # Standard plot (without WTP threshold)
 plot_psa_scatter(df, d_qalys, d_costs)
@@ -93,6 +95,6 @@ plot_psa_scatter(df, d_qalys, d_costs, plot_wtp_at = 20000) +
 
 # Don't forget that column names should be unquoted
 \dontrun{
-  plot_psa_scatter(df, "d_qalys", "d_costs")
+plot_psa_scatter(df, "d_qalys", "d_costs")
 }
 }
