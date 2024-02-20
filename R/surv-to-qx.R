@@ -25,11 +25,19 @@ calc_qx_from_surv <- function(obj_survfit) {
     )
   }
 
-  # Calculate life table for each stratum -------------------------------------
-  names(obj_survfit$strata) |>
-    purrr::set_names() |>
-    purrr::map(\(i) make_lt(convert_survfit2tibble(obj_survfit[i]))) |>
-    dplyr::bind_rows(.id = "stratum")
+  # Check if formula contains a stratum
+  names_strata <- names(obj_survfit$strata)
+
+  if (base::is.null(names_strata)) {
+    make_lt(convert_survfit2tibble(obj_survfit)) |>
+      dplyr::mutate(stratum = "all")
+  } else {
+    # Calculate life table for each stratum -------------------------------------
+    names_strata |>
+      purrr::set_names() |>
+      purrr::map(\(i) make_lt(convert_survfit2tibble(obj_survfit[i]))) |>
+      dplyr::bind_rows(.id = "stratum")
+  }
 }
 
 #' Convert estimates from a `survfit` object to a tibble (dataframe)
