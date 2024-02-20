@@ -74,6 +74,9 @@ convert_survfit2tibble <- function(obj_survfit,
     )
   }
 
+  # Ensure an inclusion of 0
+  obj_survfit0 <- survival::survfit0(obj_survfit, start.time = 0)
+
   # Projection time -----------------------------------------------------------
   max_time <- dplyr::if_else(
     time_unit == "days",
@@ -83,9 +86,9 @@ convert_survfit2tibble <- function(obj_survfit,
 
   # Convert to tibble ---------------------------------------------------------
   tibble::tibble(
-    time = obj_survfit$time,
-    n_risk = obj_survfit$n.risk,
-    n_events = obj_survfit$n.event
+    time = obj_survfit0$time,
+    n_risk = obj_survfit0$n.risk,
+    n_events = obj_survfit0$n.event
   ) |>
     tidyr::complete(
       time = tidyr::full_seq(c(time, max_time), period = 1),
