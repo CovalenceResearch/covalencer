@@ -106,3 +106,44 @@ convert_survfit2tibble <- function(obj_survfit,
       n_start = base::max(n_risk)
     )
 }
+
+" Make a single-year lifetable from numbers of events and at risk
+#"
+#' @description description
+#' Based on the output from `convert_survfit2tibble()`, make a tibble containing
+#' `qx` (probabilities of dying before reaching age `x+1`) by year.
+#'
+#' @details
+#' The person-years (`py`) lived in each year are calculated as the mean of the
+#' cohort at age `x` and age `x+1`, i.e., deaths are assumed to occur,
+#' on average, mid-way through the single-year interval.
+#' The mortality rate, `mx`, is calculated as the number of
+#' events (deaths) per person-year.
+#' The probability of death between ages `x` and `x+1` is calculated as
+#' \eqn{q_{x} = 1 - \exp{-n*m_{x}}}, where `n=1` as intervals are single-year.
+#' This implies the assumption of constant mortality in the 1-year interval.
+#'
+#' @param data A tibble produced by `convert_survfit2tibble()`.
+#' @returns
+#' A `tibble` with four columns, the first being `year`. The second column,
+#' `py`, gives the person-years spent in year `x`.The third column, `mx`, gives
+#' the mortality rate in year `x`; the last, `qx`, the probability of dying
+#' between years `x` and `x+1`.
+#' @export
+make_lt <- function(data) {
+  # Argument checks -----------------------------------------------------------
+  rlang::check_required(data)
+
+  if (!tibble::is_tibble(data)) {
+    cli::cli_abort(message = "Please supply a tibble.")
+  }
+
+  # Create lifetable ----------------------------------------------------------
+  data |>
+    dplyr::mutate(
+      py = (dplyr::lead(n_start) + n_start) * 0.5,
+      mx = n_events / py,
+      qx = 1 - exp(-1 * mx)
+    ) |>
+    dplyr::distinct(year, py, mx, qx)
+}
