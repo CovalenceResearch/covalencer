@@ -115,7 +115,8 @@ convert_survfit2tibble <- function(obj_survfit,
     dplyr::summarise(
       n_events = base::sum(n_events),
       n_start = base::max(n_risk)
-    )
+    ) |>
+      dplyr::filter(year <= .env$age_max_years)
 }
 
 " Make a single-year lifetable from numbers of events and at risk
