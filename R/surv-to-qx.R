@@ -16,6 +16,13 @@
 #' (`qx`).
 #'
 #' @export
+#'
+#' @examples
+#' library(survival)
+#'
+#' obj_surv <- Surv(time = cancer$time, event = cancer$status)
+#' obj_survfit <- survfit(obj_surv ~ sex, data = cancer)
+#' calc_qx_from_surv(obj_survfit, time_in = "days", age_max_years = 90L)
 calc_qx_from_surv <- function(obj_survfit, ...) {
   # Argument checks -----------------------------------------------------------
   rlang::check_required(obj_survfit)
@@ -70,8 +77,6 @@ calc_qx_from_surv <- function(obj_survfit, ...) {
 #' this year, and the third, `n_start`, the number at risk at the start of the
 #' year.
 #' @importFrom rlang .data
-#'
-#' @export
 convert_survfit2tibble <- function(obj_survfit,
                                    time_in = c("days", "years"),
                                    age_max_years = 120L) {
@@ -105,7 +110,7 @@ convert_survfit2tibble <- function(obj_survfit,
     n_events = obj_survfit0$n.event
   ) |>
     tidyr::complete(
-      time = tidyr::full_seq(c(.data$time, .data$max_time), period = 1),
+      time = tidyr::full_seq(c(.data$time, max_time), period = 1),
       fill = list(.n_risk = NA_integer_, n_events = 0)
     ) |>
     tidyr::fill(.data$n_risk, .direction = "updown") |>
@@ -150,8 +155,6 @@ convert_survfit2tibble <- function(obj_survfit,
 #' between years `x` and `x+1`.
 #'
 #' @importFrom rlang .data
-#'
-#' @export
 make_lt <- function(data) {
   # Argument checks -----------------------------------------------------------
   rlang::check_required(data)

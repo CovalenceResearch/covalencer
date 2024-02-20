@@ -24,3 +24,10 @@ This function takes an object resulting from a call to \code{survival::survfit()
 or \code{survival::survfit0()} object and calculates a single-year lifetable for
 each stratum.
 }
+\examples{
+library(survival)
+
+obj_surv <- Surv(time = cancer$time, event = cancer$status)
+obj_survfit <- survfit(obj_surv ~ sex, data = cancer)
+calc_qx_from_surv(obj_survfit, time_in = "days", age_max_years = 90L)
+}
