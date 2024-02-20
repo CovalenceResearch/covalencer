@@ -36,11 +36,11 @@ palettes to ensure the house style is met.
 library(ggplot2)
 
 ggplot(data = msleep, aes(x = brainwt, y = bodywt)) +
-   geom_point() +
-   theme_covalence()
+  geom_point() +
+  theme_covalence()
 
 ggplot(data = diamonds, aes(x = price, y = carat)) +
-   geom_point(colour = covalence_colours("cov_lightblue"), alpha = 0.4) +
-   facet_wrap(vars(cut)) +
-   theme_covalence()
+  geom_point(colour = covalence_colours("cov_lightblue"), alpha = 0.4) +
+  facet_wrap(vars(cut)) +
+  theme_covalence()
 }

@@ -26,14 +26,16 @@
 #' @param mean_shape Integer value for mean point shape. Default is `18`. See `?pch` for available shapes.
 #' @param mean_size Numeric value for point size. Default is `3`.
 #'
-#' @return A ggplot object
+#' @return A ggplot object.
 #' @export
 #'
 #' @examples
 #' library(ggplot2)
-#' df <- data.frame(d_qalys = runif(1000, -1, 2),
-#'                  d_costs = runif(1000, -1000, 10000),
-#'                  country = rep(c("Country A", "Country B"), each = 500))
+#' df <- data.frame(
+#'   d_qalys = runif(1000, -1, 2),
+#'   d_costs = runif(1000, -1000, 10000),
+#'   country = rep(c("Country A", "Country B"), each = 500)
+#' )
 #'
 #' # Standard plot (without WTP threshold)
 #' plot_psa_scatter(df, d_qalys, d_costs)
@@ -47,10 +49,10 @@
 #'
 #' # Don't forget that column names should be unquoted
 #' \dontrun{
-#'   plot_psa_scatter(df, "d_qalys", "d_costs")
+#' plot_psa_scatter(df, "d_qalys", "d_costs")
 #' }
 plot_psa_scatter <- function(data,
-                             delta_qalys ,
+                             delta_qalys,
                              delta_costs,
                              currency = "$",
                              point_alpha = 0.4,
@@ -69,144 +71,142 @@ plot_psa_scatter <- function(data,
                              mean_color = "#7a0d66",
                              mean_shape = 18,
                              mean_size = 3) {
-    col_qalys <- rlang::as_string(rlang::ensym(delta_qalys))
-    col_costs <- rlang::as_string(rlang::ensym(delta_costs))
+  col_qalys <- rlang::as_string(rlang::ensym(delta_qalys))
+  col_costs <- rlang::as_string(rlang::ensym(delta_costs))
 
-    # Argument checks
+  # Argument checks
 
-    ## Data
-    rlang::check_required(delta_qalys)
-    rlang::check_required(delta_costs)
+  ## Data
+  rlang::check_required(delta_qalys)
+  rlang::check_required(delta_costs)
 
-    if (!(col_qalys %in% names(data))) {
-        cli::cli_abort(
-            c(
-                "{.var {rlang::caller_arg(delta_qalys)}} is not a column in {.var {rlang::caller_arg(data)}}."
-            ),
-            call = rlang::caller_env()
-        )
-    }
-    if (!(col_costs %in% names(data))) {
-        cli::cli_abort(
-            c(
-                "{.var {rlang::caller_arg(delta_costs)}} is not a column in {.var {rlang::caller_arg(data)}}."
-            ),
-            call = rlang::caller_env()
-        )
-    }
+  if (!(col_qalys %in% names(data))) {
+    cli::cli_abort(
+      c(
+        "{.var {rlang::caller_arg(delta_qalys)}} is not a column in {.var {rlang::caller_arg(data)}}."
+      ),
+      call = rlang::caller_env()
+    )
+  }
+  if (!(col_costs %in% names(data))) {
+    cli::cli_abort(
+      c(
+        "{.var {rlang::caller_arg(delta_costs)}} is not a column in {.var {rlang::caller_arg(data)}}."
+      ),
+      call = rlang::caller_env()
+    )
+  }
 
-    ## Input: WTP
-    if (!(is.numeric(plot_wtp_at) | is.null(plot_wtp_at))) {
-        cli::cli_abort("{.var plot_wtp_at} must be numeric or {.val NULL}.")
-    }
+  ## Input: WTP
+  if (!(is.numeric(plot_wtp_at) | is.null(plot_wtp_at))) {
+    cli::cli_abort("{.var plot_wtp_at} must be numeric or {.val NULL}.")
+  }
 
-    if (is.null(plot_wtp_at)) {
-        cli::cli_alert_info("No WTP threshold is plotted.")
-    } else if (plot_wtp_at < 0) {
-        cli::cli_alert_warning("The WTP threshold is negative.")
-    } else {
-        cli::cli_alert_info(c("The WTP threshold is plotted at ",
-                              "{currency}{plot_wtp_at} per QALY gained."))
-    }
+  if (is.null(plot_wtp_at)) {
+    cli::cli_inform("No WTP threshold is plotted.")
+  } else if (plot_wtp_at < 0) {
+    cli::cli_warn("The WTP threshold is negative.")
+  } else {
+    cli::cli_inform(c(
+      "The WTP threshold is plotted at ",
+      "{currency}{plot_wtp_at} per QALY gained."
+    ))
+  }
 
-    ## Inputs: Boolean
-    if (!is.logical(show_mean)) {
-        cli::cli_abort("{.var show_mean} must be TRUE or FALSE.")
-    }
+  ## Inputs: Boolean
+  if (!is.logical(show_mean)) {
+    cli::cli_abort("{.var show_mean} must be TRUE or FALSE.")
+  }
 
-    ## Inputs: colors
-    if (!check_color(point_color)) {
-        cli::cli_abort("{.var point_color} must be a hex color or in the R colors.")
-    }
+  ## Inputs: colors
+  if (!check_color(point_color)) {
+    cli::cli_abort("{.var point_color} must be a hex color or in the R colors.")
+  }
 
-    if (!check_color(wtp_color)) {
-        cli::cli_abort("{.var wtp_color} must be a hex color or in the R colors.")
-    }
+  if (!check_color(wtp_color)) {
+    cli::cli_abort("{.var wtp_color} must be a hex color or in the R colors.")
+  }
 
-    if (!check_color(mean_color)) {
-        cli::cli_abort("{.var mean_color} must be a hex color or in the R colors.")
-    }
+  if (!check_color(mean_color)) {
+    cli::cli_abort("{.var mean_color} must be a hex color or in the R colors.")
+  }
 
 
-    # Calculate symmetrical plot limits
-    max_qalys <- max(abs(data[[col_qalys]]))
-    max_costs <- max(abs(data[[col_costs]]))
+  # Calculate symmetrical plot limits
+  max_qalys <- max(abs(data[[col_qalys]]))
+  max_costs <- max(abs(data[[col_costs]]))
 
-    limits_qalys <- c(-max_qalys, max_qalys)
-    limits_costs <- c(-max_costs, max_costs)
+  limits_qalys <- c(-max_qalys, max_qalys)
+  limits_costs <- c(-max_costs, max_costs)
 
-    # Create scatter plot
-    p <- ggplot2::ggplot(data = data,
-                         mapping = ggplot2::aes(x = {
-                             {
-                                 delta_qalys
-                             }
-                         },
-                         y = {
-                             {
-                                 delta_costs
-                             }
-                         })) +
-        ggplot2::geom_hline(
-            yintercept = 0,
-            color = "#000000",
-            linewidth = 0.5
-        ) +
-        ggplot2::geom_vline(
-            xintercept = 0,
-            color = "#000000",
-            linewidth = 0.5
-        ) +
-        ggplot2::geom_jitter(
-            alpha = point_alpha,
-            color = point_color,
-            shape = point_shape,
-            size = point_size,
-            width = point_jitter_width,
-            height = point_jitter_height
-        ) +
-        ggplot2::scale_x_continuous(
-            "Incremental quality-adjusted life-years",
-            labels = scales::number_format(big.mark = ","),
-            limits = limits_qalys
-        ) +
-        ggplot2::scale_y_continuous(
-            "Incremental costs",
-            labels = scales::label_dollar(prefix = currency, big.mark = ","),
-            limits = limits_costs
-        ) +
-        theme_covalence() +
-        ggplot2::theme(panel.grid.major = ggplot2::element_blank())
+  # Create scatter plot
+  p <- ggplot2::ggplot(
+    data = data,
+    mapping = ggplot2::aes(
+      x = {{ delta_qalys }},
+      y = {{ delta_costs }}
+    )
+  ) +
+    ggplot2::geom_hline(
+      yintercept = 0,
+      color = "#000000",
+      linewidth = 0.5
+    ) +
+    ggplot2::geom_vline(
+      xintercept = 0,
+      color = "#000000",
+      linewidth = 0.5
+    ) +
+    ggplot2::geom_jitter(
+      alpha = point_alpha,
+      color = point_color,
+      shape = point_shape,
+      size = point_size,
+      width = point_jitter_width,
+      height = point_jitter_height
+    ) +
+    ggplot2::scale_x_continuous(
+      "Incremental quality-adjusted life-years",
+      labels = scales::number_format(big.mark = ","),
+      limits = limits_qalys
+    ) +
+    ggplot2::scale_y_continuous(
+      "Incremental costs",
+      labels = scales::label_dollar(prefix = currency, big.mark = ","),
+      limits = limits_costs
+    ) +
+    theme_covalence() +
+    ggplot2::theme(panel.grid.major = ggplot2::element_blank())
 
-    # Add willingness-to-pay (WTP) threshold as line
-    if (is.numeric(plot_wtp_at)) {
-        p <- p +
-            ggplot2::geom_abline(
-                intercept = 0,
-                slope = plot_wtp_at,
-                alpha = wtp_alpha,
-                color = wtp_color,
-                linetype = wtp_linetype,
-                linewidth = wtp_linewidth
-            )
-    } else {
-        p
-    }
-
-    # Add mean on plot
-    if (show_mean) {
-        p <- p +
-            stat_doublemean(
-                alpha = mean_alpha,
-                color = mean_color,
-                shape = mean_shape,
-                size  = mean_size
-            )
-    } else {
-        p
-    }
-
+  # Add willingness-to-pay (WTP) threshold as line
+  if (is.numeric(plot_wtp_at)) {
+    p <- p +
+      ggplot2::geom_abline(
+        intercept = 0,
+        slope = plot_wtp_at,
+        alpha = wtp_alpha,
+        color = wtp_color,
+        linetype = wtp_linetype,
+        linewidth = wtp_linewidth
+      )
+  } else {
     p
+  }
+
+  # Add mean on plot
+  if (show_mean) {
+    p <- p +
+      stat_doublemean(
+        alpha = mean_alpha,
+        color = mean_color,
+        shape = mean_shape,
+        size  = mean_size
+      )
+  } else {
+    p
+  }
+
+  p
 }
 
 
@@ -239,16 +239,16 @@ stat_doublemean <- function(mapping = NULL,
                             show.legend = NA,
                             inherit.aes = TRUE,
                             ...) {
-    ggplot2::layer(
-        stat = StatDoubleMean,
-        data = data,
-        mapping = mapping,
-        geom = geom,
-        position = position,
-        show.legend = show.legend,
-        inherit.aes = inherit.aes,
-        params = rlang::list2(na.rm = na.rm, ...)
-    )
+  ggplot2::layer(
+    stat = StatDoubleMean,
+    data = data,
+    mapping = mapping,
+    geom = geom,
+    position = position,
+    show.legend = show.legend,
+    inherit.aes = inherit.aes,
+    params = rlang::list2(na.rm = na.rm, ...)
+  )
 }
 
 #' @rdname stat_doublemean
@@ -256,11 +256,13 @@ stat_doublemean <- function(mapping = NULL,
 #' @usage NULL
 #' @export
 StatDoubleMean <- ggplot2::ggproto(
-    "StatDoubleMean",
-    ggplot2::Stat,
-    compute_group = function(data, scales) {
-        data.frame(x = mean(data$x, na.rm = TRUE),
-                   y = mean(data$y, na.rm = TRUE))
-    },
-    required_aes = c("x", "y")
+  "StatDoubleMean",
+  ggplot2::Stat,
+  compute_group = function(data, scales) {
+    data.frame(
+      x = mean(data$x, na.rm = TRUE),
+      y = mean(data$y, na.rm = TRUE)
+    )
+  },
+  required_aes = c("x", "y")
 )

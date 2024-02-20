@@ -38,10 +38,10 @@ library(ggplot2)
 library(covalencer)
 
 ggplot(data = diamonds, aes(x = price, y = carat)) +
-    geom_point(aes(color = color), alpha = 0.5) +
-    scale_colour_covalence_discrete(palette = "complete") +
-    facet_wrap(vars(cut)) +
-    theme_covalence()
+  geom_point(aes(color = color), alpha = 0.5) +
+  scale_colour_covalence_discrete(palette = "complete") +
+  facet_wrap(vars(cut)) +
+  theme_covalence()
 ```
 
 <img src="man/figures/README-example-1.png" width="90%" />
@@ -49,12 +49,12 @@ ggplot(data = diamonds, aes(x = price, y = carat)) +
 ``` r
 
 ggplot(data = diamonds, aes(x = cut, y = color)) +
-    geom_tile(aes(fill = depth)) +
-    scale_fill_covalence_sequential() +
-    theme_covalence() +
-    theme(
-        panel.grid.major = element_blank()
-    )
+  geom_tile(aes(fill = depth)) +
+  scale_fill_covalence_sequential() +
+  theme_covalence() +
+  theme(
+    panel.grid.major = element_blank()
+  )
 ```
 
 <img src="man/figures/README-example-2.png" width="90%" />
