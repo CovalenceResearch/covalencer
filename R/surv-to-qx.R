@@ -113,7 +113,7 @@ convert_survfit2tibble <- function(obj_survfit,
       time = tidyr::full_seq(c(.data$time, max_time), period = 1),
       fill = list(.n_risk = NA_integer_, n_events = 0)
     ) |>
-    tidyr::fill(.data$n_risk, .direction = "updown") |>
+    tidyr::fill(n_risk, .direction = "updown") |>
     dplyr::distinct() |>
     dplyr::mutate(
       time_unit = time_unit,
