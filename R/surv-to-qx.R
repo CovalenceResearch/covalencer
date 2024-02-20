@@ -65,7 +65,7 @@ calc_qx_from_surv <- function(obj_survfit, ...) {
 #' `year`, gives the year, the second, `n_events` the number events (deaths) in
 #' this year, and the third, `n_start`, the number at risk at the start of the
 #' year.
-#' @importFrom rlang .data .env
+#' @importFrom rlang .data
 #' @export
 convert_survfit2tibble <- function(obj_survfit,
                                    time_in = c("days", "years"),
@@ -88,8 +88,8 @@ convert_survfit2tibble <- function(obj_survfit,
 
   # Projection time -----------------------------------------------------------
   max_time <- dplyr::if_else(
-    .env$time_unit == "days",
-    as.integer(base::ceiling(365.25 * .env$age_max_years)),
+    time_unit == "days",
+    as.integer(base::ceiling(365.25 * age_max_years)),
     age_max_years
   )
 
@@ -106,22 +106,22 @@ convert_survfit2tibble <- function(obj_survfit,
     tidyr::fill(.data$n_risk, .direction = "updown") |>
     dplyr::distinct() |>
     dplyr::mutate(
-      time_unit = .env$time_unit,
+      time_unit = time_unit,
       year_precise = dplyr::if_else(
         .data$time_unit == "days", .data$time / 365.25, .data$time
       ),
       year = base::floor(.data$year_precise)
     ) |>
-    dplyr::group_by(year) |>
+    dplyr::group_by(.data$year) |>
     dplyr::summarise(
       n_events = base::sum(.data$n_events),
       n_start = base::max(.data$n_risk)
     ) |>
-    dplyr::filter(year <= .env$age_max_years)
+    dplyr::filter(.data$year <= age_max_years)
 }
 
-" Make a single-year lifetable from numbers of events and at risk
-#"
+#' Make a single-year life table from numbers of events and at risk
+#'
 #' @description description
 #' Based on the output from `convert_survfit2tibble()`, make a tibble containing
 #' `qx` (probabilities of dying before reaching age `x+1`) by year.
@@ -160,7 +160,7 @@ make_lt <- function(data) {
       qx = 1 - exp(-1 * .data$mx)
     ) |>
     dplyr::mutate(qx = dplyr::if_else(
-        year == base::max(.data$year), 1, .data$qx)
+        .data$year == base::max(.data$year), 1, .data$qx)
         ) |>
     dplyr::distinct(.data$year, data$py, .data$mx, .data$qx)
 }

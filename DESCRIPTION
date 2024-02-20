@@ -30,6 +30,7 @@ Imports:
     scales,
     stringr,
     survival,
+    tibble,
     tidyr
 URL: https://covalenceresearch.github.io/covalencer/
 Suggests: 
