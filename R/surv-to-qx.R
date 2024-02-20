@@ -173,5 +173,5 @@ make_lt <- function(data) {
     dplyr::mutate(qx = dplyr::if_else(
       .data$year == base::max(.data$year), 1, .data$qx
     )) |>
-    dplyr::distinct(.data$year, data$py, .data$mx, .data$qx)
+    dplyr::distinct(.data$year, .data$py, .data$mx, .data$qx)
 }
